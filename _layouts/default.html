@@ -132,6 +132,13 @@
         &raquo; {% for category in page.categories %}<a href="{{ site.url }}/category/{{ category }}">{{ category }}</a>{% if forloop.last == false %}, {% endif %}{% endfor %}
     </span>
     {% endif %}
+{% if page.title == "Home" %}
+	{% for category in site.categories %}
+<span class="categories">
+<a href="{{ site.url }}/category/{{ category | first }}">{{ category | first }}</a>{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+</span>
+{% endif %}
       </p>
       </div>
       </div>
@@ -149,9 +156,9 @@
                 <div class="row">
                   <div class="col-md-12 col-xs-12 footer">
                 <footer>
-                    © Copyright text here
+                    © Tunji Olu-Taiwo 2016
                      
-                    - <a href="#">Privacy link</a> - Powered by Jekyll.
+                    - Powered by Jekyll. - Theme by <a href="https://github.com/ashutosh2k12/hcz-jekyll-blog">Ashutosh</a>
                     
                 </footer>
                 <div align="center">

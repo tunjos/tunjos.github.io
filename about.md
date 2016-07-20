@@ -4,8 +4,19 @@ title: About
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](http://jekyllrb.com/)
+I am a Happy engineer and I love to make things happen. I love meeting people and finding ways to think about the future.
+I am an Entrepreneur, a Writer, a Speaker, a Programmer, an Innovator and a UI/UX Designer among many others.  
 
-You can find the source code for this Jekyll theme at: [github.com/ashutosh2k12/hcz-jekyll-blog](https://github.com/ashutosh2k12/hcz-jekyll-blog)
+I spend a great deal of time being happy and a greater deal of time spreading Happiness to others.  
+My Hobbies include Walking, Running, Thinking and Happiness.  
+Imotivate: You are a wonderful person.
 
-You can find the source code for Jekyll at [github.com/jekyll/jekyll](https://github.com/jekyll/jekyll)
+Checkout [happydrip.com](https://www.happydrip.com) for my happiness blog.  
+
+Skills: [Happiness](#), [Android](#), [Java](#), [Javascript](#), [Python](#), [Ruby](#)
+
+Email: <tunjos@tunjos.co>
+
+Phone: [+EXEC-0-I-MET-903](#)
+
+Location: [Turin, Italy](#)
