@@ -15,6 +15,7 @@ Checkout [happydrip.com](https://www.happydrip.com) for my happiness blog.
 
 Skills: [Happiness](#), [Android](#), [Java](#), [Javascript](#), [Python](#), [Ruby](#)
 
+### Get in touch with me.  
 Email: <tunjos@tunjos.co>
 
 Phone: [+EXEC-0-I-MET-903](#)
