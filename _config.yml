@@ -27,7 +27,7 @@ urls:
       url: https://github.com/tunjos
       icon: fa-github
     - text: Resume
-      url: '#'
+      url: '/assets/tunji_olu_taiwo_cv.pdf'
       icon: fa-file-pdf-o
     - text: XML Feed
       url: /feed.xml
