@@ -4,8 +4,8 @@ author: Tunji Olu-Taiwo
 logo: http://tunjos.co/static/img/headshot.jpg
 github: https://github.com/tunjos
 about: Happy Engineer..Critical Thinker.
-disqus_shortname: 
-google_analytics: 
+disqus_shortname:
+google_analytics:
 plain_url: tunjos.co
 plain_url2: tunjos.com
 urls:
@@ -26,6 +26,7 @@ urls:
     - text: Github
       url: https://github.com/tunjos
       icon: fa-github
+      target: _blank
     - text: Resume
       url: '/assets/tunji_olu_taiwo_cv.pdf'
       icon: fa-file-pdf-o
@@ -33,7 +34,7 @@ urls:
       url: /feed.xml
       icon: fa-feed
       target: _blank
-      
+
 social:
     - icon: fa-twitter
       link: 'http://twitter.com/tunjos'
