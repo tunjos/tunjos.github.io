@@ -89,10 +89,13 @@
         <link rel="stylesheet" href="{{ site.url }}/static/css/main.css">
         <link rel="stylesheet" href="{{ site.url }}/static/css/projects.css">
 
-        <script type="text/javascript">
-          //loadingImage is relative to project dir
-          var tb_pathToImage = "{{ site.url }}/static/img/loadingAnimation.gif";
-        </script>
+        <!-- fancyBox -->
+        <!-- Add fancyBox CSS files -->
+        <link rel="stylesheet" type="text/css" href="{{ site.url }}/static/css/fancyBox/source/jquery.fancybox.css?v=2.1.5" media="screen" />
+        <!-- Add Button helper (this is optional) -->
+      	<link rel="stylesheet" type="text/css" href="{{ site.url }}/static/css/fancyBox/source/helpers/jquery.fancybox-buttons.css?v=1.0.5" />
+        <!-- Add Thumbnail helper (this is optional) -->
+      	<link rel="stylesheet" type="text/css" href="{{ site.url }}/static/css/fancyBox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" />
         {% include analytics.html %}
     </head>
 
@@ -190,5 +193,36 @@
         <script src="{{ site.url }}/static/js/material.min.js"></script>
         <script src="{{ site.url }}/static/js/main.js"></script>
         <script src="{{ site.url }}/static/js/projects.js"></script>
+
+        <!-- fancyBox -->
+        <!-- Add jQuery library -->
+      	<!-- <script type="text/javascript" src="{{ site.url }}/static/js/fancyBox/lib/jquery-1.10.2.min.js"></script> -->
+        <!-- Add mousewheel plugin (this is optional) -->
+      	<script type="text/javascript" src="{{ site.url }}/static/js/fancyBox/lib/jquery.mousewheel.pack.js?v=3.1.3"></script>
+        <!-- Add fancyBox main JS -->
+      	<script type="text/javascript" src="{{ site.url }}/static/js/fancyBox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+        <!-- Add Button helper (this is optional) -->
+      	<script type="text/javascript" src="{{ site.url }}/static/js/fancyBox/source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
+        <!-- Add Thumbnail helper (this is optional) -->
+      	<script type="text/javascript" src="{{ site.url }}/static/js/fancyBox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
+      	<!-- Add Media helper (this is optional) -->
+      	<script type="text/javascript" src="{{ site.url }}/static/js/fancyBox/source/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
+        <script type="text/javascript">
+        $(document).ready(function() {
+            $(".fancybox-thumb").fancybox({
+                prevEffect	: 'none',
+                nextEffect	: 'none',
+		            helpers	: {
+			               title	: {
+				                   type: 'outside'
+			                  },
+			               thumbs	: {
+				                   width	: 50,
+				                   height	: 50
+			                  }
+		            }
+	          });
+        });
+        </script>
     </body>
 </html>
