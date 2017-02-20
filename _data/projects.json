@@ -141,10 +141,97 @@
 	},
 	{
 		"name": "Evapp",
-		"cover_thumbnail": "placeholder.jpg",
-		"cover_image": "placeholder.jpg",
+		"cover_thumbnail": "evapp/app-icon.png",
+		"cover_image": "evapp/app-icon.png",
 		"cover_title": "Evapp",
 		"fancybox_class": "evapp",
+		"images": [
+				{
+					"image": "evapp/Detail.png",
+					"thumbnail": "evapp/Detail.png",
+					"title": "Detail"
+				},
+				{
+					"image": "evapp/Login.png",
+					"thumbnail": "evapp/Login.png",
+					"title": "Login"
+				},
+				{
+					"image": "evapp/Notification.png",
+					"thumbnail": "evapp/Notification.png",
+					"title": "Notification"
+				},
+				{
+					"image": "evapp/Past.png",
+					"thumbnail": "evapp/Past.png",
+					"title": "Past"
+				},
+				{
+					"image": "evapp/Poll-dialog.png",
+					"thumbnail": "evapp/Poll-dialog.png",
+					"title": "Poll dialog"
+				},
+				{
+					"image": "evapp/Poll-dialog-tnx.png",
+					"thumbnail": "evapp/Poll-dialog-tnx.png",
+					"title": "Poll dialog thanks"
+				},
+				{
+					"image": "evapp/Settings.png",
+					"thumbnail": "evapp/Settings.png",
+					"title": "Settings"
+				},
+				{
+					"image": "evapp/Signup.png",
+					"thumbnail": "evapp/Signup.png",
+					"title": "Signup"
+				},
+				{
+					"image": "evapp/Stats-checkins.png",
+					"thumbnail": "evapp/Stats-checkins.png",
+					"title": "Stats: Checkins"
+				},
+				{
+					"image": "evapp/Stats-detail.png",
+					"thumbnail": "evapp/Stats-detail.png",
+					"title": "Stats: Detail"
+				},
+				{
+					"image": "evapp/Stats-rating.png",
+					"thumbnail": "evapp/Stats-rating.png",
+					"title": "Stats: Rating"
+				},
+				{
+					"image": "evapp/Stats-time.png",
+					"thumbnail": "evapp/Stats-time.png",
+					"title": "Stats: Time"
+				},
+				{
+					"image": "evapp/storyboard-01.png",
+					"thumbnail": "evapp/storyboard-01.png",
+					"title": "Storyboard 1"
+				},
+				{
+					"image": "evapp/storyboard-02",
+					"thumbnail": "evapp/storyboard-02.png",
+					"title": "Storyboard 2"
+				},
+				{
+					"image": "evapp/storyboard-03.png",
+					"thumbnail": "evapp/storyboard-03.png",
+					"title": "Storyboard 3"
+				},
+				{
+					"image": "evapp/Today.png",
+					"thumbnail": "evapp/Today.png",
+					"title": "Today"
+				},
+				{
+					"image": "evapp/Web-dashboard.png",
+					"thumbnail": "evapp/Web-dashboard.png",
+					"title": "Web dashboard"
+				}
+			  ],
 		"url": "https://www.behance.net/gallery/27912265/Evapp-Event-App",
 		"date": "Jun 2014",
 		"tags": ["Android","Beacons","API"]
