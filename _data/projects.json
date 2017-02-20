@@ -123,10 +123,82 @@
 	},
 	{
 		"name": "L'Oréal Professionnel",
-		"cover_thumbnail": "placeholder.jpg",
-		"cover_image": "placeholder.jpg",
+		"cover_thumbnail": "loreal/loreal_icon.jpg",
+		"cover_image": "loreal/loreal_icon.jpg",
 		"cover_title": "L'Oréal Professionnel",
 		"fancybox_class": "loreal-professionnel",
+		"images": [
+				{
+					"image": "loreal/loreal_playstore_1.jpg",
+					"thumbnail": "loreal/loreal_playstore_1.jpg",
+					"title": "Loreal Playstore 1"
+				},
+				{
+					"image": "loreal/loreal_playstore_2.jpg",
+					"thumbnail": "loreal/loreal_playstore_2.jpg",
+					"title": "Loreal Playstore 2"
+				},
+				{
+					"image": "loreal/loreal_playstore_3.jpg",
+					"thumbnail": "loreal/loreal_playstore_3.jpg",
+					"title": "Loreal Playstore 3"
+				},
+				{
+					"image": "loreal/NWS_1.png",
+					"thumbnail": "loreal/NWS_1.png",
+					"title": "News 1"
+				},
+				{
+					"image": "loreal/NWS_2.png",
+					"thumbnail": "loreal/NWS_2.png",
+					"title": "News 2"
+				},
+				{
+					"image": "loreal/NWS_3.png",
+					"thumbnail": "loreal/NWS_3.png",
+					"title": "News 3"
+				},
+				{
+					"image": "loreal/NWS_4.png",
+					"thumbnail": "loreal/NWS_4.png",
+					"title": "News 4"
+				},
+				{
+					"image": "loreal/proposta_1_slider.jpg",
+					"thumbnail": "loreal/proposta_1_slider.jpg",
+					"title": "Proposta Slider"
+				},
+				{
+					"image": "loreal/screenshot_customers.jpg",
+					"thumbnail": "loreal/screenshot_customers.jpg",
+					"title": "Screenshot Customers"
+				},
+				{
+					"image": "loreal/screenshot_login.jpg",
+					"thumbnail": "loreal/screenshot_login.jpg",
+					"title": "Screenshot Login"
+				},
+				{
+					"image": "loreal/screenshot_products.jpg",
+					"thumbnail": "loreal/screenshot_products.jpg",
+					"title": "Screenshot Products"
+				},
+				{
+					"image": "loreal/screenshot_registration.jpg",
+					"thumbnail": "loreal/screenshot_registration.jpg",
+					"title": "Screenshot Registration"
+				},
+				{
+					"image": "loreal/screenshot_update.jpg",
+					"thumbnail": "loreal/screenshot_update.jpg",
+					"title": "Screenshot Update"
+				},
+				{
+					"image": "loreal/screenshot_videos.jpg",
+					"thumbnail": "loreal/screenshot_videos.jpg",
+					"title": "Screenshot Videos"
+				}
+			  ],
 		"url": "https://play.google.com/store/apps/details?id=it.echocreative.lppc",
 		"date": "Mar 2015",
 		"tags": ["Android","API"]
