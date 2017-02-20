@@ -33,11 +33,53 @@
 	},
 	{
 		"name": "Search Bubble",
-		"cover_thumbnail": "placeholder.jpg",
-		"cover_image": "placeholder.jpg",
+		"cover_thumbnail": "searchbubble/artwork.png",
+		"cover_image": "searchbubble/artwork.png",
 		"cover_title": "Search Bubble",
 		"fancybox_class": "search-bubble",
-		"url": "https://play.google.com/store/apps/details?id=com.tunjos.searchbubble",
+		"images": [
+				{
+					"image": "searchbubble/banner.png",
+					"thumbnail": "searchbubble/banner.png",
+					"title": "Banner"
+				},
+				{
+					"image": "searchbubble/scf_1.png",
+					"thumbnail": "searchbubble/scf_1.png",
+					"title": "Screenshot 1"
+				},
+				{
+					"image": "searchbubble/scf_2.png",
+					"thumbnail": "searchbubble/scf_2.png",
+					"title": "Screenshot 2"
+				},
+				{
+					"image": "searchbubble/scf_3.png",
+					"thumbnail": "searchbubble/scf_3.png",
+					"title": "Screenshot 3"
+				},
+				{
+					"image": "searchbubble/scf_4.png",
+					"thumbnail": "searchbubble/scf_4.png",
+					"title": "Screenshot 4"
+				},
+				{
+					"image": "searchbubble/scf_5.png",
+					"thumbnail": "searchbubble/scf_5.png",
+					"title": "Screenshot 5"
+				},
+				{
+					"image": "searchbubble/scf_6.png",
+					"thumbnail": "searchbubble/scf_6.png",
+					"title": "Screenshot 6"
+				},
+				{
+					"image": "searchbubble/scf_7.png",
+					"thumbnail": "searchbubble/scf_7.png",
+					"title": "Screenshot 7"
+				}
+			  ],
+		"url": "http://searchbubble.co",
 		"source_url": "https://github.com/tunjos/SearchBubble",
 		"date": "Jul 2015",
 		"tags": ["Android"]
