@@ -359,6 +359,11 @@
 					"image": "emuplaces/splash.jpg",
 					"thumbnail": "emuplaces/splash.jpg",
 					"title": "Splash"
+				},
+				{
+					"image": "emuplaces/Timeline_Cover.png",
+					"thumbnail": "emuplaces/Timeline_Cover.png",
+					"title": "Timeline Cover"
 				}
 			  ],
 		"url":"http://www.emu.edu.tr/android/emuplaces/",
