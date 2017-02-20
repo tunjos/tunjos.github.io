@@ -205,10 +205,92 @@
 	},
 	{
 		"name": "Sutter Professional Italia",
-		"cover_thumbnail": "placeholder.jpg",
-		"cover_image": "placeholder.jpg",
+		"cover_thumbnail": "sutterprofessionalitalia/sutter_icon.jpg",
+		"cover_image": "sutterprofessionalitalia/sutter_icon.jpg",
 		"cover_title": "Sutter Professional",
 		"fancybox_class": "sutter-professional",
+		"images": [
+				{
+					"image": "sutterprofessionalitalia/products.png",
+					"thumbnail": "sutterprofessionalitalia/products.png",
+					"title": "Products"
+				},
+				{
+					"image": "sutterprofessionalitalia/screenshot_catalogue.jpg",
+					"thumbnail": "sutterprofessionalitalia/screenshot_catalogue.jpg",
+					"title": "Screenshot Catalogue"
+				},
+				{
+					"image": "sutterprofessionalitalia/screenshot_customers.jpg",
+					"thumbnail": "sutterprofessionalitalia/screenshot_customers.jpg",
+					"title": "Screenshot Customers"
+				},
+				{
+					"image": "sutterprofessionalitalia/screenshot_home.jpg",
+					"thumbnail": "sutterprofessionalitalia/screenshot_home.jpg",
+					"title": "Screenshot Home"
+				},
+				{
+					"image": "sutterprofessionalitalia/screenshot_login.jpg",
+					"thumbnail": "sutterprofessionalitalia/screenshot_login.jpg",
+					"title": "Screenshot Login"
+				},
+				{
+					"image": "sutterprofessionalitalia/screenshot_product.jpg",
+					"thumbnail": "sutterprofessionalitalia/screenshot_product.jpg",
+					"title": "Screenshot Product"
+				},
+				{
+					"image": "sutterprofessionalitalia/screenshot_products.jpg",
+					"thumbnail": "sutterprofessionalitalia/screenshot_products.jpg",
+					"title": "Screenshot Products"
+				},
+				{
+					"image": "sutterprofessionalitalia/screenshot_registration.jpg",
+					"thumbnail": "sutterprofessionalitalia/screenshot_registration.jpg",
+					"title": "Screenshot Registration"
+				},
+				{
+					"image": "sutterprofessionalitalia/screenshot_sutter.jpg",
+					"thumbnail": "sutterprofessionalitalia/screenshot_sutter.jpg",
+					"title": "Screenshot Sutter"
+				},
+				{
+					"image": "sutterprofessionalitalia/screenshot_update.jpg",
+					"thumbnail": "sutterprofessionalitalia/screenshot_update.jpg",
+					"title": "Screenshot Update"
+				},
+				{
+					"image": "sutterprofessionalitalia/screenshot_video.jpg",
+					"thumbnail": "sutterprofessionalitalia/screenshot_video.jpg",
+					"title": "Screenshot Video"
+				},
+				{
+					"image": "sutterprofessionalitalia/screenshot_videos.jpg",
+					"thumbnail": "sutterprofessionalitalia/screenshot_videos.jpg",
+					"title": "Screenshot Videos"
+				},
+				{
+					"image": "sutterprofessionalitalia/sutter_english_playstore_1.jpg",
+					"thumbnail": "sutterprofessionalitalia/sutter_english_playstore_1.jpg",
+					"title": "Screenshot English Playstore 1"
+				},
+				{
+					"image": "sutterprofessionalitalia/sutter_playstore_1.jpg",
+					"thumbnail": "sutterprofessionalitalia/sutter_playstore_1.jpg",
+					"title": "Screenshot Playstore 1"
+				},
+				{
+					"image": "sutterprofessionalitalia/sutter_playstore_2.jpg",
+					"thumbnail": "sutterprofessionalitalia/sutter_playstore_2.jpg",
+					"title": "Screenshot Playstore 2"
+				},
+				{
+					"image": "sutterprofessionalitalia/SutterSplash.png",
+					"thumbnail": "sutterprofessionalitalia/SutterSplash.png",
+					"title": "Screenshot Splash"
+				}
+			  ],
 		"url": "https://play.google.com/store/apps/details?id=it.echocreative.sutter",
 		"date": "May 2015",
 		"tags": ["Android","API"]
