@@ -8,7 +8,7 @@
 #   summary: Nice summary about book //--> important
 #   category: Book Category [programming, happiness]
 -
-  name: The Power of Less: The Fine Art of Limiting Yourself to the Essential...in Business and in Life.
+  name: The Power of Less. The Fine Art of Limiting Yourself to the Essential...in Business and in Life.
   author: Leo Babauta
   avatar: /books_bookname.jpg
   url: http://www.booksaleurl.com
@@ -24,7 +24,7 @@
   summary: Good book about being good
   category:
 -
-  name: The Lean Startup: How Today's Entrepreneurs Use Continuous Innovation to Create Radically Successful Businesses.
+  name: The Lean Startup. How Today's Entrepreneurs Use Continuous Innovation to Create Radically Successful Businesses.
   author: Eric Ries
   avatar: /book-pic.jpg
   url: http://www.amazon_url.com
@@ -32,10 +32,10 @@
   summary: Good book about being good
   category:
 -
-  name: Web API Design: Crafting Interfaces that Developers Love.
+  name: Web API Design. Crafting Interfaces that Developers Love.
   author: Brian Mulloy(apigee)
   avatar: /book-pic.jpg
   url: http://www.amazon_url.com
   pages: 100
   summary: Good book about being good
-  category:
+  category: 

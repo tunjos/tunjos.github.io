@@ -238,10 +238,87 @@
 	},
 	{
 		"name": "EMUPlaces",
-		"cover_thumbnail": "placeholder.jpg",
-		"cover_image": "placeholder.jpg",
+		"cover_thumbnail": "emuplaces/ic_launcher-web.png",
+		"cover_image": "emuplaces/ic_launcher-web.png",
 		"cover_title": "EMUPlaces",
 		"fancybox_class": "emuplaces",
+		"images": [
+				{
+					"image": "emuplaces/EMUPlaces.png",
+					"thumbnail": "emuplaces/EMUPlaces.png",
+					"title": "EMUPlaces"
+				},
+				{
+					"image": "emuplaces/kampus2012.jpg",
+					"thumbnail": "emuplaces/kampus2012.jpg",
+					"title": "kampus 2012"
+				},
+				{
+					"image": "emuplaces/main_en.png",
+					"thumbnail": "emuplaces/main_en.png",
+					"title": "Main"
+				},
+				{
+					"image": "emuplaces/phones_en.png",
+					"thumbnail": "emuplaces/phones_en.png",
+					"title": "Phones"
+				},
+				{
+					"image": "emuplaces/screenshot.png",
+					"thumbnail": "emuplaces/screenshot.png",
+					"title": "Screenshot"
+				},
+				{
+					"image": "emuplaces/screenshot_1.png",
+					"thumbnail": "emuplaces/screenshot_1.png",
+					"title": "Screenshot 1"
+				},
+				{
+					"image": "emuplaces/screenshot_2.png",
+					"thumbnail": "emuplaces/screenshot_2.png",
+					"title": "Screenshot 2"
+				},
+				{
+					"image": "emuplaces/screenshot_3.png",
+					"thumbnail": "emuplaces/screenshot_3.png",
+					"title": "Screenshot 4"
+				},
+				{
+					"image": "emuplaces/screenshot_4.png",
+					"thumbnail": "emuplaces/screenshot_4.png",
+					"title": "Screenshot 4"
+				},
+				{
+					"image": "emuplaces/screenshot_5.png",
+					"thumbnail": "emuplaces/screenshot_5.png",
+					"title": "Screenshot 5"
+				},
+				{
+					"image": "emuplaces/screenshot_6.png",
+					"thumbnail": "emuplaces/screenshot_6.png",
+					"title": "Screenshot 6"
+				},
+				{
+					"image": "emuplaces/screenshot_7.png",
+					"thumbnail": "emuplaces/screenshot_7.png",
+					"title": "Screenshot 7"
+				},
+				{
+					"image": "emuplaces/screenshot_8.png",
+					"thumbnail": "emuplaces/screenshot_8.png",
+					"title": "Screenshot 8"
+				},
+				{
+					"image": "emuplaces/screenshots.png",
+					"thumbnail": "emuplaces/screenshots.png",
+					"title": "Screenshots"
+				},
+				{
+					"image": "emuplaces/splash.jpg",
+					"thumbnail": "emuplaces/splash.jpg",
+					"title": "Splash"
+				}
+			  ],
 		"url":"http://www.emu.edu.tr/android/emuplaces/",
 		"date": "2012",
 		"tags": ["Android","API"]
