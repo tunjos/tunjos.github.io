@@ -1,0 +1,23 @@
+# Place book information here. Available element are:
+# -
+#   name: Some book's name //--> this is important!
+#   author: Some Nice Name //--> important
+#   avatar: /book-pic.jpg //--> important, you can define a default avatar
+#   url: Link to book
+#   pages: 100
+#   summary: Nice summary about book //--> important
+
+-
+  name: Book Name
+  author: Author
+  avatar: /books_bookname.jpg
+  url: http://www.booksaleurl.com
+  pages: 100
+  summary: Good book about being good
+-
+  name: Happiness as a way of life
+  author: Author
+  avatar: /book-pic.jpg
+  url: http://www.amazon_url.com
+  pages: 100
+  summary: Good book about being good

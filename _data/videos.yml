@@ -1,0 +1,19 @@
+# Place Video information here. Available elements are:
+# -
+#   name: Some Nice Video Name //--> this is important!
+#   url: Video's url //--> important
+#   time: X.X.X //--> important
+#   description: Nice summary about video //--> important
+#   category: Video Category [programming, happiness]
+-
+  name: How To Design A Good API and Why it Matters
+  url: https://www.youtube.com/watch?v=heh4OeB9A-c
+  time: 1:00:14
+  summary: Good book about being good
+  category: programming
+-
+  name: Functional Programming in Java 8
+  url: https://zeroturnaround.com/webinar/java8/
+  time: 1:13:43
+  summary: Good book about being good
+  category: programming
