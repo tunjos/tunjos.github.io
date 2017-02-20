@@ -23,10 +23,47 @@
 	},
 	{
 		"name": "WorkFone",
-		"cover_thumbnail": "placeholder.jpg",
-		"cover_image": "placeholder.jpg",
+		"cover_thumbnail": "workfone/workfone_icon.png",
+		"cover_image": "workfone/workfone_icon.png",
 		"cover_title": "WorkFone",
 		"fancybox_class": "workfone",
+		"images": [
+				{
+					"image": "workfone/masthead-image.png",
+					"thumbnail": "workfone/masthead-image.png",
+					"title": "Masthead Image"
+				},
+				{
+					"image": "workfone/masthead-mobile.png",
+					"thumbnail": "workfone/masthead-mobile.png",
+					"title": "Masthead Mobile"
+				},
+				{
+					"image": "workfone/workfone-logo.png",
+					"thumbnail": "workfone/workfone-logo.png",
+					"title": "WorkFone Logo"
+				},
+				{
+					"image": "workfone/workfone_playstore_1.png",
+					"thumbnail": "workfone/workfone_playstore_1.png",
+					"title": "WorkFone Playstore 1"
+				},
+				{
+					"image": "workfone/workfone_playstore_2.png",
+					"thumbnail": "workfone/workfone_playstore_2.png",
+					"title": "WorkFone Playstore 2"
+				},
+				{
+					"image": "workfone/workfone_playstore_3.png",
+					"thumbnail": "workfone/workfone_playstore_3.png",
+					"title": "WorkFone Playstore 3"
+				},
+				{
+					"image": "workfone/workfone_playstore_4.png",
+					"thumbnail": "workfone/workfone_playstore_4.png",
+					"title": "WorkFone Playstore 4"
+				}
+			  ],
 		"url": "https://workfone.io",
 		"date": "2016",
 		"tags": ["Android","Javascript","API"]
