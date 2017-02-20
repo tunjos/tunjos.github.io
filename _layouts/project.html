@@ -36,9 +36,7 @@ layout: default
 
     			</div>
     			<div class="project-footer">
-    				{% if i.url %}
-    				<a href="{{ i.url }}" class="btn btn-info btn-raised btn-sm project-link">View</a>
-    				{% endif %}
+    				<a href="#" id="btn-{{ i.fancybox_class }}" class="btn btn-info btn-raised btn-sm project-link">View</a>
             {% if i.source_url %}
     				<a href="{{ i.source_url }}" class="btn btn-info btn-raised btn-sm project-link" style="margin-left: 6px;">Source</a>
     				{% endif %}

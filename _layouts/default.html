@@ -224,6 +224,10 @@
 			                  }
 		            }
 	          });
+            $("#btn-{{ i.fancybox_class }}").click(function(){
+                $(".{{ i.fancybox_class }}").first().trigger('click');
+                return false;
+            })
             {% endfor %}
             $(".resume").fancybox({
                   maxWidth	  : 800,
