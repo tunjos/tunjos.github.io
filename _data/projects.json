@@ -297,10 +297,27 @@
 	},
 	{
 		"name": "Sutter Professional Espana",
-		"cover_thumbnail": "placeholder.jpg",
-		"cover_image": "placeholder.jpg",
+		"cover_thumbnail": "sutterprofessionalespana/sutter_icon.jpg",
+		"cover_image": "sutterprofessionalespana/sutter_icon.jpg",
 		"cover_title": "Sutter Professional Espana",
 		"fancybox_class": "sutter-professional-espana",
+		"images": [
+				{
+					"image": "sutterprofessionalespana/sutter_espanyol_playstore_1.jpg",
+					"thumbnail": "sutterprofessionalespana/sutter_espanyol_playstore_1.jpg",
+					"title": "Sutter Espanyol Playstore 1"
+				},
+				{
+					"image": "sutterprofessionalespana/sutter_espanyol_playstore_2.jpg",
+					"thumbnail": "sutterprofessionalespana/sutter_espanyol_playstore_2.jpg",
+					"title": "Sutter Espanyol Playstore 2"
+				},
+				{
+					"image": "sutterprofessionalespana/sutter_english_playstore_1.jpg",
+					"thumbnail": "sutterprofessionalespana/sutter_english_playstore_1.jpg",
+					"title": "Sutter English Playstore 1"
+				}
+			  ],
 		"url": "https://play.google.com/store/apps/details?id=it.echocreative.sutter.es",
 		"date": "Sept 2015",
 		"tags": ["Android","API"]
