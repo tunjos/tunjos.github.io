@@ -1,19 +1,19 @@
 [
 	{
 		"name": "Command Bubble",
-		"cover_thumbnail": "commandbubble/shoshin_zen.jpg",
-		"cover_image": "commandbubble/shoshin_zen.jpg",
+		"cover_thumbnail": "commandbubble/ic_playstore.png",
+		"cover_image": "commandbubble/ic_playstore.png",
 		"cover_title": "Command Bubble",
 		"fancybox_class": "command-bubble",
 		"images": [
 				{
-					"image": "commandbubble/shoshin_zen.jpg",
-					"thumbnail": "commandbubble/shoshin_zen.jpg",
+					"image": "placeholder.jpg",
+					"thumbnail": "placeholder.jpg",
 					"title": "Title"
 				},
 				{
-					"image": "commandbubble/shoshin_zen.jpg",
-					"thumbnail": "commandbubble/shoshin_zen.jpg",
+					"image": "placeholder.jpg",
+					"thumbnail": "placeholder.jpg",
 					"title": "Title"
 				}
 			  ],
@@ -125,7 +125,7 @@
 		"name": "L'Oréal Professionnel Catalogo",
 		"cover_thumbnail": "loreal/loreal_icon.jpg",
 		"cover_image": "loreal/loreal_icon.jpg",
-		"cover_title": "L'Oréal Professionnel",
+		"cover_title": "L'Oréal Professionnel Catalogo",
 		"fancybox_class": "loreal-professionnel",
 		"images": [
 				{
@@ -207,7 +207,7 @@
 		"name": "Sutter Professional Italia",
 		"cover_thumbnail": "sutterprofessionalitalia/sutter_icon.jpg",
 		"cover_image": "sutterprofessionalitalia/sutter_icon.jpg",
-		"cover_title": "Sutter Professional",
+		"cover_title": "Sutter Professional Italia",
 		"fancybox_class": "sutter-professional",
 		"images": [
 				{
@@ -467,7 +467,7 @@
 					"title": "Storyboard 1"
 				},
 				{
-					"image": "evapp/storyboard-02",
+					"image": "evapp/storyboard-02.png",
 					"thumbnail": "evapp/storyboard-02.png",
 					"title": "Storyboard 2"
 				},
