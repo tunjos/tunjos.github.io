@@ -12,12 +12,12 @@ layout: default
     <div class="project-item col-md-4 col-sm-6 col-xs-12" data-tags='{{ i.tags | jsonify | downcase }}'>
     	<div class="well project-outer">
     		<div class="project-inner">
-          <a class="fancybox-thumb" rel="fancybox-thumb" href="/static/projects/{{ i.cover_image }}" title="{{ i.cover_title }}">
+          <a class="{{ i.fancybox_class }}" rel="{{ i.fancybox_class }}" href="/static/projects/{{ i.cover_image }}" title="{{ i.cover_title }}">
             <div class="project-img bordered" style="background-image: url('/static/projects/{{ i.cover_thumbnail }}');"></div>
           </a>
           <div class="project-images">
             {% for image in i.images %}
-            <a class="fancybox-thumb" rel="fancybox-thumb" href="/static/projects/{{ image.thumbnail }}" title="{{ image.title }}">
+            <a class="{{ i.fancybox_class }}" rel="{{ i.fancybox_class }}" href="/static/projects/{{ image.thumbnail }}" title="{{ image.title }}">
               <div class="project-img bordered" style="background-image: url('/static/projects/{{ image.image }}');"></div>
             </a>
             {% endfor %}

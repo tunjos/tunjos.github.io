@@ -3,7 +3,8 @@
 		"name": "Command Bubble",
 		"cover_thumbnail": "commandbubble/shoshin_zen.jpg",
 		"cover_image": "commandbubble/shoshin_zen.jpg",
-		"cover_title": "Cover Title",
+		"cover_title": "Command Bubble",
+		"fancybox_class": "command-bubble",
 		"images": [
 				{
 					"image": "commandbubble/shoshin_zen.jpg",
@@ -22,14 +23,20 @@
 	},
 	{
 		"name": "WorkFone",
-		"image": "placeholder.jpg",
+		"cover_thumbnail": "placeholder.jpg",
+		"cover_image": "placeholder.jpg",
+		"cover_title": "WorkFone",
+		"fancybox_class": "workfone",
 		"url": "https://workfone.io",
 		"date": "2016",
 		"tags": ["Android","Javascript","API"]
 	},
 	{
 		"name": "Search Bubble",
-		"image": "placeholder.jpg",
+		"cover_thumbnail": "placeholder.jpg",
+		"cover_image": "placeholder.jpg",
+		"cover_title": "Search Bubble",
+		"fancybox_class": "search-bubble",
 		"url": "https://play.google.com/store/apps/details?id=com.tunjos.searchbubble",
 		"source_url": "https://github.com/tunjos/SearchBubble",
 		"date": "Jul 2015",
@@ -37,42 +44,117 @@
 	},
 	{
 		"name": "L'Oréal Professionnel",
-		"image": "placeholder.jpg",
+		"cover_thumbnail": "placeholder.jpg",
+		"cover_image": "placeholder.jpg",
+		"cover_title": "L'Oréal Professionnel",
+		"fancybox_class": "loreal-professionnel",
 		"url": "https://play.google.com/store/apps/details?id=it.echocreative.lppc",
 		"date": "Mar 2015",
 		"tags": ["Android","API"]
 	},
 	{
 		"name": "Sutter Professional",
-		"image": "placeholder.jpg",
+		"cover_thumbnail": "placeholder.jpg",
+		"cover_image": "placeholder.jpg",
+		"cover_title": "Sutter Professional",
+		"fancybox_class": "sutter-professional",
 		"url": "https://play.google.com/store/apps/details?id=it.echocreative.sutter",
 		"date": "May 2015",
 		"tags": ["Android","API"]
 	},
 	{
 		"name": "Sutter Professional Espana",
-		"image": "placeholder.jpg",
+		"cover_thumbnail": "placeholder.jpg",
+		"cover_image": "placeholder.jpg",
+		"cover_title": "Sutter Professional Espana",
+		"fancybox_class": "sutter-professional-espana",
 		"url": "https://play.google.com/store/apps/details?id=it.echocreative.sutter.es",
 		"date": "Sept 2015",
 		"tags": ["Android","API"]
 	},
 	{
 		"name": "Paint Together",
-		"image": "placeholder.jpg",
+		"cover_thumbnail": "painttogether/PaintTogether.png",
+		"cover_image": "painttogether/PaintTogether.png",
+		"cover_title": "Paint Together",
+		"fancybox_class": "paint-together",
+		"images": [
+				{
+					"image": "painttogether/cv_chat.png",
+					"thumbnail": "painttogether/cv_chat.png",
+					"title": "Chat"
+				},
+				{
+					"image": "painttogether/1024x500.jpg",
+					"thumbnail": "painttogether/1024x500.jpg",
+					"title": "Cover"
+				},
+				{
+					"image": "painttogether/cv_female.png",
+					"thumbnail": "painttogether/cv_female.png",
+					"title": "Female"
+				},
+				{
+					"image": "painttogether/cv_friends.png",
+					"thumbnail": "painttogether/cv_friends.png",
+					"title": "Friends"
+				},
+				{
+					"image": "painttogether/cv_login.png",
+					"thumbnail": "painttogether/cv_login.png",
+					"title": "Login"
+				},
+				{
+					"image": "painttogether/cv_love.png",
+					"thumbnail": "painttogether/cv_love.png",
+					"title": "Love"
+				},
+				{
+					"image": "painttogether/cv_main.png",
+					"thumbnail": "painttogether/cv_main.png",
+					"title": "Main"
+				},
+				{
+					"image": "painttogether/cv_male.png",
+					"thumbnail": "painttogether/cv_male.png",
+					"title": "Title"
+				},
+				{
+					"image": "painttogether/cv_nav_drawer.png",
+					"thumbnail": "painttogether/cv_nav_drawer.png",
+					"title": "Male"
+				},
+				{
+					"image": "painttogether/cv_registration.png",
+					"thumbnail": "painttogether/cv_registration.png",
+					"title": "Registration"
+				},
+				{
+					"image": "painttogether/cv_xo.png",
+					"thumbnail": "painttogether/cv_xo.png",
+					"title": "XO"
+				}
+			  ],
 		"url": "https://play.google.com/store/apps/details?id=com.tinypoke.templates.painttogether",
 		"date": "Feb 2015",
 		"tags": ["Android","API"]
 	},
 	{
 		"name": "Evapp",
-		"image": "placeholder.jpg",
+		"cover_thumbnail": "placeholder.jpg",
+		"cover_image": "placeholder.jpg",
+		"cover_title": "Evapp",
+		"fancybox_class": "evapp",
 		"url": "https://www.behance.net/gallery/27912265/Evapp-Event-App",
 		"date": "Jun 2014",
 		"tags": ["Android","Beacons","API"]
 	},
 	{
 		"name": "EMUPlaces",
-		"image": "placeholder.jpg",
+		"cover_thumbnail": "placeholder.jpg",
+		"cover_image": "placeholder.jpg",
+		"cover_title": "EMUPlaces",
+		"fancybox_class": "emuplaces",
 		"url":"http://www.emu.edu.tr/android/emuplaces/",
 		"date": "2012",
 		"tags": ["Android","API"]

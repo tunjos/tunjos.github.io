@@ -38,7 +38,7 @@
         {% if page.image %}
           <meta content="{{ site.url }}/static/img/posts/{{ page.image }}" property="og:image">
         {% else %}
-          <meta content="{{ site.url }}/static/img/logo-high-resolution.png" property="og:image">
+          <meta content="{{ site.url }}/static/img/headshot.jpg" property="og:image">
         {% endif %}
         {% if page.categories %}
           {% for category in page.categories limit:1 %}
@@ -209,7 +209,8 @@
       	<script type="text/javascript" src="{{ site.url }}/static/js/fancyBox/source/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
         <script type="text/javascript">
         $(document).ready(function() {
-            $(".fancybox-thumb").fancybox({
+            {% for i in site.data.projects %}
+            $(".{{ i.fancybox_class }}").fancybox({
                 prevEffect	: 'none',
                 nextEffect	: 'none',
 		            helpers	: {
@@ -222,6 +223,7 @@
 			                  }
 		            }
 	          });
+            {% endfor %}
             $(".resume").fancybox({
                   maxWidth	  : 800,
 		              maxHeight	  : 600,
