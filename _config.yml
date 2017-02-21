@@ -55,8 +55,8 @@ share:
 enableTags: true
 tagarray: []
 
-url: "http://localhost:4000"
-#url: "http://tunjos.co"
+#url: "http://localhost:4000"
+url: "http://tunjos.co"
 baseurl: ""
 paginate: 5
 per_page: 5
