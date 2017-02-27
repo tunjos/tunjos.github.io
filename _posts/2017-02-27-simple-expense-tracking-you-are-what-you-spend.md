@@ -1,7 +1,7 @@
 ---
 title: Simple expense tracking - You are what you spend!
 layout: post
-date: '2017-02-07 10:10:11 +0100'
+date: '2017-02-27 23:30:11 +0100'
 categories:
 - tips
 - finance
