@@ -65,3 +65,4 @@ markdown: kramdown
 gems:
   - jekyll-paginate
   - jekyll-gist
+exclude: [_drafts/help]
