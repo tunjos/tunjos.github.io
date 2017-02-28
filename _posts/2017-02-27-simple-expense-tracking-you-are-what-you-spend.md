@@ -15,7 +15,7 @@ This can be achieved by focusing on your needs, rather than your wants.
 The best way to save is to know what you spend, because  **you are what you spend!**.  
 Here is a simple tracking method I employ using [LibreOffice Calc](https://en.wikipedia.org/wiki/LibreOffice_Calc) or [Microsoft Excel](https://en.wikipedia.org/wiki/Microsoft_Excel).
 The following table simulates a spreadsheet file.
-
+<div class="table-responsive">
 <table class="table table-bordered  table-hover table-condensed">
     <thead>
       <tr>
@@ -198,7 +198,7 @@ The following table simulates a spreadsheet file.
       </tr>
     </tbody>
   </table>
-
+</div>
 
  
 At the end of each day, you should add your incomes and expenditures to your expense tracking file. Daily incomes should be positive, while expenditures should have a negative sign. Some people even go as far as painting expenditures in red, just to feel the pain and get them not to spend much.
