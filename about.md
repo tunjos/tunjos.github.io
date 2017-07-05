@@ -11,11 +11,11 @@ I spend a great deal of time being happy and a greater deal of time spreading Ha
 My Hobbies include Walking, Running, Thinking and Happiness.  
 Imotivate: You are a wonderful person.
 
-Checkout [happydrip.com](https://www.happydrip.com) for my happiness blog.  
+Checkout [happydrip.com](http://www.happydrip.com) for my happiness blog.  
 
 Skills: [Happiness](#), [Android](#), [Java](#), [Javascript](#), [Python](#), [Ruby](#)
 
-### Get in touch with me. I love connecting with people! 
+### Get in touch with me. I love connecting with people!
 Email: <tunjos@tunjos.co>
 
 Phone: [+EXEC-0-I-MET-903](#)
