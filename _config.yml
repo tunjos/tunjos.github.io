@@ -16,6 +16,9 @@ urls:
     - text: About
       url: /about/
       icon: fa-info
+    - text: Learn
+      url: 'https://learn.tunjos.co'
+      icon: fa-book
     - text: Projects
       url: /projects/
       icon: fa-desktop
