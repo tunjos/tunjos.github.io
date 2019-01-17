@@ -1,7 +1,7 @@
 title: tunjos
 description: Tunjos Blog
 author: Tunji Olu-Taiwo
-logo: http://tunjos.co/static/img/headshot.jpg
+logo: https://tunjos.co/static/img/headshot.jpg
 github: https://github.com/tunjos
 about: Happiness Engineer..Critical Thinker.
 disqus_shortname:
@@ -23,7 +23,7 @@ urls:
       url: /projects/
       icon: fa-desktop
     - text: Happydrip
-      url: 'http://www.happydrip.com'
+      url: 'https://www.happydrip.com'
       icon: fa-smile-o
       target: _blank
     - text: Github
@@ -40,13 +40,13 @@ urls:
 
 social:
     - icon: fa-twitter
-      link: 'http://twitter.com/tunjos'
+      link: 'https://twitter.com/tunjos'
     - icon: fa-google-plus
       link: '#'
     - icon: fa-github
-      link: 'http://github.com/tunjos'
+      link: 'https://github.com/tunjos'
     - icon: fa-linkedin
-      link: 'http://www.linkedin.com/in/tunjos'
+      link: 'https://www.linkedin.com/in/tunjos'
     - icon: fa-stack-exchange
       link: '#'
 
@@ -59,7 +59,7 @@ enableTags: true
 tagarray: []
 
 #url: "http://localhost:4000"
-url: "http://tunjos.co"
+url: "https://tunjos.co"
 baseurl: ""
 paginate: 5
 per_page: 5
