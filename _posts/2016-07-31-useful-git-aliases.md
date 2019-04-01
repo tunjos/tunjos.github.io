@@ -2,6 +2,7 @@
 layout: post
 title:  "Useful git aliases"
 date:   2016-07-31 15:50:00 +0200
+type: BlogPosting
 categories: git
 ---
 If you a using [git](https://git-scm.com/) as a beginner, its important to type in full git commands to get a full understanding of what each command does.

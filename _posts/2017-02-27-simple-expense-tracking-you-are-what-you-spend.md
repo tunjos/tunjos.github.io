@@ -2,6 +2,7 @@
 title: Simple expense tracking - You are what you spend!
 layout: post
 date: '2017-02-27 23:30:11 +0100'
+type: BlogPosting
 categories:
 - tips
 - finance
@@ -200,10 +201,10 @@ The following table simulates a spreadsheet file.
   </table>
 </div>
 
- 
+
 At the end of each day, you should add your incomes and expenditures to your expense tracking file. Daily incomes should be positive, while expenditures should have a negative sign. Some people even go as far as painting expenditures in red, just to feel the pain and get them not to spend much.
 
-You can insert a date and time  to the **Date** column with the shortcut  **`Ctrl + ;`**.  The **Description** column takes a short explanation of the income or expenditure, while the **Currency** column takes the actual income or expenditure. The **Currency(IN)** and **Currency(OUT)**  columns hold the monthy total incomes and expenditures respectively. This will be used at the end of the year to calculate the *yearly income*, *yearly outcome*  and *yearly net income*. 
+You can insert a date and time  to the **Date** column with the shortcut  **`Ctrl + ;`**.  The **Description** column takes a short explanation of the income or expenditure, while the **Currency** column takes the actual income or expenditure. The **Currency(IN)** and **Currency(OUT)**  columns hold the monthy total incomes and expenditures respectively. This will be used at the end of the year to calculate the *yearly income*, *yearly outcome*  and *yearly net income*.
 
 You should insert your desired currency in the **Currency** header column. You can also add columns for as many currencies as you want, if you spend and earn in multiple currencies.
 

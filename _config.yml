@@ -1,6 +1,7 @@
-title: tunjos
+title: tunjos.co
 description: Tunjos Blog
-author: Tunji Olu-Taiwo
+author: tunjos
+author_name: Tunji Olu-Taiwo
 logo: https://tunjos.co/static/img/headshot.jpg
 github: https://github.com/tunjos
 about: Happiness Engineer..Critical Thinker.
@@ -41,14 +42,17 @@ urls:
 social:
     - icon: fa-twitter
       link: 'https://twitter.com/tunjos'
-    - icon: fa-google-plus
-      link: '#'
     - icon: fa-github
       link: 'https://github.com/tunjos'
     - icon: fa-linkedin
       link: 'https://www.linkedin.com/in/tunjos'
     - icon: fa-stack-exchange
       link: '#'
+    - links:
+      - https://twitter.com/tunjos
+      - https://github.com/tunjos
+      - https://www.linkedin.com/in/tunjos
+#      -https://stackexchange.com/users/000000/abcdef
 
 share:
   twitter_username: tunjos
@@ -70,3 +74,9 @@ plugins:
   - jekyll-gist
   - jekyll-seo-tag
 exclude: [_drafts/help]
+
+#jekyll-seo-tag
+twitter:
+  username: tunjos
+  card: summary
+lang: en_GB

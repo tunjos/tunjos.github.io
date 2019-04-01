@@ -2,6 +2,7 @@
 layout: post
 title:  "Shoshin creative attitude - a concept from Zen Buddhism"
 date:   2016-11-20 20:30:00 +0100
+type: BlogPosting
 categories: [tips, happiness]
 ---
 Shoshin comes from [Zen](https://en.wikipedia.org/wiki/Zen), which is a school of thought that emphasizes meditation and self-control.

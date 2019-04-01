@@ -2,6 +2,7 @@
 layout: post
 title:  "How I keep my Inbox at 0"
 date:   2016-09-30 10:30:00 +0200
+type: BlogPosting
 categories: tips
 ---
 Your email is more like a todo list. I also call it a toread list and a toreply list.
@@ -54,4 +55,3 @@ If an email needs a lot of response time, I star it and move it to **Donebox**.
 
 
 This way, your **Inbox** will always be at 0, except when new mails arrive :D.
-
