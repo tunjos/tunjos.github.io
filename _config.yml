@@ -68,4 +68,5 @@ markdown: kramdown
 plugins:
   - jekyll-paginate
   - jekyll-gist
+  - jekyll-seo-tag
 exclude: [_drafts/help]
