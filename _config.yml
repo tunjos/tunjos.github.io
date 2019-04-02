@@ -68,7 +68,7 @@ baseurl: ""
 paginate: 5
 per_page: 5
 paginate_path: "/page:num/"
-permalink: /:title/
+permalink: /blog/:title/
 markdown: kramdown
 plugins:
   - jekyll-paginate
