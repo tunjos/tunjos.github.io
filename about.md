@@ -13,7 +13,7 @@ Imotivate: You are a wonderful person.
 
 Checkout [happydrip.com](https://happydrip.com) for my happiness blog.  
 
-**Skills/Interests: ** <br />
+**Skills/Interests:** <br />
 [Happiness](#), [Happiness Engineering](#), [Motivational Speaking](#), [Philosophy](#)<br />
 [Entrepreneurship](#), [Start-ups](#), [Software as a Service (SaaS)](#)<br />
 [Android](#), [Kotlin](#), [Java](#), [Javascript](#), [Python](#)<br />
