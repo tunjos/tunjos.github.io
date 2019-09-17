@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "Useful git aliases"
-date:   2016-07-31 15:50:00 +0200
+title: Useful git aliases
+date: 2016-07-31 15:50:00 +0200
 type: BlogPosting
 categories: git
 ---

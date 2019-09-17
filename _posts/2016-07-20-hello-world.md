@@ -1,9 +1,9 @@
 ---
 layout: post
 title: Hello World
-date:   2016-07-20 19:35:00 +0200
+date: 2016-07-20 19:35:00 +0200
 type: BlogPosting
-categories: [others, happiness]
+categories: [tips, happiness]
 ---
 My first blog post.  
 One of my guiding principles to living is this.  

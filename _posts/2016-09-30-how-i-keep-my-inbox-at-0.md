@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "How I keep my Inbox at 0"
-date:   2016-09-30 10:30:00 +0200
+title: How I keep my Inbox at 0
+date: 2016-09-30 10:30:00 +0200
 type: BlogPosting
 categories: tips
 ---
