@@ -32,6 +32,9 @@ urls:
       icon: fa-github
       target: _blank
     - text: Resume
+      url: '/assets/tunjos_resume.pdf'
+      icon: fa-file-pdf-o
+    - text: CV
       url: '/assets/tunji_olu_taiwo_cv.pdf'
       icon: fa-file-pdf-o
     - text: XML Feed
