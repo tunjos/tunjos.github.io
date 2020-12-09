@@ -23,6 +23,9 @@ urls:
     - text: Projects
       url: /projects/
       icon: fa-desktop
+    - text: Tinypoke
+      url: 'https://tinypoke.co'
+      icon: fa-building-o
     - text: Happydrip
       url: 'https://www.happydrip.com'
       icon: fa-smile-o
