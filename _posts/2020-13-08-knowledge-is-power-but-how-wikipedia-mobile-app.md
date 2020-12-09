@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Knowledge is Power...But how would you ever know this? - Wikipedia Mobile App to the Rescue
+title: Knowledge is Power...But how would you ever know this? - To the rescue, the Wikipedia Mobile App!
 date: 2020-12-09 10:00:00 +0100
 type: BlogPosting
 categories: [tips]
