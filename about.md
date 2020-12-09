@@ -29,3 +29,6 @@ Checkout [learn.tunjos.co](https://learn.tunjos.co) for my learning site.
 **Phone:** [+EXEC-0-I-MET-903](#)
 
 **Location:** [Turin, Italy](#)
+
+<form style="border:1px solid #ccc;padding:3px;text-align:center;" action="https://tinyletter.com/tunjos" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/tunjos', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true"><p><label for="tlemail">Enjoy reading this? Join my newsletter</label>&nbsp;<input type="text" style="width:140px" name="email" placeholder="Your email address" id="tlemail" />&nbsp;<input type="hidden" value="1" name="embed"/><input type="submit" value="Subscribe" /><p><a href="https://tinyletter.com" target="_blank">powered by TinyLetter</a></p>
+        
