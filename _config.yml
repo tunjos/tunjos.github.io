@@ -26,6 +26,7 @@ urls:
     - text: Tinypoke
       url: 'https://tinypoke.co'
       icon: fa-building-o
+      target: _blank
     - text: Happydrip
       url: 'https://www.happydrip.com'
       icon: fa-smile-o
