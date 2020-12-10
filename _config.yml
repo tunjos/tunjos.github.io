@@ -53,8 +53,8 @@ social:
       link: 'https://github.com/tunjos'
     - icon: fa-linkedin
       link: 'https://www.linkedin.com/in/tunjos'
-    - icon: fa-stack-exchange
-      link: '#'
+    - icon: fa-envelope
+      link: 'mailto:tunjos@tunjos.co'
     - links:
       - https://twitter.com/tunjos
       - https://github.com/tunjos
