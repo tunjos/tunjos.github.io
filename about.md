@@ -31,6 +31,9 @@ I believe there is only one thing that is impossible. It's called "Nothing".
 
 <br />
 #### Please get in touch with me 🙂. I love connecting with people!
+- Experienced at being Kind!
+- Puts Happiness First!  
+
 **Email:** <tunjos@tunjos.co>
 
 **Phone:** [+EXEC-0-I-MET-903](#)
