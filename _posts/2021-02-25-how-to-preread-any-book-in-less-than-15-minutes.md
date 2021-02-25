@@ -2,6 +2,7 @@
 title: How to preRead any Book in less than 15 minutes
 layout: post
 date: '2021-02-25 14:30:00 +0100'
+image: "assets/tunjos_how_to_preread_any_book_in_less_than_15_minutes.jpg"
 type: BlogPosting
 categories:
 - tips
