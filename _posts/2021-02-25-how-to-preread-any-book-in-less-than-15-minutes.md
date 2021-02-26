@@ -16,7 +16,7 @@ A book can be judged by its cover, but you don't necessarily/always have to!
 
 2. Read the **Table of Contents**.  
 This would give you an overview of the chapters and sections in a book, and subsequently, an overview of the contents of the book in terms of its ingredients. 
-Most books have clear chapter and section names that concisely describe the respective underlying contents. However, if you find yourself not understanding the essence of any of the listed items (chapters/sections) in the Table of Contents, you can briefly read the first paragraph of that item (chapter/section). 
+Most books have clear chapter and section names that concisely describe the respective underlying contents. However, if you find yourself not understanding the essence of any of the listed items (chapters/sections) in the Table of Contents, you can briefly read the first paragraph (or the first 2-3 paragraphs) of that item (chapter/section). 
 
 3. Read the **Introduction**.  
 An introduction's purpose is to introduce you to a book and subsequently state the purpose and goals of the book. This would also give you some understanding of the author's writing style.
