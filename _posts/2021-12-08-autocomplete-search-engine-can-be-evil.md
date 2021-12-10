@@ -59,7 +59,7 @@ Here are other good search engines that allow you to disable autocomplete
 - [Ecosia - the search engine that plants trees](https://www.ecosia.org/)
 - [Bing](https://www.bing.com/)
 
-**Tip**: For the Autocomplete that occurs in the address bar of the **Google Chrome** web browser, that can be easily disabled by visiting [chrome://settings/syncSetup](chrome://settings/syncSetup) and then turning off the "**Auto-complete searches and URLs**" toggle.
+**Tip**: For the Autocomplete that occurs in the address bar of the **Google Chrome** web browser, that can be easily disabled by visiting **chrome://settings/syncSetup** and then turning off the "**Auto-complete searches and URLs**" toggle.
 
 **Tip**: Another similar feature called **Autocorrect** (also known as Autocorrection) exists whereby a digital device automatically corrects your spelling mistakes in input fields.
 
