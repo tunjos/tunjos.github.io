@@ -19,7 +19,7 @@ Perhaps yes, perhaps not, or perhaps you might simply be unaware of autocomplete
 
 When was the last time you intentionally and consciously penned down your search intention into a search engine without being diverted to a similar or unrelated destination **"something else"**? Well, that's one of the main side effects of autocomplete. Think for example about a professional writer in the process of articulating thoughts. Such a writer need not delegate that task to a machine to be able to control the narrative.
 
-#### **2. It can corrupt one's mindset subconsciously by reinforcing many false beliefs.**
+#### **2. It can corrupt one's mindset subconsciously by reinforcing many false beliefs**
 
 There is the notion that repeatedly seeing a message reinforces the belief that its notion is true. This is exactly what happens with autocomplete. It has the power to shape beliefs in a stealth manner. Although some of these autocomplete suggestions are true, many are outright false. Suggestions are generated based on perceived relevance from statistics like location, region, search history, popular opinions, etc.
 Therefore, your opinions and beliefs are ultimately being shaped by forces that you cannot see. Examples include suggestions that falsely associate specific names with specific alleged crimes.
@@ -28,11 +28,11 @@ Behind the scenes as well, some suggestions are also intentionally being manipul
 Tom Chatfield put it best.
 _"Autocomplete is coming to be seen as a form of prophecy, complete with a self-fulfilling invitation to click and agree. Yet by letting an algorithm finish our thoughts, we contribute to a feedback loop that potentially reinforces untruths and misconceptions for future searchers."_ - [Tom Chatfield](https://www.tomchatfield.net/) From [Is Google autocomplete evil? - BBC Future](https://www.bbc.com/future/article/20131106-is-google-autocomplete-evil)
 
-#### **3. It causes anxiety.**
+#### **3. It causes anxiety**
 
 This would be more noticeable for frequent users of search engines, as it prevents one from accurately writing down search intentions/thoughts. Present words are lost in the moment while the search engine gives you hints about future words.
 
-#### **4. It leads to laziness.**
+#### **4. It leads to laziness**
 
 Sooner or later, your spelling ability degrades. This is because when machines do the work, they become unconscious masters of the conscious process of writing.
 
@@ -40,7 +40,7 @@ Sooner or later, your spelling ability degrades. This is because when machines d
 
 Can you write a full paragraph without a spellchecker highlighting any mistakes? You are only as good as what you do repeatedly. If the machines are doing the spelling for you, chances are that you become really bad at it. Bees will end up giving you a pass. You can test your spelling might here: [Can You Pick Out the Misspelled Word in Each Sentence?](https://play.howstuffworks.com/quiz/can-you-pick-out-the-misspelled-word-in-each-sentence)
 
-#### **Going Forward**
+#### **Going Forward...**
 Some search engines like [DuckDuckGo](https://duckduckgo.com/), [Bing](https://www.bing.com/), etc. provide the possibility to completely disable autocomplete. Others like **Google**, **Yahoo! Search**, etc. don't currently allow this option and thus make autocomplete a **forced feature**.
 
 **Google** for example has been in the search engine business for far too long and thus tends to produce great search results. If you are keen on using Google but would like to disable autocomplete, there is a solution to get this done.
@@ -100,4 +100,5 @@ Here are other good search engines that allow you to disable autocomplete
 8. [The Social Dilemma](https://www.thesocialdilemma.com/)
 
 9. [Take Control](https://www.humanetech.com/take-control)
+
 10. [Autocorrection - Wikipedia](https://en.wikipedia.org/wiki/Autocorrection)
