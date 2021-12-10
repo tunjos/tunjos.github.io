@@ -47,7 +47,7 @@ Some search engines like [DuckDuckGo](https://duckduckgo.com/), [Bing](https://w
 
 #### **Disable Autocomplete on Google**
 **[Mindful Google™](https://chrome.google.com/webstore/detail/mindful-google/majeighpkbfmjamjiegocmiemagfanle)** to the rescue!
-The Google search engine by far is the most popular search engine. Its built-in Autocomplete feature is known as **Google Suggest**. The [Mindful Google™](https://chrome.google.com/webstore/detail/mindful-google/majeighpkbfmjamjiegocmiemagfanle) extension will help you to disable autocomplete on Google's search engine. It also comes with other neat sensible default configurations to remove search cards that grab your attention while you browser the internet, ultimately helping you get your focus back.
+The Google search engine by far is the most popular search engine. Its built-in Autocomplete feature is known as **Google Suggest**. The [Mindful Google™](https://chrome.google.com/webstore/detail/mindful-google/majeighpkbfmjamjiegocmiemagfanle) extension will help you to disable autocomplete on Google's search engine. It also comes with other neat sensible default configurations to remove search cards that grab your attention while you browse the internet, ultimately helping you get your focus back.
 [Mindful Google™](https://chrome.google.com/webstore/detail/mindful-google/majeighpkbfmjamjiegocmiemagfanle) is also able to eliminate attention-grabbing news, videos, and images from your search feed. This enables you to focus on your most important search results.
 
 **It's time to take control and live a more intentional life**. With tiny steps like these, I believe we will all get there. The inflection point of **_Will vs Manipulation_**. **As technology advances, humans must advance too**.
