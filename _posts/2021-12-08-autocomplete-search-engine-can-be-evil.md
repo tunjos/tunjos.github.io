@@ -10,8 +10,8 @@ categories: tips
 ### **What is Autocomplete?**
 **Autocomplete** (also known as Autosuggest) is a feature of search engines that suggests and predicts what word or subsequent set of words could come next after one's current input search term(s). These suggestions emanate from the billions of previous search queries that have passed through a search engine, including a user's own past search history.
 
-**But are you Incomplete?**
-**And do you feel complete when autocompletes you?**
+**But are you Incomplete?**  
+**And do you feel complete when autocompletes you?**  
 Perhaps yes, perhaps not, or perhaps you might simply be unaware of autocomplete's hidden effects and consequences. The truth is, you are complete without autocomplete. And by the way, **whoever thought autocomplete was a good default option?** **Laziness maybe?**
 
 ### **The effects of autocomplete**
