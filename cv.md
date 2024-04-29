@@ -1,4 +1,4 @@
 ---
 title: Tunji Olu-Taiwo CV
-redirect_to: /assets/tunji_olu_taiwo_cv.pdf
+redirect_to: /assets/tunji_olu-taiwo_resume.pdf
 ---
