@@ -91,3 +91,5 @@ twitter:
   username: tunjos
   card: summary
 lang: en_GB
+
+include: [".well-known"]
