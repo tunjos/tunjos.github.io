@@ -1,0 +1,33 @@
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0120024a9dabfbe23fd9c781bdbd51e4e3d18588559090a28351149b2dcce091ca620a",
+      "host": "keybase.io",
+      "kid": "0120b9604ebc15bfde9e10893bc8239836c837f508775ba3c56aefad5596caa590080a",
+      "uid": "630b714cbf7831178a906f3294f6ee19",
+      "username": "tunjos"
+    },
+    "merkle_root": {
+      "ctime": 1771429543,
+      "hash": "04fc2918dadf26758b010232e648b5387ab6ebaca85eac10f97569af32e678719b330ddc814ebfee11836c56077b28291a77b10b5797d43991d05bdc86816615",
+      "hash_meta": "9c5a4c20a65de111cc3f0e0fbaec4a637641e11d4fd4f4e771a338988b669300",
+      "seqno": 27417923
+    },
+    "service": {
+      "entropy": "uI2KPnGP12L/IOoUfYZ8v6rX",
+      "hostname": "tunjos.co",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "6.5.1"
+  },
+  "ctime": 1771429659,
+  "expire_in": 504576000,
+  "prev": "5b3c936d0312f3dba8e08d8ca736f54ca4ad9183c3ef01df39fe45aa745d0bca",
+  "seqno": 12,
+  "tag": "signature"
+}
