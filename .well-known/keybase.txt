@@ -1,3 +1,15 @@
+==================================================================
+https://keybase.io/tunjos
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://tunjos.co
+  * I am tunjos (https://keybase.io/tunjos) on keybase.
+  * I have a public key ASC5YE68Fb_enhCJO8gjmDbIN_UId1ujxWrvrVWWyqWQCAo
+
+To do so, I am signing this object:
+
 {
   "body": {
     "key": {
@@ -8,13 +20,13 @@
       "username": "tunjos"
     },
     "merkle_root": {
-      "ctime": 1771429543,
-      "hash": "04fc2918dadf26758b010232e648b5387ab6ebaca85eac10f97569af32e678719b330ddc814ebfee11836c56077b28291a77b10b5797d43991d05bdc86816615",
-      "hash_meta": "9c5a4c20a65de111cc3f0e0fbaec4a637641e11d4fd4f4e771a338988b669300",
-      "seqno": 27417923
+      "ctime": 1771430531,
+      "hash": "49c0199b09266efc6e9ba3923e8060fbd6165b70a5e6f2f4db2497b504ebca9b171b47db125c63d859bc8c891aca9f6ee9059bf386aebd84b732824fff466121",
+      "hash_meta": "4f9a9cb6b2237bec54ee6bc1f98f4834344a85eea425146a6049a18265e5ab18",
+      "seqno": 27417952
     },
     "service": {
-      "entropy": "uI2KPnGP12L/IOoUfYZ8v6rX",
+      "entropy": "+YZnNQvhxOJkEEmfPMYB5CeE",
       "hostname": "tunjos.co",
       "protocol": "https:"
     },
@@ -25,9 +37,20 @@
     "name": "keybase.io go client",
     "version": "6.5.1"
   },
-  "ctime": 1771429659,
+  "ctime": 1771430539,
   "expire_in": 504576000,
-  "prev": "5b3c936d0312f3dba8e08d8ca736f54ca4ad9183c3ef01df39fe45aa745d0bca",
-  "seqno": 12,
+  "prev": "8b606ed5e622a1b6cc931b46f29fc23c3ff884ba30071b9bdb2da8ece3986812",
+  "seqno": 14,
   "tag": "signature"
 }
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEguWBOvBW/3p4QiTvII5g2yDf1CHdbo8Vq761VlsqlkAgKp3BheWxvYWTESpcCDsQgi2Bu1eYiobbMkxtG8p/CPD/4hLowBxub2y2o7OOYaBLEIKTuaIAcSbruIvKoAZjiGy8krltGQNz/6D/ROKU4Rb8OAgHCo3NpZ8RAwFicoecRh0w3VsxGTs/crZWd2HfILIWGTKytOKiGxWG66UJ1wX6weTSiMrxNt1aKsxKRm0nwlBGGKmocuQYXAqhzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEIPve7iluBpiO6CWNa5IqgNkllTEwIBnKzOG2VRcKjIEho3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/tunjos
+
+==================================================================
