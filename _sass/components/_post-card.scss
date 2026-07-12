@@ -1,0 +1,171 @@
+// =============================================================================
+// _sass/components/_post-card.scss
+// Post Listing Card Component
+//
+// BEM structure:
+//   .post-card              — block (container query root)
+//   .post-card__layout      — inner flex/block wrapper
+//   .post-card__thumbnail   — optional cover image
+//   .post-card__body        — text content area
+//   .post-card__title       — post title (wraps <a>)
+//   .post-card__meta        — date, categories, reading-time row
+//   .post-card__excerpt     — truncated post excerpt
+//   .post-card__reading-time — reading time label
+//   .post-card__tags        — tag chip row
+//
+// Modifier:
+//   .post-card--featured    — left accent border treatment
+//
+// Uses CSS Container Queries so the card adapts to its container width,
+// not the viewport. No hard-coded color values — all from design tokens.
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Block
+// -----------------------------------------------------------------------------
+.post-card {
+  // Container query root — enables child rules to respond to this element's width
+  container-type: inline-size;
+  container-name: post-card;
+  contain: layout style;
+
+  // Surface
+  background-color: var(--color-bg-subtle);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-md); // 6px — within 4–8px range
+  box-shadow: var(--shadow-sm);           // blur 3px, alpha 0.08 — within limits
+
+  // Spacing
+  padding: var(--space-6);
+
+  // Hover micro-interaction
+  transition:
+    box-shadow var(--transition-fast),
+    transform  var(--transition-fast);
+
+  &:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Layout wrapper — block by default; flex at ≥ 400px container width
+// -----------------------------------------------------------------------------
+.post-card__layout {
+  display: block;
+}
+
+@container post-card (min-width: 400px) {
+  .post-card__layout {
+    display: flex;
+    gap: var(--space-4);
+    align-items: flex-start;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Thumbnail
+// -----------------------------------------------------------------------------
+.post-card__thumbnail {
+  // Stacked (narrow) layout: full-width banner
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: var(--border-radius-sm);
+  margin-bottom: var(--space-4);
+}
+
+@container post-card (min-width: 400px) {
+  .post-card__thumbnail {
+    // Side-by-side layout: fixed-width square thumbnail
+    flex-shrink: 0;
+    width: 120px;
+    aspect-ratio: 1;
+    margin-bottom: 0;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Body — grows to fill remaining space in flex layout
+// -----------------------------------------------------------------------------
+.post-card__body {
+  flex: 1;
+  min-width: 0; // prevent flex child overflow on long words
+}
+
+// -----------------------------------------------------------------------------
+// Title
+// -----------------------------------------------------------------------------
+.post-card__title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-heading);
+  margin-bottom: var(--space-2);
+  line-height: var(--line-height-heading);
+
+  a {
+    color: var(--color-text);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--color-accent);
+      text-decoration: underline;
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Meta row — date, categories, reading time
+// -----------------------------------------------------------------------------
+.post-card__meta {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-3);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  align-items: center;
+}
+
+// -----------------------------------------------------------------------------
+// Excerpt — line-clamped to 3 lines
+// -----------------------------------------------------------------------------
+.post-card__excerpt {
+  font-size: var(--font-size-md);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-3);
+
+  // Standard multi-line clamp (WebKit prefix required for broad browser support)
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+// -----------------------------------------------------------------------------
+// Reading time label
+// -----------------------------------------------------------------------------
+.post-card__reading-time {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+// -----------------------------------------------------------------------------
+// Tags row
+// -----------------------------------------------------------------------------
+.post-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  margin-top: var(--space-3);
+}
+
+// -----------------------------------------------------------------------------
+// Modifier: Featured card — left accent stripe
+// The 3px border is absorbed into padding-left so content alignment is preserved.
+// -----------------------------------------------------------------------------
+.post-card--featured {
+  border-left: 3px solid var(--color-accent);
+  padding-left: calc(var(--space-6) - 3px);
+}

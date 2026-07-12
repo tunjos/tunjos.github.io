@@ -1,0 +1,38 @@
+// =============================================================================
+// _sass/abstracts/_functions.scss
+// Sass Helper Functions
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// rem() — Convert pixel values to rem units
+// Usage: font-size: rem(16);  →  font-size: 1rem;
+// $px: numeric pixel value (without unit)
+// Base: 16px (browser default)
+// -----------------------------------------------------------------------------
+@function rem($px) {
+  @return #{$px / 16}rem;
+}
+
+// -----------------------------------------------------------------------------
+// fluid-type() — Generate a clamp() expression for fluid typography
+// Usage: font-size: fluid-type(15, 18, 480, 1280);
+// $min-size: minimum font size in px (unitless)
+// $max-size: maximum font size in px (unitless)
+// $min-vw:   viewport width at which minimum size applies (unitless px)
+// $max-vw:   viewport width at which maximum size applies (unitless px)
+// Returns:   clamp(min, preferred, max) in rem/vw units
+// -----------------------------------------------------------------------------
+@function fluid-type($min-size, $max-size, $min-vw: 480, $max-vw: 1280) {
+  $min-rem: #{$min-size / 16}rem;
+  $max-rem: #{$max-size / 16}rem;
+
+  // Slope: change in size per px of viewport width
+  $slope: ($max-size - $min-size) / ($max-vw - $min-vw);
+
+  // Y-intercept (in rem): the size when viewport is 0px wide
+  $intercept: ($min-size - $slope * $min-vw) / 16;
+
+  $preferred: #{$slope * 100}vw + #{$intercept}rem;
+
+  @return clamp(#{$min-rem}, #{$preferred}, #{$max-rem});
+}

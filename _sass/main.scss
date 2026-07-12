@@ -1,0 +1,51 @@
+// =============================================================================
+// _sass/main.scss
+// Single Entry Point — Sass 7-1 Architecture
+// Import order follows the cascade: abstracts → base → layout → components
+//                                   → themes → utilities → vendors
+//
+// NOTE: Uses @import throughout for GitHub Pages / Jekyll 3.8.x (libsass)
+//       compatibility. Do NOT convert to @use/@forward (Dart Sass only).
+//
+// This file is @import-ed from assets/css/main.scss (the Jekyll entry point).
+// =============================================================================
+
+// 1. Abstracts — variables, functions, mixins (no CSS output)
+@import 'abstracts/tokens';
+@import 'abstracts/functions';
+@import 'abstracts/mixins';
+
+// 2. Base — reset and element defaults
+@import 'base/reset';
+@import 'base/accessibility';
+@import 'base/typography';
+
+// 3. Layout — structural page regions
+@import 'layout/grid';
+@import 'layout/header';
+@import 'layout/footer';
+
+// 4. Components — discrete UI components
+@import 'components/nav';
+@import 'components/theme-toggle';
+@import 'components/post';
+@import 'components/page';
+@import 'components/post-card';
+@import 'components/project-card';
+@import 'components/gallery';
+@import 'components/search';
+@import 'components/breadcrumbs';
+@import 'components/pagination';
+@import 'components/back-to-top';
+@import 'components/social-links';
+@import 'components/share';
+@import 'components/tags';
+
+// 5. Themes — dark mode overrides
+@import 'themes/dark';
+
+// 6. Utilities — single-property helper classes
+@import 'utilities/utilities';
+
+// 7. Vendors — third-party styles
+@import 'vendors/syntax';

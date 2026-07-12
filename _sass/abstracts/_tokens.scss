@@ -1,0 +1,195 @@
+// =============================================================================
+// _sass/abstracts/_tokens.scss
+// Design Token System — all CSS Custom Properties
+// Used by: all partials via cascade
+// =============================================================================
+
+:root {
+  // ---------------------------------------------------------------------------
+  // Color Palette — Light Theme
+  // ---------------------------------------------------------------------------
+
+  // Primary accent: used for links, active states, focus rings
+  // Accepted values: any valid CSS color
+  --color-accent: #2563eb;       /* Blue 600 */
+
+  // Accent hover state — slightly darker than accent
+  // Accepted values: any valid CSS color
+  --color-accent-hover: #1d4ed8; /* Blue 700 */
+
+  // Base page background — white in light mode
+  // Accepted values: any valid CSS color
+  --color-bg: #ffffff;
+
+  // Subtle background — cards, sidebar; slightly off-white
+  // Accepted values: any valid CSS color
+  --color-bg-subtle: #f8fafc;    /* Slate 50 */
+
+  // Elevated background — hover states, code blocks
+  // Accepted values: any valid CSS color
+  --color-bg-elevated: #f1f5f9;  /* Slate 100 */
+
+  // Primary text color — near-black for high contrast
+  // Accepted values: any valid CSS color
+  --color-text: #0f172a;         /* Slate 900 */
+
+  // Muted text — meta info, captions, secondary labels
+  // Accepted values: any valid CSS color
+  --color-text-muted: #64748b;   /* Slate 500 */
+
+  // Inverse text — white on dark backgrounds
+  // Accepted values: any valid CSS color
+  --color-text-inverse: #ffffff;
+
+  // Border color — dividers, card outlines
+  // Accepted values: any valid CSS color
+  --color-border: #e2e8f0;       /* Slate 200 */
+
+  // Code block background
+  // Accepted values: any valid CSS color
+  --color-code-bg: #f1f5f9;
+
+  // Default shadow color with alpha — used in shadow tokens
+  // Accepted values: rgba() color value
+  --color-shadow: rgba(0, 0, 0, 0.08);
+
+  // ---------------------------------------------------------------------------
+  // Spacing Scale — base unit: 4px (0.25rem)
+  // Accepted values: any positive rem/px length
+  // ---------------------------------------------------------------------------
+  --space-1:  0.25rem;  /*  4px */
+  --space-2:  0.5rem;   /*  8px */
+  --space-3:  0.75rem;  /* 12px */
+  --space-4:  1rem;     /* 16px */
+  --space-6:  1.5rem;   /* 24px */
+  --space-8:  2rem;     /* 32px */
+  --space-12: 3rem;     /* 48px */
+  --space-16: 4rem;     /* 64px */
+
+  // ---------------------------------------------------------------------------
+  // Typography
+  // ---------------------------------------------------------------------------
+
+  // System font stack — renders instantly with no network request
+  // Accepted values: valid CSS font-family list
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+               Helvetica, Arial, sans-serif;
+
+  // Monospace stack for code blocks and pre elements
+  // Accepted values: valid CSS font-family list
+  --font-mono: ui-monospace, SFMono-Regular, "Cascadia Code", Consolas,
+               "Liberation Mono", monospace;
+
+  // Fluid base font size — scales between 15px and 18px
+  // Accepted values: clamp() expression with px units
+  --font-size-base: clamp(15px, 2.5vw, 18px);
+
+  // Body line height — comfortable reading rhythm
+  // Accepted values: unitless number between 1.5 and 1.8
+  --line-height-body: 1.65;
+
+  // Heading line height — tight for display sizes
+  // Accepted values: unitless number between 1.1 and 1.3
+  --line-height-heading: 1.2;
+
+  // Body font weight — normal weight
+  // Accepted values: numeric font weight 100–900
+  --font-weight-body: 400;
+
+  // Heading font weight — semi-bold
+  // Accepted values: numeric font weight 100–900
+  --font-weight-heading: 650;
+
+  // Type scale — Major Third ratio (1.25)
+  // Accepted values: positive rem values
+  --font-size-sm:  0.8rem;      /*  ~12.8px */
+  --font-size-md:  1rem;        /*  ~16px   */
+  --font-size-lg:  1.25rem;     /*  ~20px   */
+  --font-size-xl:  1.5625rem;   /*  ~25px   */
+  --font-size-2xl: 1.953rem;    /*  ~31px   */
+  --font-size-3xl: 2.441rem;    /*  ~39px   */
+
+  // ---------------------------------------------------------------------------
+  // Layout
+  // ---------------------------------------------------------------------------
+
+  // Fixed sidebar width on desktop (≥ 1024px)
+  // Accepted values: positive px or rem length
+  --sidebar-width: 260px;
+
+  // Maximum prose line length for readability
+  // Accepted values: ch unit value between 65ch and 75ch
+  --content-max-width: 75ch;
+
+  // Minimum gap between major page sections
+  // Accepted values: any valid CSS length or var() reference
+  --section-gap: var(--space-8); /* 32px */
+
+  // Border radius — small: buttons, badges
+  // Accepted values: px values between 2px and 4px
+  --border-radius-sm: 4px;
+
+  // Border radius — medium: cards, inputs
+  // Accepted values: px values between 4px and 6px
+  --border-radius-md: 6px;
+
+  // Border radius — large: modals, panels
+  // Accepted values: px values between 6px and 8px
+  --border-radius-lg: 8px;
+
+  // ---------------------------------------------------------------------------
+  // Shadows
+  // Accepted values: valid CSS box-shadow values with alpha ≤ 0.15
+  // ---------------------------------------------------------------------------
+
+  // Subtle shadow — cards at rest
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+
+  // Medium shadow — elevated elements, dropdowns
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.10);
+
+  // Focus ring shadow — keyboard focus indicator
+  --shadow-focus: 0 0 0 3px rgba(37, 99, 235, 0.45);
+
+  // ---------------------------------------------------------------------------
+  // Transitions
+  // ---------------------------------------------------------------------------
+
+  // Color transition — applied to theme switches (color + bg-color)
+  // Accepted values: valid CSS transition shorthand, duration ≤ 300ms
+  --transition-color: color 300ms ease, background-color 300ms ease;
+
+  // Fast transition — hover states, micro-interactions
+  // Accepted values: valid CSS duration + easing (duration ≤ 150ms)
+  --transition-fast: 150ms ease;
+}
+
+// =============================================================================
+// Dark Theme Token Overrides
+// Applied when <html data-theme="dark"> is set
+// =============================================================================
+[data-theme="dark"] {
+  // Accent — lighter blue for contrast on dark background
+  --color-accent: #60a5fa;       /* Blue 400 */
+
+  // Accent hover — even lighter
+  --color-accent-hover: #93c5fd; /* Blue 300 */
+
+  // Dark surface colors
+  --color-bg: #0f172a;           /* Slate 900 */
+  --color-bg-subtle: #1e293b;    /* Slate 800 */
+  --color-bg-elevated: #334155;  /* Slate 700 */
+
+  // Light text on dark background
+  --color-text: #f1f5f9;         /* Slate 100 */
+  --color-text-muted: #94a3b8;   /* Slate 400 */
+
+  // Dark border — matches elevated bg for subtlety
+  --color-border: #334155;       /* Slate 700 */
+
+  // Code background on dark theme
+  --color-code-bg: #1e293b;
+
+  // Stronger shadow alpha on dark backgrounds
+  --color-shadow: rgba(0, 0, 0, 0.40);
+}

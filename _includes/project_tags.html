@@ -1,25 +1,48 @@
-{% if site.enableTags ==  true %} 
-	<div id="tag-filter" class="col-md-12 col-xs-12 tag-group">
-		<span class="label label-primary tag-filter tag-cloud all">All</span>
-        {% assign tagarray = site.tagarray %}
-        {% for project in site.data.projects %}
-            {% for tag in project.tags %}
-                {% assign tagarray = tagarray | push: tag %}
-            {% endfor %}
-        {% endfor %}
+{% if site.enableTags == true %}
+  {%- comment -%}
+    Build a deduplicated, sorted list of tags from all projects.
+    We accumulate every tag into tagarray, then produce a pipe-separated
+    string of unique values which is split back into a sorted array.
+  {%- endcomment -%}
+  {%- assign tagarray = "" | split: "" -%}
+  {%- for project in site.data.projects -%}
+    {%- for tag in project.tags -%}
+      {%- assign tagarray = tagarray | push: tag -%}
+    {%- endfor -%}
+  {%- endfor -%}
 
-        {% assign tags = tagarray[1] %}
-        {% for item in tagarray %}
-            {% assign tagDown = item | downcase %}
-            {% assign tagComp = tags | downcase %}
-            {% unless tagComp contains tagDown %}
-                {% capture tags %}{{ tags }}|{{ item }}{% endcapture %}
-            {% endunless %}
-        {% endfor %}
+  {%- comment -%}Deduplicate: build a pipe-delimited unique string{%- endcomment -%}
+  {%- assign unique_tags = "" -%}
+  {%- for item in tagarray -%}
+    {%- assign itemDown = item | downcase -%}
+    {%- assign uniqueDown = unique_tags | downcase -%}
+    {%- unless uniqueDown contains itemDown -%}
+      {%- if unique_tags == "" -%}
+        {%- assign unique_tags = item -%}
+      {%- else -%}
+        {%- capture unique_tags %}{{ unique_tags }}|{{ item }}{% endcapture -%}
+      {%- endif -%}
+    {%- endunless -%}
+  {%- endfor -%}
 
-        {% assign taglist = tags | split: '|' | sort %}
-        {% for tag in taglist %}
-            <span class="label tag-filter tag-cloud" data-tag="{{ tag | downcase }}">{{ tag }}</span>
-        {% endfor %}
-	</div>
+  {%- assign taglist = unique_tags | split: '|' | sort -%}
+
+  <div class="tag-filter" id="project-tag-filter" role="group" aria-label="Filter projects by tag">
+    <button
+      class="tag-filter__btn tag-filter__btn--active"
+      data-tag="all"
+      aria-pressed="true"
+      type="button">
+      All
+    </button>
+    {%- for tag in taglist -%}
+      <button
+        class="tag-filter__btn"
+        data-tag="{{ tag | downcase }}"
+        aria-pressed="false"
+        type="button">
+        {{ tag }}
+      </button>
+    {%- endfor -%}
+  </div>
 {% endif %}

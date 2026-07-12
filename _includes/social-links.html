@@ -1,0 +1,37 @@
+<ul class="social-links" role="list" aria-label="Social media links">
+  {% for item in site.social %}
+    {% if item.icon and item.link %}
+      {% assign icon_id = "" %}
+      {% assign aria_label = "" %}
+      {% if item.icon == "fa-twitter" %}
+        {% assign icon_id = "icon-twitter" %}
+        {% assign aria_label = "Twitter" %}
+      {% elsif item.icon == "fa-github" %}
+        {% assign icon_id = "icon-github" %}
+        {% assign aria_label = "GitHub" %}
+      {% elsif item.icon == "fa-linkedin" %}
+        {% assign icon_id = "icon-linkedin" %}
+        {% assign aria_label = "LinkedIn" %}
+      {% elsif item.icon == "fa-instagram" %}
+        {% assign icon_id = "icon-instagram" %}
+        {% assign aria_label = "Instagram" %}
+      {% elsif item.icon == "fa-envelope" %}
+        {% assign icon_id = "icon-envelope" %}
+        {% assign aria_label = "Email" %}
+      {% endif %}
+      {% if icon_id != "" %}
+      <li class="social-links__item">
+        <a class="social-links__link"
+           href="{{ item.link }}"
+           target="_blank"
+           rel="noopener noreferrer"
+           aria-label="{{ aria_label }}">
+          <svg class="social-links__icon" aria-hidden="true" focusable="false" width="18" height="18">
+            <use href="#{{ icon_id }}"></use>
+          </svg>
+        </a>
+      </li>
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+</ul>

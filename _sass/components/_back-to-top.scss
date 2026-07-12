@@ -1,0 +1,58 @@
+// =============================================================================
+// _sass/components/_back-to-top.scss
+// Back-to-Top floating button — BEM
+// Req 8.6 — visible after scrollY > 200px, smooth scroll to top
+// =============================================================================
+
+// Higher specificity (.back-to-top[hidden]) overrides the browser default
+// [hidden] { display: none } without requiring !important, enabling the
+// opacity/transform transition when JS toggles the hidden attribute.
+.back-to-top[hidden] {
+  display: inline-flex;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+}
+
+.back-to-top {
+  position: fixed;
+  bottom: var(--space-8);       /* 32px from bottom */
+  right: var(--space-6);        /* 24px from right */
+  z-index: 100;
+
+  // Touch target (44×44px minimum) via mixin
+  @include touch-target;
+  width: 44px;
+  height: 44px;
+
+  background-color: var(--color-accent);
+  color: var(--color-text-inverse);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: var(--shadow-md);
+
+  transition:
+    background-color var(--transition-fast),
+    opacity 200ms ease,
+    transform 200ms ease;
+
+  opacity: 1;
+  transform: translateY(0);
+
+  &:hover {
+    background-color: var(--color-accent-hover);
+    transform: translateY(-2px);
+  }
+
+  &:focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 3px;
+    box-shadow: var(--shadow-focus);
+  }
+}
+
+.back-to-top__icon {
+  display: block;
+  flex-shrink: 0;
+}

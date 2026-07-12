@@ -1,0 +1,328 @@
+// =============================================================================
+// _sass/base/_typography.scss
+// Base Typography Styles
+//
+// Implements: Requirements 5.1–5.8
+// Uses: CSS Custom Properties from _sass/abstracts/_tokens.scss
+// Convention: BEM for class names; no hard-coded values in component rules
+// =============================================================================
+
+// =============================================================================
+// @font-face — Inter Variable Font (progressive enhancement)
+//
+// System font stack renders immediately (see --font-sans token).
+// Inter loads asynchronously; once available the cascade picks it up
+// because "Inter" is explicitly prepended in the body font-family below.
+// font-display: swap prevents invisible text during the load window.
+// =============================================================================
+
+@font-face {
+  font-family: 'Inter';
+  src:
+    url('/assets/fonts/inter-var.woff2') format('woff2 supports variations'),
+    url('/assets/fonts/inter-var.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+// =============================================================================
+// Root
+// Sets 100% so the browser default (typically 16 px) is the rem base.
+// The fluid clamp() size is applied on body, not html, so rem units remain
+// stable and predictable for component-level calculations.
+// =============================================================================
+
+html {
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+// =============================================================================
+// Body — base reading experience
+//
+// font-family: "Inter" prepended as progressive enhancement; falls through
+//              to --font-sans (system stack) instantly while Inter loads.
+// --font-size-base  : clamp(15px, 2.5vw, 18px)  — fluid scale (Req 5.2)
+// --font-weight-body: 400
+// --line-height-body: 1.65                       — within 1.5–1.8 range (Req 5.3)
+// --color-text      : #0f172a / #f1f5f9 (dark)
+// --color-bg        : #ffffff / #0f172a (dark)
+// --transition-color: color + background-color transition ≤ 300ms (Req 4.5)
+// letter-spacing: 0.01em — within 0 to 0.01em range (Req 5.8)
+// =============================================================================
+
+body {
+  font-family: "Inter", var(--font-sans);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-body);
+  line-height: var(--line-height-body);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  letter-spacing: 0.01em;
+  transition: var(--transition-color);
+}
+
+// =============================================================================
+// Heading Scale — 1.25 Major Third modular scale (Req 5.4, 5.7)
+//
+// h1: --font-size-3xl  (~2.44 rem)
+// h2: --font-size-2xl  (~1.95 rem)
+// h3: --font-size-xl   (~1.56 rem)
+// h4: --font-size-lg   (1.25 rem)
+// h5: --font-size-md   (1 rem)
+// h6: --font-size-sm   (0.8 rem)
+//
+// Each level is strictly smaller than the one above (Req 5.7).
+// Shared properties applied via grouped selector below individual sizes.
+// =============================================================================
+
+h1 { font-size: var(--font-size-3xl); }
+h2 { font-size: var(--font-size-2xl); }
+h3 { font-size: var(--font-size-xl); }
+h4 { font-size: var(--font-size-lg); }
+h5 { font-size: var(--font-size-md); }
+h6 { font-size: var(--font-size-sm); }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  // --font-weight-heading: 650 — within 600–700 range (Req 5.6)
+  font-weight: var(--font-weight-heading);
+  // --line-height-heading: 1.2 — within 1.1–1.3 range (Req 5.3)
+  line-height: var(--line-height-heading);
+  // Letter-spacing: −0.025em — within −0.02em to −0.03em range (Req 5.8)
+  letter-spacing: -0.025em;
+  color: var(--color-text);
+  margin-bottom: var(--space-4);
+}
+
+// =============================================================================
+// Paragraphs
+// =============================================================================
+
+p {
+  margin-bottom: var(--space-4);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// =============================================================================
+// Links
+//
+// color: --color-accent (Blue 600 / Blue 400 dark)
+// underline with 1px thickness and 3px offset for legibility
+// hover transitions to --color-accent-hover within --transition-fast (150ms)
+// visited: same accent color to maintain consistent visual style
+// =============================================================================
+
+a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: color var(--transition-fast);
+
+  &:hover {
+    color: var(--color-accent-hover);
+  }
+
+  &:visited {
+    color: var(--color-accent);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    border-radius: var(--border-radius-sm);
+  }
+}
+
+// =============================================================================
+// Prose Content Containers — constrain line length for readability (Req 5.5)
+//
+// --content-max-width: 75ch — within 65ch–75ch range
+// Applied to both post and page content wrappers (BEM block names)
+// =============================================================================
+
+.post-content,
+.page-content {
+  max-width: var(--content-max-width);
+}
+
+// =============================================================================
+// Inline Code and Preformatted Text
+//
+// --font-mono       : monospace font stack
+// --font-size-sm    : 0.8rem — applied to both code and pre
+// --color-code-bg   : subtle background tint
+// --border-radius-sm: 4px
+// =============================================================================
+
+code {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  background: var(--color-code-bg);
+  padding: 2px 6px;
+  border-radius: var(--border-radius-sm);
+  letter-spacing: 0;
+}
+
+pre {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  background: var(--color-code-bg);
+  padding: var(--space-4);
+  border-radius: var(--border-radius-sm);
+  overflow-x: auto;
+  letter-spacing: 0;
+  line-height: 1.6;
+
+  // Reset inline code styling when nested inside pre
+  code {
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
+    font-size: inherit;
+  }
+}
+
+// =============================================================================
+// Blockquote
+//
+// Left border using --color-border, muted text color, italic style
+// --color-border    : Slate 200 / Slate 700 (dark) — subtle visual cue
+// --color-text-muted: softer text for quoted content
+// --space-4         : padding-left token
+// =============================================================================
+
+blockquote {
+  margin-inline: 0;
+  margin-block: var(--space-6);
+  padding-left: var(--space-4);
+  border-left: 4px solid var(--color-border);
+  color: var(--color-text-muted);
+  font-style: italic;
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// =============================================================================
+// Horizontal Rule
+// =============================================================================
+
+hr {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: var(--space-8) 0;
+}
+
+// =============================================================================
+// Lists
+// =============================================================================
+
+ul,
+ol {
+  padding-inline-start: var(--space-6);
+  margin-top: 0;
+  margin-bottom: var(--space-4);
+}
+
+li {
+  margin-bottom: 0.25em;
+}
+
+// =============================================================================
+// Tables — prose content tables inside .post__content and .page-content__body
+//
+// The reset zeroes all table styles, so we need to restore sensible defaults.
+// Wrapping div gets overflow-x: auto for horizontal scrolling on narrow screens.
+// =============================================================================
+
+.post__content,
+.page-content__body {
+
+  .table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: var(--space-6);
+    border-radius: var(--border-radius-sm);
+    border: 1px solid var(--color-border);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-body);
+    margin-bottom: 0; // margin handled by .table-responsive wrapper
+  }
+
+  // Header cells
+  th {
+    padding: var(--space-2) var(--space-3);
+    text-align: left;
+    font-weight: var(--font-weight-heading);
+    color: var(--color-text);
+    background-color: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
+    white-space: nowrap;
+  }
+
+  // Body cells
+  td {
+    padding: var(--space-2) var(--space-3);
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
+    vertical-align: top;
+  }
+
+  // Zebra striping on body rows
+  tbody tr:nth-child(even) td {
+    background-color: var(--color-bg-subtle);
+  }
+
+  // Hover highlight
+  tbody tr:hover td {
+    background-color: var(--color-bg-elevated);
+  }
+
+  // Tables without the .table-responsive wrapper still get scroll + margin
+  table:not(.table-responsive table) {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: var(--space-6);
+  }
+}
+
+// =============================================================================
+// Strong and Emphasis
+// =============================================================================
+
+strong,
+b {
+  font-weight: var(--font-weight-heading);
+}
+
+em,
+i {
+  font-style: italic;
+}
+
+// =============================================================================
+// Small Text
+// =============================================================================
+
+small {
+  font-size: var(--font-size-sm);
+}

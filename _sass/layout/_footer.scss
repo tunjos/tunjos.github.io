@@ -1,0 +1,97 @@
+// =============================================================================
+// _sass/layout/_footer.scss
+// Site Footer Styles
+//
+// Styles for the <footer class="site-footer"> element and its BEM descendants.
+// The footer sits below the main content column in both the mobile stacked
+// layout and the desktop sidebar+content grid.
+//
+// BEM blocks:
+//   .site-footer               — root footer element
+//   .site-footer__copyright    — copyright paragraph
+//
+// No ad containers, no third-party scripts or embeds (Req 10.5).
+// All values use CSS Custom Property tokens (Req 3.3).
+//
+// References:
+//   Req 3.3  — use CSS Custom Properties for all values
+//   Req 10.5 — no advertisement containers or third-party scripts
+//
+// Dependencies (imported before this file via main.scss):
+//   abstracts/_tokens.scss  — CSS Custom Properties
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// .site-footer — root element
+//
+// Matches the same subtle background as .site-header so both chrome elements
+// feel visually consistent. A top border separates the footer from the main
+// content area above it.
+// -----------------------------------------------------------------------------
+.site-footer {
+  // Matches the header's subtle surface — visually frames the page content.
+  // Accepted values: any valid CSS color or var() reference
+  background-color: var(--color-bg-subtle);
+
+  // Top border visually separates the footer from the main content column.
+  // Accepted values: valid CSS border shorthand
+  border-top: 1px solid var(--color-border);
+
+  // Comfortable internal spacing: 32px top/bottom, 24px left/right.
+  // Accepted values: var() references to spacing tokens
+  padding: var(--space-8) var(--space-6);
+
+  // Animate color and background when the user switches themes.
+  // Accepted values: var(--transition-color) token
+  transition: var(--transition-color);
+}
+
+// -----------------------------------------------------------------------------
+// .site-footer__copyright — BEM element
+//
+// Renders the copyright notice and "Powered by Jekyll" attribution line.
+// Uses muted text to de-emphasize it relative to the main content.
+// -----------------------------------------------------------------------------
+.site-footer__copyright {
+  // Small text — visually secondary relative to page content.
+  // Accepted values: var() reference to typography token
+  font-size: var(--font-size-sm);
+
+  // Muted color — clearly secondary, but still meets WCAG AA contrast
+  // (5.0:1 on light, 4.6:1 on dark) per the design token table.
+  // Accepted values: any valid CSS color or var() reference
+  color: var(--color-text-muted);
+
+  // Remove browser default paragraph margin so the footer padding alone
+  // controls the spacing.
+  // Accepted values: any valid CSS length; 0 is intentional here
+  margin: 0;
+
+  // -------------------------------------------------------------------------
+  // .site-footer__copyright a — inline links within the copyright paragraph
+  //
+  // Inherits font-size and line-height from the parent paragraph.
+  // Colour is set explicitly to the accent token so the link stands out from
+  // the surrounding muted text while remaining on-brand.
+  // Standard underline + hover behaviour mirrors _typography.scss (Req 3.3).
+  // -------------------------------------------------------------------------
+  a {
+    // Accent color ensures links are distinguishable from surrounding muted text.
+    // Accepted values: any valid CSS color or var() reference
+    color: var(--color-accent);
+
+    // Underline style inherited from base typography (_sass/base/_typography.scss).
+    // Explicit underline here ensures it renders even if the base rule is absent.
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+
+    // Fast color transition on hover — matches base link behaviour.
+    // Accepted values: valid CSS transition shorthand
+    transition: color var(--transition-fast);
+
+    &:hover {
+      color: var(--color-accent-hover);
+    }
+  }
+}

@@ -1,0 +1,101 @@
+// =============================================================================
+// _sass/layout/_header.scss
+// Site Header — Layout Styles
+//
+// Covers structural and positional styles for .site-header only.
+// Component-level styles for the navigation (.site-nav) live in
+// _sass/components/_nav.scss.
+//
+// Responsive behaviour:
+//   • Mobile (default): full-width top bar with bottom border
+//   • Desktop (≥ 1024px): sticky left sidebar occupying full viewport height
+//
+// References:
+//   Req 2.1  — mobile-first min-width media queries
+//   Req 3.1  — sidebar sticks at top and fills viewport height on desktop
+//   Req 3.3  — use CSS Custom Properties for all values
+//
+// Dependencies (imported before this file via main.scss):
+//   abstracts/_tokens.scss  — CSS Custom Properties
+//   abstracts/_mixins.scss  — mq() breakpoint mixin
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// .site-header — base styles (mobile-first)
+//
+// On mobile the header renders as a top bar spanning the full viewport width.
+// The right-side border used on desktop is suppressed here and replaced with
+// a bottom border that visually separates the bar from the page content.
+// -----------------------------------------------------------------------------
+.site-header {
+  // Subtle off-white / dark surface that distinguishes the header from the
+  // main content background. Transitions with the theme toggle (Req 3.3).
+  // Accepted values: any valid CSS color or var() reference
+  background-color: var(--color-bg-subtle);
+
+  // Mobile: bottom border separates the top bar from the page body.
+  // The desktop right-side border is added at the lg breakpoint below.
+  // Accepted values: valid CSS border shorthand
+  border-bottom: 1px solid var(--color-border);
+
+  // Desktop sidebar right-edge border — suppressed on mobile (see mq('lg'))
+  // Accepted values: none | valid CSS border shorthand
+  border-right: none;
+
+  // Animate color and background when the user switches themes (Req 3.3)
+  // Accepted values: var(--transition-color) token
+  transition: var(--transition-color);
+
+  // Mobile padding: 16px top/bottom, 24px left/right
+  // Accepted values: var() references to spacing tokens
+  padding: var(--space-4) var(--space-6);
+
+  // -------------------------------------------------------------------------
+  // Desktop sidebar layout (≥ 1024px)
+  //
+  // The header shifts from a top bar into a fixed-width left sidebar.
+  // It becomes sticky so the navigation remains visible while the user
+  // scrolls through long content on the right.
+  // -------------------------------------------------------------------------
+  @include mq('lg') {
+    // Switch from bottom border (top-bar style) to a right border (sidebar style).
+    // The bottom border is no longer needed because the header no longer sits
+    // above the main content — it is a side-by-side grid column.
+    // Accepted values: none | valid CSS border shorthand
+    border-bottom: none;
+    border-right: 1px solid var(--color-border);
+
+    // Stick the sidebar to the top of the viewport so it remains in view
+    // while the user scrolls the main content column.
+    // Accepted values: sticky | static | fixed | relative | absolute
+    position: sticky;
+
+    // Anchor the sticky positioning to the very top of the viewport.
+    // Accepted values: any valid CSS length; 0 is intentional here
+    top: 0;
+
+    // Fill the entire viewport height so the sidebar always covers the screen.
+    // dvh accounts for dynamic browser UI chrome collapsing on mobile/desktop.
+    // Accepted values: positive CSS length — dvh preferred for mobile browser UI
+    height: 100dvh;
+
+    // Allow the sidebar to scroll internally if the navigation content is
+    // taller than the viewport (e.g., very long nav lists on small monitors).
+    // Accepted values: visible | hidden | scroll | auto
+    overflow-y: auto;
+
+    // Slim scrollbar appearance — avoids the heavy OS default scrollbar
+    // intruding on the sidebar's narrow column.
+    // Accepted values: auto | thin | none
+    scrollbar-width: thin;
+
+    // Scrollbar thumb uses the border color token; track is transparent so
+    // it blends into the sidebar background.
+    // Accepted values: <color> <color> — thumb then track
+    scrollbar-color: var(--color-border) transparent;
+
+    // Desktop padding: equal 24px on all sides inside the sidebar column.
+    // Accepted values: var() reference to spacing token
+    padding: var(--space-6);
+  }
+}

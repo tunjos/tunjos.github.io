@@ -1,0 +1,76 @@
+<!--
+  _includes/search.html
+  Client-side search component: input field + live results list.
+
+  Requirements addressed:
+    Req 8.4  — filters by title/excerpt; results within 500ms; "No results found"
+    Req 3.7  — BEM class names throughout
+    Req 7.4  — ARIA labels on all interactive elements
+
+  Usage: {% include search.html %}
+  The Search module in _js/search.js is initialised in _js/main.js via:
+    Search.init('.search__input', '#search-results', '/assets/js/search-data.json');
+-->
+<section class="search" aria-label="Site search">
+  <form
+    class="search__form"
+    role="search"
+    action=""
+    aria-label="Search posts"
+    onsubmit="return false;"
+  >
+    <label class="search__label" for="search-input">
+      Search posts
+    </label>
+
+    <div class="search__input-wrapper">
+      <!-- SVG magnifying-glass icon (decorative) -->
+      <svg
+        class="search__icon"
+        aria-hidden="true"
+        focusable="false"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        width="18"
+        height="18"
+      >
+        <path
+          fill="currentColor"
+          d="M21.71 20.29l-4.55-4.55A8.32 8.32 0 1 0 16 17.16l4.55 4.55a1 1 0 0 0 1.41-1.41zM10 16a6 6 0 1 1 6-6 6 6 0 0 1-6 6z"
+        />
+      </svg>
+
+      <input
+        id="search-input"
+        class="search__input"
+        type="search"
+        name="q"
+        placeholder="Search posts and projects…"
+        autocomplete="off"
+        autocorrect="off"
+        autocapitalize="off"
+        spellcheck="false"
+        aria-label="Search posts"
+        aria-controls="search-results"
+        aria-autocomplete="list"
+        aria-haspopup="listbox"
+      >
+    </div>
+  </form>
+
+  <!--
+    Results container.
+    • role="listbox"      — communicates this is a selection list to assistive technology
+    • aria-live="polite"  — announces result updates without interrupting ongoing speech
+    • aria-label          — identifies the region to screen-reader users
+    • hidden              — toggled by search.js; hidden by default (no search yet)
+  -->
+  <ul
+    id="search-results"
+    class="search__results"
+    role="listbox"
+    aria-label="Search results"
+    aria-live="polite"
+    hidden
+  ></ul>
+</section>

@@ -30,7 +30,7 @@ I believe there is only one thing that is impossible. It's called "Nothing".
 [Software Engineering](#), [Networking](#), [Electronics Engineering](#), [Machine Learning](#), [Artificial Intelligence](#)  
 
 <br />
-#### Please get in touch with me 🙂. I love connecting with people!
+## Please get in touch with me 🙂. I love connecting with people!
 - Experienced at being Kind!
 - Puts Happiness First!  
 
@@ -38,6 +38,6 @@ I believe there is only one thing that is impossible. It's called "Nothing".
 
 **Phone:** [+EXEC-0-I-MET-903](#)
 
-**Location:** [Turin, Italy](#)
+**Location:** [Toronto, Canada](#), [Turin, Italy](#)
 
-<form style="border:1px solid #ccc;padding:3px;text-align:center;" action="https://tinyletter.com/tunjos" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/tunjos', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true"><p><label for="tlemail">Enjoy reading this? Join my Smartletter</label>&nbsp;<input type="text" style="width:140px" name="email" placeholder="Your email address" id="tlemail" />&nbsp;<input type="hidden" value="1" name="embed"/><input type="submit" value="Subscribe" /><p><a href="https://tinyletter.com" target="_blank">powered by TinyLetter</a></p>
+{% include newsletter-page.html %}

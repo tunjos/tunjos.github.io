@@ -1,0 +1,41 @@
+// =============================================================================
+// _sass/components/_social-links.scss
+// Social Icon Links Component — BEM
+// =============================================================================
+
+// Social link cluster displayed in the sidebar author panel
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  list-style: none;
+  padding: 0;
+  margin: var(--space-4) 0 0;
+}
+
+// No specific styles needed for individual list items
+.social-links__item {}
+
+// Individual icon link — touch-target sized, colour-coordinated
+.social-links__link {
+  @include touch-target;
+  color: var(--color-text-muted);
+  border-radius: var(--border-radius-sm);
+  transition: color var(--transition-fast);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--color-accent);
+  }
+
+  &:focus-visible {
+    // Inherits global focus ring from _accessibility.scss
+    outline: 3px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+}
+
+// SVG icon inside the link — needs display: block to prevent inline whitespace
+.social-links__icon {
+  display: block;
+}

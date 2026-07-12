@@ -1,0 +1,60 @@
+// =============================================================================
+// _sass/base/_accessibility.scss
+// Accessibility Utilities
+// Skip link and focus ring styles for WCAG 2.1 AA compliance
+// =============================================================================
+
+@import '../abstracts/mixins';
+
+// -----------------------------------------------------------------------------
+// Skip Navigation Link
+// First focusable element on the page — becomes visible on keyboard focus
+// Allows keyboard users to bypass repeated navigation and jump to main content
+// -----------------------------------------------------------------------------
+.skip-link {
+  @include visually-hidden;
+
+  // Become visible on focus — positioned top-left of the viewport
+  &:focus,
+  &:focus-visible {
+    position: fixed;
+    top: var(--space-4, 1rem);
+    left: var(--space-4, 1rem);
+    z-index: 9999;
+    width: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+
+    // Visually distinct style
+    padding: var(--space-2, 0.5rem) var(--space-4, 1rem);
+    background-color: var(--color-accent, #2563eb);
+    color: var(--color-text-inverse, #ffffff);
+    font-weight: 600;
+    font-size: var(--font-size-md, 1rem);
+    text-decoration: none;
+    border-radius: var(--border-radius-md, 6px);
+    box-shadow: var(--shadow-md, 0 4px 8px rgba(0, 0, 0, 0.10));
+    outline: 2px solid var(--color-text-inverse, #ffffff);
+    outline-offset: 2px;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Focus Visible Ring
+// Applied to all keyboard-focusable elements
+// Uses :focus-visible to avoid showing ring on mouse click
+// Contrast ratio ≥ 3:1 between ring color and adjacent background (WCAG 2.1 AA)
+// -----------------------------------------------------------------------------
+:focus-visible {
+  outline: 2px solid var(--color-accent, #2563eb);
+  outline-offset: 3px;
+  border-radius: var(--border-radius-sm, 4px);
+}
+
+// Remove default outline for mouse/touch interactions
+:focus:not(:focus-visible) {
+  outline: none;
+}

@@ -1,0 +1,113 @@
+<!-- =============================================================================
+  _includes/newsletter.html
+  Loops.so custom form endpoint signup.
+
+  To activate:
+    1. Go to https://app.loops.so/forms → Settings tab
+    2. Copy your Form Endpoint URL
+    3. Replace YOUR_LOOPS_FORM_ID below with the ID at the end of that URL
+  ============================================================================= -->
+<aside class="newsletter" aria-label="Newsletter signup">
+  <h3 class="newsletter__title">Enjoyed this post?</h3>
+  <p class="newsletter__body">Subscribe to get new posts delivered to your inbox.</p>
+
+  <form
+    class="newsletter__form"
+    id="newsletter-form"
+    novalidate
+    aria-label="Email newsletter signup">
+
+    <div class="newsletter__fields">
+      <label class="newsletter__label" for="newsletter-email">
+        Email address
+      </label>
+      <div class="newsletter__input-row">
+        <input
+          class="newsletter__input"
+          id="newsletter-email"
+          type="email"
+          name="email"
+          placeholder="you@example.com"
+          autocomplete="email"
+          required
+          aria-required="true"
+          aria-describedby="newsletter-status">
+        <button
+          class="newsletter__submit"
+          type="submit"
+          aria-label="Subscribe to newsletter">
+          Subscribe
+        </button>
+      </div>
+    </div>
+
+    <p
+      class="newsletter__status"
+      id="newsletter-status"
+      role="status"
+      aria-live="polite"
+      hidden></p>
+
+  </form>
+</aside>
+
+<script>
+(function () {
+  'use strict';
+
+  // ── Replace with your own Form ID from https://app.loops.so/forms → Settings
+  var LOOPS_FORM_ID = 'cmq4zewfx554q0j1f0kibgwtc';
+  var ENDPOINT = 'https://app.loops.so/api/newsletter-form/' + LOOPS_FORM_ID;
+
+  var form   = document.getElementById('newsletter-form');
+  var status = document.getElementById('newsletter-status');
+
+  if (!form || !status) return;
+
+  function setStatus(message, isError) {
+    status.textContent  = message;
+    status.hidden       = false;
+    status.className    = 'newsletter__status' + (isError ? ' newsletter__status--error' : ' newsletter__status--success');
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    var email = form.querySelector('#newsletter-email').value.trim();
+
+    if (!email) {
+      setStatus('Please enter your email address.', true);
+      return;
+    }
+
+    var submitBtn = form.querySelector('.newsletter__submit');
+    submitBtn.disabled   = true;
+    submitBtn.textContent = 'Subscribing…';
+    status.hidden = true;
+
+    var body = 'email=' + encodeURIComponent(email);
+
+    fetch(ENDPOINT, {
+      method: 'POST',
+      body: body,
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+    })
+      .then(function (res) { return res.json(); })
+      .then(function (data) {
+        if (data.success) {
+          setStatus('You\'re subscribed! Thanks for signing up.', false);
+          form.reset();
+        } else {
+          setStatus(data.message || 'Something went wrong. Please try again.', true);
+        }
+      })
+      .catch(function () {
+        setStatus('Could not connect. Please try again later.', true);
+      })
+      .finally(function () {
+        submitBtn.disabled    = false;
+        submitBtn.textContent = 'Subscribe';
+      });
+  });
+}());
+</script>

@@ -1,0 +1,217 @@
+// =============================================================================
+// _sass/components/_page.scss
+// Generic Page Layout and Category Archive Listing
+//
+// BEM structure — Generic page:
+//   .page-content               — block (<article> wrapper)
+//   .page-content__header       — heading + subtitle area
+//   .page-content__title        — h1
+//   .page-content__subtitle     — optional subtitle paragraph
+//   .page-content__description  — optional intro paragraph
+//   .page-content__body         — Liquid-rendered {{ content }} area
+//
+// BEM structure — Category archive:
+//   .category-archive           — section wrapper
+//   .category-archive__header   — heading area
+//   .category-archive__title    — h1 "Articles in <category>"
+//   .category-archive__category-name — <em> inline accent name
+//   .category-archive__filter   — <nav> wrapping the .tag-filter bar
+//   .category-archive__list     — <ul> of post cards
+//   .category-archive__item     — individual <li> list item
+//   .category-archive__empty    — "No posts found" fallback message
+//
+// No hard-coded values — all design tokens via CSS Custom Properties.
+// Requirements: 7.7, 9.3, 9.4, 9.5, 12.5
+// =============================================================================
+
+// =============================================================================
+// GENERIC PAGE
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// .page-content — Article wrapper for generic pages (About, CV, etc.)
+// Constrains prose width to the --content-max-width token (75ch) and applies
+// consistent vertical padding.
+// -----------------------------------------------------------------------------
+.page-content {
+  max-width: var(--content-max-width); // 75ch — readability (Req 5.5)
+  margin-inline: auto;
+  padding: var(--space-6) var(--space-4);
+
+  @include mq('md') {
+    padding: var(--space-8) var(--space-6);
+  }
+}
+
+// -----------------------------------------------------------------------------
+// .page-content__header — Title + subtitle block
+// Separated from the body by bottom margin so there is a clear visual break.
+// -----------------------------------------------------------------------------
+.page-content__header {
+  margin-bottom: var(--space-8);
+  padding-bottom: var(--space-6);
+  border-bottom: 1px solid var(--color-border);
+}
+
+// -----------------------------------------------------------------------------
+// .page-content__title — Primary h1
+// Inherits heading scale from _typography.scss; overrides margin for tighter
+// header grouping.
+// -----------------------------------------------------------------------------
+.page-content__title {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--line-height-heading);
+  letter-spacing: -0.025em;
+  color: var(--color-text);
+  margin-bottom: var(--space-2);
+}
+
+// -----------------------------------------------------------------------------
+// .page-content__subtitle — Optional smaller descriptor below the title
+// -----------------------------------------------------------------------------
+.page-content__subtitle {
+  font-size: var(--font-size-xl);
+  font-weight: 500;
+  color: var(--color-text-muted);
+  margin-top: var(--space-2);
+  margin-bottom: 0;
+}
+
+// -----------------------------------------------------------------------------
+// .page-content__description — Optional introductory paragraph
+// -----------------------------------------------------------------------------
+.page-content__description {
+  font-size: var(--font-size-md);
+  color: var(--color-text-muted);
+  margin-top: var(--space-3);
+  line-height: var(--line-height-body);
+}
+
+// -----------------------------------------------------------------------------
+// .page-content__body — Rendered markdown / Liquid content area
+// Applies vertical rhythm between direct block children and constrains images.
+// -----------------------------------------------------------------------------
+.page-content__body {
+  // Vertical rhythm between sibling block elements
+  > * + * {
+    margin-top: var(--space-4);
+  }
+
+  // Constrain images, prevent overflow
+  img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--border-radius-sm);
+    margin-inline: auto;
+  }
+
+  // Blockquote accent
+  blockquote {
+    border-left: 3px solid var(--color-accent);
+    padding-left: var(--space-4);
+    margin-inline: 0;
+    color: var(--color-text-muted);
+    font-style: italic;
+  }
+
+  // Code blocks
+  pre {
+    overflow-x: auto;
+    border-radius: var(--border-radius-sm);
+  }
+}
+
+
+// =============================================================================
+// CATEGORY ARCHIVE
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// .category-archive — Outer section wrapper
+// Matches the spacing of the post layout for visual consistency.
+// -----------------------------------------------------------------------------
+.category-archive {
+  max-width: var(--content-max-width); // 75ch
+  margin-inline: auto;
+  padding: var(--space-6) var(--space-4);
+
+  @include mq('md') {
+    padding: var(--space-8) var(--space-6);
+  }
+}
+
+// -----------------------------------------------------------------------------
+// .category-archive__header — Page heading area
+// -----------------------------------------------------------------------------
+.category-archive__header {
+  margin-bottom: var(--space-6);
+}
+
+// -----------------------------------------------------------------------------
+// .category-archive__title — h1 "Articles in <category>"
+// -----------------------------------------------------------------------------
+.category-archive__title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--line-height-heading);
+  letter-spacing: -0.025em;
+  color: var(--color-text);
+}
+
+// -----------------------------------------------------------------------------
+// .category-archive__category-name — <em> accent inside the h1
+// Not italic by default — semantic emphasis without visual slant.
+// -----------------------------------------------------------------------------
+.category-archive__category-name {
+  font-style: normal;
+  color: var(--color-accent);
+}
+
+// -----------------------------------------------------------------------------
+// .category-archive__filter — <nav> wrapper around the category filter bar
+// The inner .tag-filter (defined in _tags.scss) provides the flex row.
+// Adds a bottom border to visually separate the filter from the post list.
+// -----------------------------------------------------------------------------
+.category-archive__filter {
+  margin-bottom: var(--space-6);
+  padding-bottom: var(--space-6);
+  border-bottom: 1px solid var(--color-border);
+}
+
+// Override .tag-filter gap slightly larger for the archive filter
+.category-archive__filter .tag-filter {
+  gap: var(--space-3);
+}
+
+// -----------------------------------------------------------------------------
+// .category-archive__list — <ul> of post-card items
+// Stack cards vertically; gap = --section-gap (32px) between cards.
+// -----------------------------------------------------------------------------
+.category-archive__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+// -----------------------------------------------------------------------------
+// .category-archive__item — Individual list item wrapper
+// No additional styles needed — the inner .post-card handles all visuals.
+// -----------------------------------------------------------------------------
+.category-archive__item {
+  display: block;
+}
+
+// -----------------------------------------------------------------------------
+// .category-archive__empty — Fallback message when no posts exist
+// -----------------------------------------------------------------------------
+.category-archive__empty {
+  font-size: var(--font-size-md);
+  color: var(--color-text-muted);
+  padding: var(--space-8) 0;
+  text-align: center;
+}

@@ -1,0 +1,151 @@
+// =============================================================================
+// _sass/themes/_dark.scss
+// Dark Theme Token Overrides + Component-Level Overrides
+//
+// Architecture note:
+//   The CSS Custom Property definitions for [data-theme="dark"] live in
+//   abstracts/_tokens.scss — that single selector block is the canonical
+//   token source.  This file adds any dark-theme component-level visual
+//   overrides that CANNOT be expressed through token substitution alone
+//   (e.g. box-shadow values that must use a hard-coded alpha different from
+//   the light-theme shadow, or pseudo-element colours that do not map to
+//   any token).
+//
+// Requirements addressed:
+//   Req 4.1  — light and dark color schemes both provided
+//   Req 4.3  — theme toggle reflects current mode
+//   Req 4.5  — colour/background-color transitions complete within 300ms
+//   Req 4.6  — WCAG AA contrast (≥ 4.5:1 normal, ≥ 3:1 large text) in dark theme
+//   Req 11.3 — inline comments per CSS Custom Property declaration
+// =============================================================================
+
+// =============================================================================
+// Dark theme token overrides
+// Mirrors the [data-theme="dark"] block in abstracts/_tokens.scss so it is
+// visually co-located in the themes/ partition of the 7-1 architecture.
+// The block below is intentionally kept in sync with _tokens.scss; if a token
+// changes, update both files.
+// =============================================================================
+[data-theme="dark"] {
+  // Accent — lighter blue for contrast on dark background
+  // Light equivalent: #2563eb (Blue 600); dark equivalent: Blue 400
+  // Contrast against --color-bg (#0f172a): ≥ 4.7:1 (WCAG AA normal text ✓)
+  --color-accent: #60a5fa;       /* Blue 400 */
+
+  // Accent hover — even lighter for depth on hover interactions
+  // Accepted values: any valid CSS color with higher lightness than --color-accent
+  --color-accent-hover: #93c5fd; /* Blue 300 */
+
+  // Base page background — deep navy-black (Slate 900)
+  // Accepted values: dark-range CSS color
+  --color-bg: #0f172a;           /* Slate 900 */
+
+  // Subtle background — cards, sidebar (Slate 800)
+  // Accepted values: slightly lighter than --color-bg
+  --color-bg-subtle: #1e293b;    /* Slate 800 */
+
+  // Elevated background — hover states, dropdowns (Slate 700)
+  // Accepted values: lighter than --color-bg-subtle
+  --color-bg-elevated: #334155;  /* Slate 700 */
+
+  // Primary text — near-white for high contrast on dark bg (Slate 100)
+  // Contrast against --color-bg (#0f172a): 16.9:1 (WCAG AA ✓)
+  --color-text: #f1f5f9;         /* Slate 100 */
+
+  // Muted text — meta info, captions, labels (Slate 400)
+  // Contrast against --color-bg (#0f172a): 4.6:1 (WCAG AA normal text ✓)
+  --color-text-muted: #94a3b8;   /* Slate 400 */
+
+  // Inverse text — used on accent-colored backgrounds
+  // Accepted values: any CSS color with sufficient contrast on --color-accent
+  --color-text-inverse: #0f172a;
+
+  // Border color — matches elevated bg for a subtle, recessed appearance
+  // Accepted values: same color or slightly lighter than --color-bg-elevated
+  --color-border: #334155;       /* Slate 700 */
+
+  // Code block background — slightly lighter than page bg for differentiation
+  // Accepted values: any dark CSS color
+  --color-code-bg: #1e293b;      /* Slate 800 */
+
+  // Shadow alpha — increased opacity because dark surfaces need stronger shadows
+  // Accepted values: rgba() value; alpha between 0.30 and 0.50 on dark themes
+  --color-shadow: rgba(0, 0, 0, 0.40);
+
+  // Focus ring shadow — uses the dark-theme accent colour
+  // Accepted values: valid CSS box-shadow value
+  --shadow-focus: 0 0 0 3px rgba(96, 165, 250, 0.50);
+}
+
+// =============================================================================
+// Component-level dark-theme overrides
+// Only add rules here when a component visual CANNOT be expressed via tokens.
+// Token-based styles (background-color: var(--color-bg), etc.) automatically
+// adjust when the token values change; no duplication needed.
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Code blocks & inline code
+// Syntax highlighter colours are hard-coded hex values in vendors/_syntax.scss
+// (generated from Rouge) so they do not respond to CSS Custom Properties.
+// In dark mode we apply a translucent overlay tint to the pre/code wrapper to
+// integrate it with the dark surface without rewriting every highlight rule.
+// -----------------------------------------------------------------------------
+[data-theme="dark"] {
+  // Ensure pre/code backgrounds use the dark token rather than the light-mode
+  // hard-coded value from vendors/_syntax.scss.
+  pre,
+  code {
+    background-color: var(--color-code-bg);
+    color: var(--color-text);
+  }
+
+  // Syntax highlighting wrapper — override the light-mode background from
+  // vendors/_syntax.scss so highlighted blocks blend into the dark surface.
+  .highlight {
+    background-color: var(--color-code-bg);
+    border-color: var(--color-border);
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Scrollbar theming (Chromium / Firefox)
+// Browsers do not pick up scrollbar colours from CSS Custom Properties
+// automatically; we target the dark-theme selector explicitly.
+// This is a progressive enhancement — unsupported browsers show the default.
+// -----------------------------------------------------------------------------
+[data-theme="dark"] {
+  // Firefox
+  scrollbar-color: var(--color-border) var(--color-bg-subtle);
+  scrollbar-width: thin;
+
+  // Chromium (non-standard, progressive enhancement)
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--color-bg-subtle);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--color-border);
+    border-radius: 4px;
+    border: 2px solid var(--color-bg-subtle);
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Image brightness adjustment
+// Photographs rendered on a near-black background can appear too harsh.
+// A subtle brightness reduction and slight saturation increase improves
+// perceived quality in dark mode.  opacity/filter do not have token equivalents.
+// -----------------------------------------------------------------------------
+[data-theme="dark"] {
+  img:not([src$=".svg"]) {
+    // Reduce harshness of bright photographs on dark backgrounds
+    filter: brightness(0.90) saturate(1.05);
+    transition: filter 300ms ease;
+  }
+}

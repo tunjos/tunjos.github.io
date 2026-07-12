@@ -1,0 +1,318 @@
+// =============================================================================
+// _sass/components/_search.scss
+// Client-side Search — BEM block: .search
+//
+// Renders a text input with a decorative magnifying-glass icon and a
+// keyboard-navigable results dropdown that is populated by search.js.
+//
+// BEM structure:
+//   .search                   — wrapper section
+//   .search__form             — <form role="search"> container
+//   .search__label            — visible <label> (visually hidden via u-sr-only
+//                               equivalent styles; present for a11y)
+//   .search__input-wrapper    — flex row holding icon + input
+//   .search__icon             — decorative SVG magnifying glass
+//   .search__input            — <input type="search">
+//   .search__results          — <ul role="listbox"> results list
+//   .search__result           — individual <li role="option">
+//   .search__result--active   — keyboard-highlighted result (Modifier)
+//   .search__result-link      — <a> inside each result
+//   .search__result-title     — post title inside the link
+//   .search__result-excerpt   — excerpt snippet inside the link
+//   .search__no-results       — "No results found" empty state message
+//
+// Requirements addressed:
+//   Req 8.4  — search returns results within 500ms; "No results found" message
+//   Req 3.3  — all colors reference CSS Custom Properties (token-based)
+//   Req 3.6  — zero !important declarations
+//   Req 3.7  — BEM naming throughout
+//   Req 2.10 — touch targets ≥ 44×44 CSS px
+//
+// Dependencies (imported before this file via main.scss):
+//   abstracts/_tokens.scss — CSS Custom Properties
+//   abstracts/_mixins.scss — mq(), touch-target, visually-hidden
+// =============================================================================
+
+
+// =============================================================================
+// Block: .search
+// =============================================================================
+.search {
+  position: relative;
+  width: 100%;
+
+
+  // ===========================================================================
+  // Element: __form
+  // <form role="search"> — houses the label + input wrapper
+  // ===========================================================================
+  &__form {
+    width: 100%;
+  }
+
+
+  // ===========================================================================
+  // Element: __label
+  // Visible label for the search input.
+  // Visually hidden but always present for screen-reader users.
+  // ===========================================================================
+  &__label {
+    // Visually hidden — equivalent to .u-sr-only
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+
+  // ===========================================================================
+  // Element: __input-wrapper
+  // Flex row that positions the icon on top of (inside) the input.
+  // ===========================================================================
+  &__input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+
+  // ===========================================================================
+  // Element: __icon
+  // Decorative magnifying-glass SVG positioned inside the input on the left.
+  // aria-hidden="true" on the element keeps it invisible to screen readers.
+  // ===========================================================================
+  &__icon {
+    position: absolute;
+    left: var(--space-3);
+    color: var(--color-text-muted);
+    pointer-events: none;
+    flex-shrink: 0;
+    // Subtle transition when the input receives focus (icon color follows)
+    transition: color var(--transition-fast);
+  }
+
+
+  // ===========================================================================
+  // Element: __input
+  // <input type="search"> — the primary search field.
+  //
+  // • Left padding reserves space for the icon.
+  // • Meets 44px touch target height (Req 2.10).
+  // • Uses CSS Custom Properties for all color values (Req 3.3).
+  // ===========================================================================
+  &__input {
+    width: 100%;
+    // 44px height for touch target (Req 2.10)
+    min-height: 44px;
+    padding: var(--space-2) var(--space-4) var(--space-2) 2.75rem; // 2.75rem = icon width + gap
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-md);
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    font-size: var(--font-size-md);
+    line-height: var(--line-height-body);
+
+    // Smooth border-color and background transitions on focus/hover
+    transition:
+      border-color var(--transition-fast),
+      box-shadow var(--transition-fast),
+      background-color var(--transition-fast);
+
+    // Remove browser default search-input clear button on webkit
+    &::-webkit-search-cancel-button {
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    &::placeholder {
+      color: var(--color-text-muted);
+    }
+
+    &:hover {
+      border-color: var(--color-text-muted);
+    }
+
+    &:focus {
+      outline: none;
+      border-color: var(--color-accent);
+      box-shadow: var(--shadow-focus);
+      background-color: var(--color-bg);
+    }
+
+    // When focused, tint the icon to match the accent color
+    &:focus + .search__icon,
+    &:focus ~ .search__icon {
+      color: var(--color-accent);
+    }
+
+    // Disabled state (shown when search index fails to load — Req 8.4)
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      background-color: var(--color-bg-subtle);
+    }
+  }
+
+
+  // ===========================================================================
+  // Element: __results
+  // <ul role="listbox"> — positioned dropdown list of search results.
+  //
+  // • Hidden by default; shown by search.js when results exist.
+  // • z-index ensures it overlays page content.
+  // • max-height + overflow-y enables scrolling when many results are returned.
+  // ===========================================================================
+  &__results {
+    position: absolute;
+    top: calc(100% + var(--space-2));
+    left: 0;
+    right: 0;
+    z-index: 200;
+    list-style: none;
+    margin: 0;
+    padding: var(--space-2) 0;
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-md);
+    max-height: 400px;
+    overflow-y: auto;
+    // Thin scrollbar on supporting browsers
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-border) transparent;
+  }
+
+
+  // ===========================================================================
+  // Element: __result
+  // A single <li role="option"> result item.
+  // ===========================================================================
+  &__result {
+    // Reset
+    margin: 0;
+    padding: 0;
+
+    // Hover/active background via the link inside
+    &:hover,
+    &:focus-within {
+      background-color: var(--color-bg-subtle);
+    }
+
+    // -------------------------------------------------------------------------
+    // Modifier: --active
+    // Applied by search.js during keyboard navigation (ArrowDown / ArrowUp).
+    // -------------------------------------------------------------------------
+    &--active {
+      background-color: var(--color-bg-elevated);
+
+      .search__result-title {
+        color: var(--color-accent);
+      }
+    }
+  }
+
+
+  // ===========================================================================
+  // Element: __result-link
+  // The <a> anchor wrapping each result's content.
+  //
+  // • touch-target mixin ensures ≥ 44px height on mobile (Req 2.10).
+  // • flex column stacks title above excerpt.
+  // ===========================================================================
+  &__result-link {
+    @include touch-target;
+
+    // Override mixin's inline-flex with block-level flex for full-width rows
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+
+    width: 100%;
+    padding: var(--space-3) var(--space-4);
+    gap: var(--space-1);
+    color: inherit;
+    text-decoration: none;
+
+    transition: background-color var(--transition-fast);
+
+    &:hover {
+      background-color: var(--color-bg-subtle);
+    }
+
+    &:focus-visible {
+      outline: none;
+      box-shadow: inset var(--shadow-focus);
+    }
+  }
+
+
+  // ===========================================================================
+  // Element: __result-title
+  // The post title inside each result link.
+  // ===========================================================================
+  &__result-title {
+    display: block;
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-heading);
+    color: var(--color-text);
+    // Truncate overly long titles on a single line
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
+    transition: color var(--transition-fast);
+  }
+
+
+  // ===========================================================================
+  // Element: __result-excerpt
+  // The truncated excerpt snippet below the title.
+  // Clamped to 2 lines with line-clamp for compact display.
+  // ===========================================================================
+  &__result-excerpt {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    line-height: var(--line-height-body);
+  }
+
+
+  // ===========================================================================
+  // Element: __no-results
+  // "No results found" empty-state message rendered as an <li role="option">.
+  // ===========================================================================
+  &__no-results {
+    padding: var(--space-4) var(--space-4);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    text-align: center;
+    // Ensure it's not accidentally selectable / interactive
+    pointer-events: none;
+    cursor: default;
+  }
+
+
+  // ===========================================================================
+  // Responsive adjustments
+  // On wider viewports the results list can be slightly wider than the input
+  // only if the .search block itself is in a constrained container.
+  // ===========================================================================
+  @include mq('md') {
+    &__results {
+      // Allow results list to breathe with a subtle extra shadow at tablet+
+      box-shadow:
+        var(--shadow-md),
+        0 1px 2px var(--color-shadow);
+    }
+  }
+}

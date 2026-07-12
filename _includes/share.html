@@ -1,0 +1,27 @@
+<section class="share" aria-label="Share this post">
+  <h2 class="share__title">Share this post</h2>
+  <ul class="share__list" role="list">
+    <li class="share__item">
+      <a class="share__link"
+         href="https://twitter.com/intent/tweet?text={{ page.title | uri_escape }}&amp;url={{ site.url }}{{ page.url | uri_escape }}&amp;via={{ site.share.twitter_username }}"
+         target="_blank" rel="noopener noreferrer"
+         aria-label="Share on Twitter (opens in new tab)">
+        <svg class="share__icon" aria-hidden="true" focusable="false" width="18" height="18">
+          <use href="#icon-twitter"></use>
+        </svg>
+        Twitter
+      </a>
+    </li>
+    <li class="share__item">
+      <a class="share__link"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url={{ site.url }}{{ page.url | uri_escape }}&amp;title={{ page.title | uri_escape }}"
+         target="_blank" rel="noopener noreferrer"
+         aria-label="Share on LinkedIn (opens in new tab)">
+        <svg class="share__icon" aria-hidden="true" focusable="false" width="18" height="18">
+          <use href="#icon-linkedin"></use>
+        </svg>
+        LinkedIn
+      </a>
+    </li>
+  </ul>
+</section>

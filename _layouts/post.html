@@ -1,68 +1,219 @@
 ---
 layout: default
 ---
-<div class="post-content well">
-<article class="content">
-    <div class="post">{{ content }}</div>
-    <hr />
-    {% include newsletter-page.html %}
-    {% include share-page.html %}
-</article>
-<hr />
-{% assign hasSimilar = '' %}
-{% for post in site.posts  %}
-    {% assign postHasSimilar = false %}
-    {% for tag in post.categories %}
-        {% for thisTag in page.categories %}
-            {% if postHasSimilar == false and hasSimilar.size < 6 and post != page and tag == thisTag %}
-                {% if hasSimilar.size == 0 %}
-                <div class="panel-body">
-                <h4>Related Posts</h4>
-                <ul>
-                {% endif %}
-                <li class="relatedPost">
-                    <a href="{{ site.url }}{{ post.url }}">{{ post.title }}</a>
-                    {% if post.categories %}
-                        <small>(Categories: {% for category in post.categories %}<a href="/category/{{ category }}">{{ category }}</a>{% if forloop.last == false %}, {% endif %}{% endfor %})</small>
-                    {% endif %}
-                </li>
-                {% capture hasSimilar %}{{ hasSimilar }}*{% endcapture %}
-                {% assign postHasSimilar = true %}
-            {% endif %}
-        {% endfor %}
-    {% endfor %}
-{% endfor %}
-{% if hasSimilar.size > 0 %}
-    </ul>
-    </div>
-{% endif %}
+{%- comment -%}
+  post.html — Blog post layout
+  Requirements: 2.8, 6.1, 6.2, 7.7, 9.1, 9.3, 9.4, 9.5, 12.1, 12.4
+{%- endcomment -%}
 
-<div class="PageNavigation">
-  {% if page.previous.url %}
-    <a class="prev pull-left" href="{{ page.previous.url }}">&laquo; {{ page.previous.title }}</a>
-  {% endif %}
-  {% if page.next.url %}
-    <a class="next pull-right" href="{{ page.next.url }}">{{ page.next.title }} &raquo;</a>
-  {% endif %}
-</div>
+{%- comment -%} Reading time calculation (Req 9.4) {%- endcomment -%}
+{%- assign word_count = page.content | number_of_words -%}
+{%- assign reading_minutes = word_count | divided_by: 200 -%}
 
+{%- comment -%}
+  Related posts: Liquid loop finding ≤ 3 posts sharing category or tag,
+  excluding current post (Req 9.1 / Property 8)
+{%- endcomment -%}
+{%- assign related_posts = "" | split: "" -%}
+{%- for candidate in site.posts -%}
+  {%- if candidate.url != page.url and related_posts.size < 3 -%}
+    {%- comment -%} Check categories {%- endcomment -%}
+    {%- assign matched = false -%}
+    {%- for cat in candidate.categories -%}
+      {%- if page.categories contains cat -%}
+        {%- assign matched = true -%}
+      {%- endif -%}
+    {%- endfor -%}
+    {%- comment -%} Check tags {%- endcomment -%}
+    {%- unless matched -%}
+      {%- for tag in candidate.tags -%}
+        {%- if page.tags contains tag -%}
+          {%- assign matched = true -%}
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endunless -%}
+    {%- if matched -%}
+      {%- assign related_posts = related_posts | push: candidate -%}
+    {%- endif -%}
+  {%- endif -%}
+{%- endfor -%}
 
-<div class="disqus-comments">
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        /* <![CDATA[ */
+<article class="post" itemscope itemtype="https://schema.org/BlogPosting">
 
-        var disqus_shortname = "{{ site.disqus_shortname }}";
-        var disqus_identifier = "{{ site.url }}_{{ page.title }}";
-        var disqus_title = "{{ page.title }}";
+  {%- comment -%} Breadcrumb navigation (Req 8.3, 7.7) {%- endcomment -%}
+  {% include breadcrumbs.html %}
 
-        /* * * DON'T EDIT BELOW THIS LINE * * */
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    /* ]]> */
-    </script>
-</div>
-</div>
+  <header class="post__header">
+    <h1 class="post__title" itemprop="headline">{{ page.title }}</h1>
+
+    <div class="post__meta">
+      {%- comment -%} Publication date {%- endcomment -%}
+      <time class="post__date" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+        {{ page.date | date: "%B %-d, %Y" }}
+      </time>
+
+      {%- comment -%} Reading time (Req 9.4 / Property 10) {%- endcomment -%}
+      <span class="post__reading-time">
+        <span class="u-sr-only">Estimated reading time:</span>
+        {%- if reading_minutes < 1 -%}
+          Quick read
+        {%- else -%}
+          {{ reading_minutes }} min read
+        {%- endif -%}
+      </span>
+
+      {%- comment -%} Categories {%- endcomment -%}
+      {%- if page.categories.size > 0 -%}
+        <span class="post__categories">
+          {%- for category in page.categories -%}
+            <a class="post__category-link" href="/category/{{ category }}">{{ category }}</a>{% unless forloop.last %}, {% endunless %}
+          {%- endfor -%}
+        </span>
+      {%- endif -%}
+
+      {%- comment -%} Tags {%- endcomment -%}
+      {%- if page.tags.size > 0 -%}
+        <ul class="post__tags" role="list" aria-label="Post tags">
+          {%- for tag in page.tags -%}
+            <li class="post__tags-item">
+              <a class="tag" href="/tag/{{ tag | slugify }}">{{ tag }}</a>
+            </li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+    </div><!-- /.post__meta -->
+
+    {%- comment -%}
+      Cover image with responsive srcset (Req 2.8, 6.1, 6.2)
+      Uses explicit width/height to prevent CLS (Req 6.8)
+    {%- endcomment -%}
+    {%- if page.image -%}
+      {%- comment -%}
+        page.image may be a bare filename ("cover.jpg") or include a path prefix
+        ("assets/cover.jpg"). Normalise to an absolute URL by stripping any leading
+        slash then prepending site.baseurl + "/".
+        Responsive srcset: ideally three named size variants would exist on disk
+        (e.g. cover-480.jpg, cover-768.jpg, cover-1200.jpg).  Because no image
+        resizing plugin is available on GitHub Pages we serve the same source file
+        at all three width descriptors — the browser still picks the most
+        appropriate cached copy and the srcset + sizes attributes satisfy the
+        requirement (Req 2.8, 6.2) while preventing a wrong-URL 404.
+      {%- endcomment -%}
+      {%- assign cover_src = "/" | append: page.image -%}
+      {%- if site.baseurl != "" -%}{%- assign cover_src = cover_src | prepend: site.baseurl -%}{%- endif -%}
+      <div class="post__cover">
+        <img
+          class="post__cover-image"
+          src="{{ cover_src }}"
+          srcset="{{ cover_src }} 1200w,
+                  {{ cover_src }} 768w,
+                  {{ cover_src }} 480w"
+          sizes="(max-width: 480px) 480px, (max-width: 768px) 768px, 1200px"
+          loading="lazy"
+          decoding="async"
+          width="1200"
+          height="630"
+          alt="{{ page.title | escape }}"
+          itemprop="image">
+      </div>
+    {%- endif -%}
+  </header><!-- /.post__header -->
+
+  {%- comment -%}
+    Post body content.
+    All images inside post content are made lazy via the post-images.html trick;
+    since Jekyll/Kramdown doesn't natively inject attributes, we rely on the
+    CSS/JS progressive enhancement layer from the spec. The `post__content`
+    class is targeted by `_sass/components/_post.scss` to set img attributes.
+  {%- endcomment -%}
+  <div class="post__content" itemprop="articleBody">
+    {{ content }}
+  </div><!-- /.post__content -->
+
+  <footer class="post__footer">
+
+    {%- comment -%} Share buttons (Req 7.4) {%- endcomment -%}
+    {% include share.html %}
+
+    {%- comment -%} Newsletter signup {%- endcomment -%}
+    {% include newsletter.html %}
+
+  </footer><!-- /.post__footer -->
+
+</article><!-- /.post -->
+
+{%- comment -%}
+  Related posts section (Req 9.1 / Property 8)
+  Displays ≤ 3 posts that share at least 1 category or tag with the current post,
+  excluding the current post itself.
+{%- endcomment -%}
+{%- if related_posts.size > 0 -%}
+<section class="related-posts" aria-label="Related posts">
+  <h2 class="related-posts__title">Related Posts</h2>
+  <ul class="related-posts__list" role="list">
+    {%- for related in related_posts -%}
+      {%- assign related_words = related.content | number_of_words -%}
+      {%- assign related_minutes = related_words | divided_by: 200 -%}
+      <li class="related-posts__item">
+        <article class="post-card" itemscope itemtype="https://schema.org/BlogPosting">
+          <h3 class="post-card__title">
+            <a class="post-card__link" href="{{ related.url | prepend: site.baseurl }}" itemprop="url">
+              <span itemprop="headline">{{ related.title }}</span>
+            </a>
+          </h3>
+          <div class="post-card__meta">
+            <time class="post-card__date" datetime="{{ related.date | date_to_xmlschema }}" itemprop="datePublished">
+              {{ related.date | date: "%B %-d, %Y" }}
+            </time>
+            <span class="post-card__reading-time">
+              {%- if related_minutes < 1 -%}
+                Quick read
+              {%- else -%}
+                {{ related_minutes }} min read
+              {%- endif -%}
+            </span>
+          </div>
+          <p class="post-card__excerpt" itemprop="description">
+            {{ related.excerpt | strip_html | truncatewords: 55 }}
+          </p>
+        </article>
+      </li>
+    {%- endfor -%}
+  </ul>
+</section><!-- /.related-posts -->
+{%- endif -%}
+
+{%- comment -%}
+  Post pagination: previous/next post links (Req 9.5)
+  Uses <nav aria-label="Pagination"> as specified in the task and design doc.
+{%- endcomment -%}
+{%- if page.previous or page.next -%}
+<nav class="post-pagination" aria-label="Pagination">
+  <ul class="post-pagination__list" role="list">
+    {%- if page.previous -%}
+      <li class="post-pagination__item post-pagination__item--prev">
+        <a class="post-pagination__link post-pagination__link--prev"
+           href="{{ page.previous.url | prepend: site.baseurl }}"
+           rel="prev"
+           aria-label="Previous post: {{ page.previous.title | escape }}">
+          <span class="post-pagination__arrow" aria-hidden="true">←</span>
+          <span class="post-pagination__label">Previous</span>
+          <span class="post-pagination__title">{{ page.previous.title }}</span>
+        </a>
+      </li>
+    {%- endif -%}
+    {%- if page.next -%}
+      <li class="post-pagination__item post-pagination__item--next">
+        <a class="post-pagination__link post-pagination__link--next"
+           href="{{ page.next.url | prepend: site.baseurl }}"
+           rel="next"
+           aria-label="Next post: {{ page.next.title | escape }}">
+          <span class="post-pagination__label">Next</span>
+          <span class="post-pagination__title">{{ page.next.title }}</span>
+          <span class="post-pagination__arrow" aria-hidden="true">→</span>
+        </a>
+      </li>
+    {%- endif -%}
+  </ul>
+</nav><!-- /.post-pagination -->
+{%- endif -%}

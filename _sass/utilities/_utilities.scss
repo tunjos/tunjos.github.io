@@ -1,0 +1,64 @@
+// =============================================================================
+// _sass/utilities/_utilities.scss
+// Single-property utility helper classes — prefixed with u-
+// !important is intentional and permitted in utility classes (Req 3.6)
+// Each class applies exactly one CSS property (or sr-only group).
+// =============================================================================
+
+// Visually hidden but accessible to screen readers
+.u-sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+// Reveal visually-hidden element on keyboard focus
+.u-sr-only-focusable:focus,
+.u-sr-only-focusable:focus-within {
+  position: static !important;
+  width: auto !important;
+  height: auto !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: visible !important;
+  clip: auto !important;
+  white-space: normal !important;
+}
+
+// Text truncation with ellipsis
+.u-truncate {
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+
+// Prevent body scroll when modal/drawer is open
+.u-no-scroll {
+  overflow: hidden !important;
+}
+
+// Display utilities
+.u-hidden { display: none !important; }
+.u-block  { display: block !important; }
+.u-flex   { display: flex !important; }
+
+// Text utilities
+.u-text-muted  { color: var(--color-text-muted) !important; }
+.u-text-small  { font-size: var(--font-size-sm) !important; }
+.u-text-center { text-align: center !important; }
+
+// SVG sprite container: hidden from layout and assistive tech (Req 1.3, 1.7)
+// Replaces inline style="display:none;..." on the <svg> element in icon-sprite.html
+.svg-sprite {
+  display: none !important;
+  position: absolute !important;
+  width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+}

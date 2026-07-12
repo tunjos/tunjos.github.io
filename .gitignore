@@ -2,3 +2,13 @@ _drafts/
 _site/
 *~
 _config_template.yml
+
+# Sass compiler cache
+.sass-cache/
+
+# Node dependencies and build artifacts
+node_modules/
+assets/js/main.js
+
+# Local editor settings
+.vscode/

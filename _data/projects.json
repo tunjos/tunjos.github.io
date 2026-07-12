@@ -22,6 +22,72 @@
 		"tags": ["AnyStack", "ComingSoon"]
 	},
 	{
+		"name": "Mindful LinkedIn",
+		"cover_thumbnail": "placeholder.jpg",
+		"cover_image": "placeholder.jpg",
+		"cover_title": "Future Project",
+		"fancybox_class": "mindful-linkedin",
+		"images": [
+				{
+					"image": "placeholder.jpg",
+					"thumbnail": "placeholder.jpg",
+					"title": "Title"
+				},
+				{
+					"image": "placeholder.jpg",
+					"thumbnail": "placeholder.jpg",
+					"title": "Title"
+				}
+				],
+		"url": "#",
+		"date": "Jan 2022",
+		"tags": ["AnyStack", "ComingSoon"]
+	},
+	{
+		"name": "Mindful Google™",
+		"cover_thumbnail": "placeholder.jpg",
+		"cover_image": "placeholder.jpg",
+		"cover_title": "Future Project",
+		"fancybox_class": "mindful-google",
+		"images": [
+				{
+					"image": "placeholder.jpg",
+					"thumbnail": "placeholder.jpg",
+					"title": "Title"
+				},
+				{
+					"image": "placeholder.jpg",
+					"thumbnail": "placeholder.jpg",
+					"title": "Title"
+				}
+				],
+		"url": "#",
+		"date": "Nov 2021",
+		"tags": ["AnyStack", "ComingSoon"]
+	},
+	{
+		"name": "Mindful Twitter™",
+		"cover_thumbnail": "placeholder.jpg",
+		"cover_image": "placeholder.jpg",
+		"cover_title": "Future Project",
+		"fancybox_class": "mindful-twitter",
+		"images": [
+				{
+					"image": "placeholder.jpg",
+					"thumbnail": "placeholder.jpg",
+					"title": "Title"
+				},
+				{
+					"image": "placeholder.jpg",
+					"thumbnail": "placeholder.jpg",
+					"title": "Title"
+				}
+				],
+		"url": "#",
+		"date": "Feb 2018",
+		"tags": ["AnyStack", "ComingSoon"]
+	},
+	{
 		"name": "GetCountryCodes",
 		"cover_thumbnail": "placeholder.jpg",
 		"cover_image": "placeholder.jpg",

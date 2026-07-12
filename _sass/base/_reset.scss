@@ -1,0 +1,100 @@
+// =============================================================================
+// _sass/base/_reset.scss
+// Modern CSS Reset
+// Normalizes browser defaults for consistent cross-browser rendering
+// =============================================================================
+
+// Apply border-box sizing to all elements including pseudo-elements
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+// Remove default margin and padding from all elements
+* {
+  margin: 0;
+  padding: 0;
+}
+
+// Set consistent root font size; allow user zoom
+html {
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+// Normalize body defaults
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeSpeed;
+}
+
+// Improve media defaults
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+// Remove built-in form typography styles
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+// Avoid text overflows
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+// Remove list styles — use class to restore when needed
+ul,
+ol {
+  list-style: none;
+}
+
+// Remove anchor underlines by default — restored explicitly where needed
+a {
+  text-decoration-skip-ink: auto;
+}
+
+// Normalize table rendering
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+// Remove default button appearance
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+// Normalize horizontal rule
+hr {
+  border: none;
+  border-top: 1px solid currentColor;
+}
+
+// Ensure hidden elements stay hidden
+[hidden] {
+  display: none !important;
+}

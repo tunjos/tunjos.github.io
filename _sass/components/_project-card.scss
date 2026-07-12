@@ -1,0 +1,206 @@
+// =============================================================================
+// _sass/components/_project-card.scss
+// Project Grid Card Component
+// BEM naming: .project-grid, .project-card, .project-card__*
+//             .projects-page, .projects-page__resume
+// No hard-coded values — all design tokens via CSS Custom Properties.
+// Note: thumbnail <img> elements should include loading="lazy" decoding="async"
+//       and explicit width/height attributes in HTML to prevent layout shift.
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// .projects-page — Top-level wrapper for the project layout page
+// Provides consistent padding and spacing around the grid and resume link.
+// -----------------------------------------------------------------------------
+.projects-page {
+  padding: var(--space-6) var(--space-4);
+
+  @include mq('md') {
+    padding: var(--space-8) var(--space-6);
+  }
+}
+
+// -----------------------------------------------------------------------------
+// .projects-page__resume — Resume link row above the project grid
+// Sits between the page intro content and the tag filter / project grid.
+// -----------------------------------------------------------------------------
+.projects-page__resume {
+  margin-bottom: var(--space-6);
+
+  a {
+    // Inherits .project-card__btn styles; no extra overrides needed.
+  }
+}
+
+
+// -----------------------------------------------------------------------------
+// .project-grid — CSS Grid container for all project cards
+// Mobile-first: single column → 2 columns at md breakpoint
+// -----------------------------------------------------------------------------
+.project-grid {
+  display: grid;
+  gap: var(--space-6);
+  grid-template-columns: 1fr;
+
+  @include mq('md') {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+// -----------------------------------------------------------------------------
+// .project-card — Card block
+// Uses CSS Container Queries so inner elements can adapt to card width
+// independently of the viewport.
+// -----------------------------------------------------------------------------
+.project-card {
+  container-type: inline-size;
+  container-name: project-card;
+  contain: layout style;
+
+  background-color: var(--color-bg-subtle);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition:
+    box-shadow var(--transition-fast),
+    transform var(--transition-fast);
+
+  &:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+  }
+}
+
+// -----------------------------------------------------------------------------
+// .project-card__thumb-link — Anchor wrapping the thumbnail
+// Clips the scale transform on hover so it doesn't bleed outside the card.
+// -----------------------------------------------------------------------------
+.project-card__thumb-link {
+  display: block;
+  overflow: hidden;
+
+  &:hover .project-card__thumb {
+    transform: scale(1.03);
+    transition: transform 300ms ease;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// .project-card__thumb — Thumbnail <img> element
+// Add loading="lazy" and explicit width/height in HTML to prevent layout shift.
+// -----------------------------------------------------------------------------
+.project-card__thumb {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background-color: var(--color-bg-elevated);
+  transition: transform 300ms ease;
+}
+
+// -----------------------------------------------------------------------------
+// .project-card__body — Inner padding wrapper for all textual content
+// -----------------------------------------------------------------------------
+.project-card__body {
+  padding: var(--space-4) var(--space-6) var(--space-6);
+}
+
+// -----------------------------------------------------------------------------
+// .project-card__title — Card heading
+// -----------------------------------------------------------------------------
+.project-card__title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-heading);
+  margin-bottom: var(--space-2);
+  line-height: var(--line-height-heading);
+
+  a {
+    color: var(--color-text);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--color-accent);
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// .project-card__description — Supporting text / summary
+// -----------------------------------------------------------------------------
+.project-card__description {
+  font-size: var(--font-size-md);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-4);
+}
+
+// -----------------------------------------------------------------------------
+// .project-card__tags — Inline tag list
+// -----------------------------------------------------------------------------
+.project-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+}
+
+// -----------------------------------------------------------------------------
+// .project-card__actions — CTA button row
+// -----------------------------------------------------------------------------
+.project-card__actions {
+  display: flex;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+  flex-wrap: wrap;
+}
+
+// -----------------------------------------------------------------------------
+// .project-card__date — Project timeline / date badge
+// Displayed inline alongside action buttons in the card footer row.
+// -----------------------------------------------------------------------------
+.project-card__date {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  align-self: center;
+  margin-left: auto; // push to the right side of the actions flex row
+  white-space: nowrap;
+}
+
+// -----------------------------------------------------------------------------
+// .project-card__btn — Action button / link
+// Modifier: .project-card__btn--secondary (outlined, transparent background)
+// -----------------------------------------------------------------------------
+.project-card__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-2) var(--space-4);
+
+  background-color: var(--color-accent);
+  color: var(--color-text-inverse);
+  border-radius: var(--border-radius-sm);
+  border: none;
+  cursor: pointer;
+
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-heading);
+  text-decoration: none;
+
+  transition: background-color var(--transition-fast);
+
+  &:hover {
+    background-color: var(--color-accent-hover);
+    color: var(--color-text-inverse);
+  }
+
+  // --secondary modifier: transparent background, accent text, bordered
+  &--secondary {
+    background-color: transparent;
+    color: var(--color-accent);
+    border: 1px solid var(--color-border);
+
+    &:hover {
+      background-color: var(--color-bg-elevated);
+      color: var(--color-accent);
+    }
+  }
+}

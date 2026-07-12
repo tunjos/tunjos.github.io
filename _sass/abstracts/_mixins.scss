@@ -1,0 +1,59 @@
+// =============================================================================
+// _sass/abstracts/_mixins.scss
+// Reusable Sass Mixins
+// =============================================================================
+
+// Breakpoint map for responsive design (mobile-first approach)
+$breakpoints: (
+  'sm':  480px,
+  'md':  768px,
+  'lg':  1024px,
+  'xl':  1280px,
+  '2xl': 1536px
+);
+
+// -----------------------------------------------------------------------------
+// Media Query Mixin
+// Usage: @include mq('md') { ... }
+// Applies min-width media query for mobile-first responsive design
+// -----------------------------------------------------------------------------
+@mixin mq($bp) {
+  @if map-has-key($breakpoints, $bp) {
+    @media screen and (min-width: map-get($breakpoints, $bp)) {
+      @content;
+    }
+  } @else {
+    @warn "Breakpoint '#{$bp}' not found in $breakpoints map.";
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Touch Target Mixin
+// Ensures interactive elements meet the 44×44 CSS pixel minimum
+// Applies to buttons, links, and other tappable elements
+// Usage: @include touch-target;
+// -----------------------------------------------------------------------------
+@mixin touch-target {
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// -----------------------------------------------------------------------------
+// Visually Hidden Helper
+// Hides content visually but keeps it accessible to screen readers
+// Usage: @include visually-hidden;
+// -----------------------------------------------------------------------------
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

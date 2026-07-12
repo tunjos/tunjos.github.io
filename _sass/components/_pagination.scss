@@ -1,0 +1,131 @@
+// =============================================================================
+// _sass/components/_pagination.scss
+// Pagination Controls Component
+// BEM naming: .pagination, .pagination__list, .pagination__item,
+//             .pagination__link, .pagination__link--prev, .pagination__link--next,
+//             .pagination__link--active, .pagination__link--disabled
+// No hard-coded values — all design tokens via CSS Custom Properties.
+// Requirements: 7.7, 9.5, 2.10
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// .pagination — Outer <nav aria-label="Pagination"> wrapper
+// Provides consistent vertical spacing above and below the control row.
+// -----------------------------------------------------------------------------
+.pagination {
+  margin-top: var(--space-8);
+  margin-bottom: var(--space-8);
+}
+
+// -----------------------------------------------------------------------------
+// .pagination__list — <ol> / <ul> holding page items
+// Horizontal flex row, centred, with equal gap between items.
+// list-style removed so bullets do not appear.
+// -----------------------------------------------------------------------------
+.pagination__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+// -----------------------------------------------------------------------------
+// .pagination__item — Individual list item wrapper
+// Inline-flex so height matches the tallest sibling automatically.
+// -----------------------------------------------------------------------------
+.pagination__item {
+  display: inline-flex;
+}
+
+// -----------------------------------------------------------------------------
+// .pagination__link — <a> or <span> for each page control
+// Meets the 44×44 CSS px touch-target minimum (Req 2.10).
+// Token-based colors; hover/focus transitions ≤ 150ms.
+// focus-visible ring for keyboard accessibility (Req 7.2).
+// Border-radius: var(--border-radius-sm) = 4px (Req 10.3).
+// -----------------------------------------------------------------------------
+.pagination__link {
+  @include touch-target;
+
+  // Visual padding inside the touch target
+  padding: var(--space-1) var(--space-3);
+
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-body);
+  line-height: 1.4;
+  white-space: nowrap;
+  text-decoration: none;
+
+  color: var(--color-accent);
+  background-color: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-sm); /* 4px */
+
+  cursor: pointer;
+  user-select: none;
+
+  transition:
+    color var(--transition-fast),
+    background-color var(--transition-fast),
+    border-color var(--transition-fast);
+
+  // Hover state — accent bg, inverse text (Req 8.7 ≤ 150ms)
+  &:hover {
+    color: var(--color-text-inverse);
+    background-color: var(--color-accent-hover);
+    border-color: var(--color-accent-hover);
+  }
+
+  // Focus-visible ring — keyboard accessibility (Req 7.2)
+  &:focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+
+  // --active modifier: current page — filled accent background
+  &--active {
+    color: var(--color-text-inverse);
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+    cursor: default;
+    pointer-events: none; // prevent click on active page
+    // aria-current="page" is set in the HTML template, not in CSS
+
+    &:hover {
+      background-color: var(--color-accent);
+      border-color: var(--color-accent);
+    }
+  }
+
+  // --disabled modifier: no prev/next page available — muted, non-interactive
+  &--disabled {
+    color: var(--color-text-muted);
+    background-color: transparent;
+    border-color: var(--color-border);
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: 0.5;
+
+    &:hover {
+      color: var(--color-text-muted);
+      background-color: transparent;
+      border-color: var(--color-border);
+    }
+  }
+
+  // --prev / --next modifiers: directional links with arrow labels
+  // Labels are "← Previous" / "Next →" per Req 9.5
+  &--prev,
+  &--next {
+    font-weight: 500;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Responsive: on very small viewports stack if needed; gap already handles wrapping.
+// No additional breakpoint overrides required — flex-wrap handles reflow.
+// -----------------------------------------------------------------------------

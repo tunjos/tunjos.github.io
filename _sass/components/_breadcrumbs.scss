@@ -1,0 +1,106 @@
+// =============================================================================
+// _sass/components/_breadcrumbs.scss
+// Breadcrumb Navigation Component
+// BEM naming: .breadcrumbs, .breadcrumbs__list, .breadcrumbs__item,
+//             .breadcrumbs__item--current, .breadcrumbs__link,
+//             .breadcrumbs__current
+// No hard-coded values — all design tokens via CSS Custom Properties.
+// Schema.org BreadcrumbList microdata attributes are set in the HTML template.
+// Requirements: 7.7, 8.3
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// .breadcrumbs — Outer <nav aria-label="Breadcrumb"> wrapper
+// Provides bottom margin to separate it from the page content below.
+// -----------------------------------------------------------------------------
+.breadcrumbs {
+  margin-bottom: var(--space-6);
+}
+
+// -----------------------------------------------------------------------------
+// .breadcrumbs__list — <ol> containing breadcrumb items
+// Horizontal flex row, wraps on narrow viewports.
+// list-style removed; no bullets.
+// -----------------------------------------------------------------------------
+.breadcrumbs__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+// -----------------------------------------------------------------------------
+// .breadcrumbs__item — Individual <li> for each breadcrumb step
+// A chevron separator is injected via CSS after every non-last item.
+// -----------------------------------------------------------------------------
+.breadcrumbs__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+
+  // Separator between items — "/" character, muted color
+  &:not(:last-child)::after {
+    content: '/';
+    color: var(--color-border);
+    // Prevent the separator from being read by screen readers (it's decorative)
+    // The aria-label on the nav provides full context
+    speak: never; // legacy property
+  }
+
+  // --current modifier: applied to the last item (current page)
+  &--current {
+    font-weight: 500;
+    color: var(--color-text);
+  }
+}
+
+// -----------------------------------------------------------------------------
+// .breadcrumbs__link — <a> for ancestor breadcrumb links
+// Muted color by default; accent on hover; focus-visible ring for keyboard nav.
+// No touch-target mixin here — breadcrumbs are inline text links, not buttons.
+// -----------------------------------------------------------------------------
+.breadcrumbs__link {
+  color: var(--color-text-muted);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+
+  &:hover {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  // Focus-visible ring — keyboard accessibility (Req 7.2)
+  &:focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 2px;
+    border-radius: var(--border-radius-sm); /* 4px — consistent with other components */
+  }
+}
+
+// -----------------------------------------------------------------------------
+// .breadcrumbs__current — <span> for the current page label (non-link)
+// Truncated on narrow viewports to prevent overflow.
+// aria-current="page" is set in the HTML template.
+// -----------------------------------------------------------------------------
+.breadcrumbs__current {
+  color: var(--color-text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 200px;
+
+  // On larger viewports allow more room for the title
+  @include mq('md') {
+    max-width: 400px;
+  }
+
+  @include mq('lg') {
+    max-width: 60ch;
+  }
+}

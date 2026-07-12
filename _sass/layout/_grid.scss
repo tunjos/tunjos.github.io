@@ -1,0 +1,133 @@
+// =============================================================================
+// _sass/layout/_grid.scss
+// Site-Level CSS Grid Layout
+//
+// Implements the two-zone responsive layout:
+//   • Mobile (default): single column — header / main / footer stacked
+//   • Tablet (768px–1023px): single column with 24px horizontal padding (covered
+//     by the default .site-main padding below)
+//   • Desktop (≥ 1024px): sidebar + main area side-by-side, footer below main
+//
+// References:
+//   Req 2.1  — mobile-first min-width media queries
+//   Req 2.3  — single column below 768px
+//   Req 2.6  — CSS Grid for main page layout
+//   Req 2.7  — prevent horizontal scrolling on all viewport sizes
+//   Req 3.1  — CSS Grid for sidebar + content arrangement
+//   Req 10.1 — minimum 24px spacing between major page sections
+//   Req 10.8 — smooth scrolling via scroll-behavior: smooth
+//
+// Dependencies (imported before this file via main.scss):
+//   abstracts/_tokens.scss   — CSS Custom Properties (--sidebar-width, etc.)
+//   abstracts/_mixins.scss   — mq() breakpoint mixin
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Global base resets — layout-specific additions
+//
+// Note: box-sizing: border-box inheritance and scroll-behavior: smooth are
+// already set in _sass/base/_reset.scss. The rules below add overflow-x
+// containment which is specific to this layout concern.
+// -----------------------------------------------------------------------------
+
+// Prevent horizontal scrolling at the document root level (Req 2.7)
+// Accepted values: visible | hidden | clip | scroll | auto
+html {
+  overflow-x: hidden;
+  // scroll-behavior: smooth is already set in _reset.scss (Req 10.8)
+}
+
+// Prevent horizontal scrolling on the body as well (Req 2.7)
+// Accepted values: visible | hidden | clip | scroll | auto
+body {
+  overflow-x: hidden;
+}
+
+// -----------------------------------------------------------------------------
+// .site-layout — top-level CSS Grid container
+//
+// Acts as the direct child of <body> and establishes the page's grid context.
+// Mobile-first: single column with named grid areas.
+// Desktop (≥ 1024px): two-column sidebar + content arrangement.
+// -----------------------------------------------------------------------------
+.site-layout {
+  display: grid;
+
+  // Mobile layout: stacked single column (Req 2.3)
+  // Accepted values: named grid-area strings
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+
+  // Single fluid column on mobile
+  // Accepted values: valid CSS track sizing
+  grid-template-columns: 1fr;
+
+  // Ensure the layout fills at least the full viewport height.
+  // dvh accounts for dynamic browser UI chrome on mobile (Req 2.6)
+  // Accepted values: positive CSS length — dvh preferred for mobile browser UI
+  min-height: 100dvh;
+
+  // Desktop layout (≥ 1024px): sidebar on left, main + footer on right (Req 3.1)
+  @include mq('lg') {
+    // Sidebar occupies both rows on the left; main and footer stack on the right
+    // Accepted values: named grid-area strings
+    grid-template-areas:
+      "header main"
+      "header footer";
+
+    // Fixed sidebar width token + fluid content column
+    // Accepted values: var() references to layout tokens (Req 3.3 — no hard-coded values)
+    grid-template-columns: var(--sidebar-width) 1fr;
+
+    // Content row grows to fill space; footer row shrinks to its natural height
+    // Accepted values: valid CSS track sizing
+    grid-template-rows: 1fr auto;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Grid area assignments for direct children of .site-layout
+//
+// These BEM block names are referenced in _layouts/default.html:
+//   <header class="site-header">  — sidebar navigation (desktop) / top bar (mobile)
+//   <main   class="site-main">    — primary content region
+//   <footer class="site-footer">  — page footer, below main content
+//
+// BEM methodology: block names only at this structural level (Req 3.7)
+// -----------------------------------------------------------------------------
+
+// Sidebar / top navigation bar
+// Accepted values: matches the named area "header" in .site-layout
+.site-header {
+  grid-area: header;
+}
+
+// Primary content area
+// Accepted values: matches the named area "main" in .site-layout
+.site-main {
+  grid-area: main;
+
+  // Prevent grid blowout — long words or wide content won't overflow the column
+  // Accepted values: any valid CSS length; 0 enables grid track shrinking
+  min-width: 0;
+
+  // Mobile / tablet padding — 32px top/bottom, 24px sides (Req 10.1)
+  // Tablet (768px–1023px) inherits this value, satisfying the ≥ 24px horizontal
+  // padding requirement without a separate breakpoint block.
+  // Accepted values: var() references to spacing tokens
+  padding: var(--space-8) var(--space-6);
+
+  // Tablet and above (≥ 768px): equal 32px padding on all sides
+  // Accepted values: var() reference to spacing token
+  @include mq('md') {
+    padding: var(--space-8);
+  }
+}
+
+// Page footer
+// Accepted values: matches the named area "footer" in .site-layout
+.site-footer {
+  grid-area: footer;
+}

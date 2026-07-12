@@ -1,0 +1,202 @@
+// =============================================================================
+// _sass/components/_theme-toggle.scss
+// Dark / Light Mode Toggle Button — BEM block: .theme-toggle
+//
+// The toggle button is a fixed-position control rendered in default.html as:
+//   <button class="theme-toggle" aria-label="Switch to dark mode"
+//           aria-pressed="false" type="button">
+//     <svg class="theme-toggle__icon theme-toggle__icon--sun"  aria-hidden="true" focusable="false">…</svg>
+//     <svg class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true" focusable="false">…</svg>
+//   </button>
+//
+// Behaviour:
+//   • Shows a sun icon in light mode and a moon icon in dark mode.
+//   • theme.js sets [data-theme="dark"] on <html> and aria-pressed="true"
+//     on the button when dark mode is active.
+//   • Icon swap is handled purely via CSS — no JS DOM manipulation needed.
+//   • Colour and background transitions complete within 300ms (Req 4.5).
+//
+// Touch target:
+//   The touch-target mixin enforces min 44×44 CSS pixels (Req 2.10, 4.3).
+//
+// Requirements addressed:
+//   Req 4.1  — visible toggle with distinct icon for current mode
+//   Req 4.3  — ≥ 44×44 CSS px touch target; icon distinguishes current mode
+//   Req 4.5  — transition: color 300ms, background-color 300ms (≤ 300ms)
+//   Req 4.6  — WCAG AA contrast maintained via token values
+//
+// Dependencies (imported before this file in main.scss cascade):
+//   abstracts/_tokens.scss — CSS Custom Properties
+//   abstracts/_mixins.scss — touch-target, mq
+// =============================================================================
+
+
+// =============================================================================
+// Block: .theme-toggle
+// =============================================================================
+.theme-toggle {
+  // -------------------------------------------------------------------------
+  // Touch target — 44×44 CSS px minimum (Req 4.3, Req 2.10)
+  // The mixin sets: min-width, min-height, display: inline-flex,
+  // align-items: center, justify-content: center.
+  // -------------------------------------------------------------------------
+  @include touch-target;
+
+  // Explicit size so the rendered area is always exactly 44×44
+  width: 44px;
+  height: 44px;
+
+  // -------------------------------------------------------------------------
+  // Positioning — fixed in the top-right corner of the viewport so it is
+  // always reachable regardless of scroll position.
+  // z-index sits above content but below the nav drawer overlay (z-index: 200).
+  // -------------------------------------------------------------------------
+  position: fixed;
+  top: var(--space-4);          /* 16px from top */
+  right: var(--space-4);        /* 16px from right */
+  z-index: 150;
+
+  // -------------------------------------------------------------------------
+  // Visual appearance — token-based so it adapts to both themes
+  // -------------------------------------------------------------------------
+  background-color: var(--color-bg-subtle);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 0;
+
+  // -------------------------------------------------------------------------
+  // Transitions — colour and background-color complete within 300ms (Req 4.5)
+  // will-change added per Req 3.4 (only on elements with active CSS transitions)
+  // -------------------------------------------------------------------------
+  transition:
+    color 300ms ease,
+    background-color 300ms ease,
+    border-color 300ms ease,
+    box-shadow var(--transition-fast);
+
+  will-change: color, background-color;
+
+  // -------------------------------------------------------------------------
+  // Hover state — elevated bg tint, accent border (Req 8.7: ≤ 150ms)
+  // -------------------------------------------------------------------------
+  &:hover {
+    background-color: var(--color-bg-elevated);
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  // -------------------------------------------------------------------------
+  // Focus ring — visible keyboard indicator (Req 7.2, Req 7.5)
+  // Uses box-shadow so border-radius is preserved (outline has squared corners
+  // in some browsers on border-radius elements).
+  // -------------------------------------------------------------------------
+  &:focus-visible {
+    outline: none;
+    box-shadow: var(--shadow-focus);
+    border-color: var(--color-accent);
+  }
+
+  // -------------------------------------------------------------------------
+  // Active (pressed) state — slight scale-down for tactile feedback
+  // -------------------------------------------------------------------------
+  &:active {
+    transform: scale(0.92);
+  }
+
+
+  // ===========================================================================
+  // Element: __icon
+  // The SVG icon inside the button.
+  // Two icons are rendered in HTML; CSS shows/hides the correct one based on
+  // the current theme via the --sun / --moon modifier classes.
+  // ===========================================================================
+  &__icon {
+    display: block;
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    flex-shrink: 0;
+    // Icons transition opacity/transform for a smooth swap (≤ 300ms)
+    transition:
+      opacity 300ms ease,
+      transform 300ms ease;
+  }
+
+
+  // ===========================================================================
+  // Element: __icon--sun
+  // Visible in LIGHT mode (default / aria-pressed="false").
+  // Hidden in dark mode.
+  // ===========================================================================
+  &__icon--sun {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+
+  &__icon--moon {
+    // In light mode the moon icon is hidden and rotated slightly off-centre
+    // so it appears to "fly in" when dark mode is activated.
+    position: absolute;
+    opacity: 0;
+    transform: scale(0.6) rotate(-30deg);
+  }
+
+
+  // ===========================================================================
+  // Dark mode state — [aria-pressed="true"] (set by theme.js)
+  // In dark mode show the moon and hide the sun.
+  // ===========================================================================
+  &[aria-pressed="true"] {
+    // Update background/text to match the dark surface tokens
+    background-color: var(--color-bg-subtle);
+    border-color: var(--color-border);
+    color: var(--color-text);
+
+    // Show moon, hide sun
+    .theme-toggle__icon--sun {
+      opacity: 0;
+      transform: scale(0.6) rotate(30deg);
+    }
+
+    .theme-toggle__icon--moon {
+      opacity: 1;
+      transform: scale(1) rotate(0deg);
+      position: static; // restore normal flow when visible
+    }
+
+    &:hover {
+      background-color: var(--color-bg-elevated);
+      border-color: var(--color-accent);
+      color: var(--color-accent);
+    }
+  }
+
+
+  // ===========================================================================
+  // Responsive adjustments
+  // On desktop (≥ 1024px) the toggle moves further from the edge so it does
+  // not overlap the sidebar / sticky header.
+  // ===========================================================================
+  @include mq('lg') {
+    // On desktop shift to the main content area side — stays top-right but
+    // provides more clearance from the 260px sidebar.
+    top: var(--space-6);
+    right: var(--space-8);
+  }
+}
+
+
+// =============================================================================
+// Dark-theme specific label text (sr-only span complement)
+// If the template includes a visually-hidden <span class="theme-toggle__label">
+// element, its text content is updated via aria-label in JS.  No CSS needed,
+// but the selector is documented here for discoverability.
+//
+// .theme-toggle__label { @include visually-hidden; }
+// =============================================================================

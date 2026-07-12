@@ -1,11 +1,30 @@
 ---
 layout: default
 ---
-<div class="well">
-    {% if page.subtitle %}
-    <h4 class="home-subtitle">{{ page.subtitle }}</h4>
-    {% endif %}
-    <div>
-    	{{ content }}
-    </div>
-</div>
+{%- comment -%}
+  page.html — Generic page layout
+  Wraps arbitrary page content (About, Projects listing, CV, etc.) in a
+  semantic <main id="main-content"> with BEM class naming and an accessible
+  page header.
+  Requirements: 7.7, 9.3, 12.5
+{%- endcomment -%}
+
+<article class="page-content" aria-labelledby="page-heading">
+
+  <header class="page-content__header">
+    <h1 class="page-content__title" id="page-heading">{{ page.title }}</h1>
+
+    {%- if page.subtitle -%}
+      <p class="page-content__subtitle">{{ page.subtitle }}</p>
+    {%- endif -%}
+
+    {%- if page.description -%}
+      <p class="page-content__description">{{ page.description }}</p>
+    {%- endif -%}
+  </header><!-- /.page-content__header -->
+
+  <div class="page-content__body">
+    {{ content }}
+  </div><!-- /.page-content__body -->
+
+</article><!-- /.page-content -->

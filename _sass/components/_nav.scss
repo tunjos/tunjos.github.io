@@ -1,0 +1,321 @@
+// =============================================================================
+// _sass/components/_nav.scss
+// Site Navigation — BEM block: .site-nav
+//
+// Responsive behaviour:
+//   • Mobile / Tablet (< 1024px):
+//       – Hamburger toggle is visible; nav list is hidden by default.
+//       – When the toggle is activated, .site-nav--open is added to .site-nav
+//         and the list expands via a max-height transition (≤ 280ms).
+//       – JS removes [hidden] from the list BEFORE the CSS transition starts,
+//         so [hidden] must be overridden (display: block) to permit animation.
+//   • Desktop (≥ 1024px):
+//       – Hamburger toggle is hidden.
+//       – Nav list is always visible; max-height constraint removed.
+//
+// Requirements addressed:
+//   Req 2.2  — hamburger collapsed by default; expands within 300ms
+//   Req 2.10 — all touch targets ≥ 44×44 CSS px
+//   Req 4.5  — theme changes apply within 300ms via CSS transitions
+//   Req 8.1  — menu expand/collapse CSS transition ≤ 300ms
+//   Req 8.2  — visual indicator (background + left border) for active page
+//   Req 8.7  — CSS state change on hover within 150ms
+//
+// Dependencies (imported before this file via main.scss):
+//   abstracts/_tokens.scss — CSS Custom Properties
+//   abstracts/_mixins.scss — mq(), touch-target, visually-hidden
+// =============================================================================
+
+
+// =============================================================================
+// Block: .site-nav
+// =============================================================================
+.site-nav {
+  position: relative;
+
+  // On desktop the nav block is a flex column filling the full sidebar height.
+  @include mq('lg') {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+
+  // ===========================================================================
+  // Element: __author
+  // Author panel shown at the top of the sidebar on desktop.
+  // On mobile it is rendered above the toggle button inside the collapsible
+  // region — the layout collapses naturally because it is inside __list's
+  // parent container (see nav.html).
+  // ===========================================================================
+  &__author {
+    padding-bottom: var(--space-6);
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: var(--space-4);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+
+  // ===========================================================================
+  // Element: __avatar
+  // Circular author avatar image in the author panel.
+  // ===========================================================================
+  &__avatar {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: var(--space-4);
+  }
+
+
+  // ===========================================================================
+  // Element: __name
+  // Author display name in the author panel.
+  // ===========================================================================
+  &__name {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-heading);
+    line-height: var(--line-height-heading);
+    margin-bottom: var(--space-1);
+    color: var(--color-text);
+  }
+
+
+  // ===========================================================================
+  // Element: __bio
+  // Short author bio below the name in the author panel.
+  // ===========================================================================
+  &__bio {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    margin-bottom: 0;
+  }
+
+
+  // ===========================================================================
+  // Element: __toggle
+  // Hamburger button — visible on mobile/tablet (< 1024px), hidden on desktop.
+  //
+  // The touch-target mixin ensures the button meets the 44×44px minimum
+  // even though the visible bars area is smaller (Req 2.10).
+  // ===========================================================================
+  &__toggle {
+    @include touch-target;
+    background: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+    padding: var(--space-2);
+    border-radius: var(--border-radius-sm);
+    color: var(--color-text);
+
+    // Override display: inline-flex from mixin with flex so bars stack
+    // vertically inside the button.
+    flex-direction: column;
+    gap: 5px;
+
+    // Hover: subtle background tint (Req 8.7 — ≤ 150ms state change)
+    transition:
+      background-color var(--transition-fast),
+      border-color var(--transition-fast);
+
+    &:hover {
+      background-color: var(--color-bg-elevated);
+    }
+
+    // Keyboard focus ring (Req 7.2)
+    &:focus-visible {
+      outline: none;
+      box-shadow: var(--shadow-focus);
+      border-color: var(--color-accent);
+    }
+
+    // On desktop the toggle is unnecessary — the sidebar nav is always visible.
+    @include mq('lg') {
+      display: none;
+    }
+  }
+
+
+  // ===========================================================================
+  // Element: __toggle-bar
+  // Individual horizontal bar lines that make up the hamburger icon.
+  // All three bars transition together when the menu opens (bars → X).
+  // ===========================================================================
+  &__toggle-bar {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background-color: currentColor;
+    border-radius: 2px;
+    // Transform and opacity animate when the menu opens.
+    transition: transform 280ms ease, opacity 280ms ease;
+    // Prevent the bars from being a flex child that strays from the column.
+    align-self: center;
+  }
+
+
+  // ===========================================================================
+  // Modifier: --open (applied to .site-nav by nav.js when toggle is activated)
+  //
+  // 1. Expands the nav list via max-height transition.
+  // 2. Animates the three hamburger bars into an × (close icon).
+  // ===========================================================================
+  &--open {
+    // Expand the list (max-height technique lets us animate from 0 → visible).
+    // 800px is safely larger than any realistic nav list height.
+    .site-nav__list {
+      max-height: 800px;
+    }
+
+    // Rotate the first bar to form the top arm of the ×.
+    .site-nav__toggle-bar:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    // Hide the middle bar.
+    .site-nav__toggle-bar:nth-child(2) {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+
+    // Rotate the third bar to form the bottom arm of the ×.
+    .site-nav__toggle-bar:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+  }
+
+
+  // ===========================================================================
+  // Element: __list
+  // The <ul> containing all nav items.
+  //
+  // Mobile/tablet default: collapsed (max-height: 0, overflow: hidden).
+  // JS removes [hidden] from the element before triggering the transition;
+  // overriding [hidden]'s display: none here lets the transition run correctly.
+  //
+  // Desktop: constraint removed; list is always visible.
+  // ===========================================================================
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+
+    // Collapsed state (mobile/tablet default)
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 280ms ease-out;
+    will-change: max-height;
+
+    // Override the HTML [hidden] attribute so the max-height CSS animation
+    // can run. Without this, the browser's UA stylesheet keeps display: none
+    // and the transition never fires.
+    // Accepted values: block (overrides hidden's display: none)
+    &[hidden] {
+      display: block;
+    }
+
+    // Desktop: always visible, no height constraint.
+    @include mq('lg') {
+      max-height: none;
+      overflow: visible;
+
+      // Ensure the list is shown even if JS left [hidden] on it during a
+      // viewport resize from mobile to desktop.
+      &[hidden] {
+        display: flex;
+      }
+    }
+  }
+
+
+  // ===========================================================================
+  // Element: __item
+  // A single item in the nav list — no additional styles needed beyond
+  // the list gap; link styles are on __link below.
+  // ===========================================================================
+  &__item {
+    // No additional styles — gap is handled by __list's flex gap.
+  }
+
+
+  // ===========================================================================
+  // Element: __link
+  // The clickable anchor for each nav item.
+  //
+  // The touch-target mixin ensures every link meets the 44×44px minimum
+  // on mobile viewports (Req 2.10).
+  //
+  // Active state uses both a background tint AND a left accent border so
+  // the indicator is perceivable even without relying on color alone (Req 8.2).
+  // ===========================================================================
+  &__link {
+    @include touch-target;
+
+    // Override inline-flex direction from mixin: row so icon + text sit side-by-side.
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: var(--space-3);
+    width: 100%;
+
+    padding: var(--space-2) var(--space-3);
+    border-left: 3px solid transparent; // Reserve space; becomes accent on --active
+    border-radius: var(--border-radius-sm);
+    color: var(--color-text-muted);
+    text-decoration: none;
+    font-size: var(--font-size-md);
+
+    // Color and background transitions — complete within 150ms (Req 8.7)
+    transition:
+      background-color var(--transition-fast),
+      color var(--transition-fast),
+      border-color var(--transition-fast);
+
+    &:hover {
+      background-color: var(--color-bg-elevated);
+      color: var(--color-text);
+    }
+
+    // Keyboard focus ring (Req 7.2)
+    &:focus-visible {
+      outline: none;
+      box-shadow: var(--shadow-focus);
+    }
+
+    // -------------------------------------------------------------------------
+    // Modifier: --active
+    // Highlights the nav link corresponding to the current page (Req 8.2).
+    // Uses both a background change AND a left accent border so the indicator
+    // is not conveyed by color alone (improves accessibility).
+    // -------------------------------------------------------------------------
+    &--active {
+      background-color: var(--color-bg-elevated);
+      color: var(--color-accent);
+      font-weight: var(--font-weight-heading);
+      border-left-color: var(--color-accent);
+
+      // On hover, stay highlighted (don't revert to muted color).
+      &:hover {
+        color: var(--color-accent-hover);
+        border-left-color: var(--color-accent-hover);
+      }
+    }
+  }
+
+
+  // ===========================================================================
+  // Element: __icon
+  // SVG icon inside a nav link. Inherits currentColor from the link.
+  // ===========================================================================
+  &__icon {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+  }
+}

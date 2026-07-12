@@ -22,23 +22,32 @@ urls:
       icon: fa-book
     - text: Projects
       url: /projects/
-      icon: fa-desktop
+      icon: fa-briefcase
     - text: Tinypoke
-      url: 'https://tinypoke.co'
-      icon: fa-building-o
+      url: 'https://tinypoke.com'
+      icon: fa-desktop
       target: _blank
+    - text: Tinypoke Consulting
+      url: 'https://tinypoke.co'
+      icon: fa-chair
+      target: _blank      
     - text: Happydrip
       url: 'https://www.happydrip.com'
       icon: fa-smile-o
+      target: _blank
+    - text: AppReviewer
+      url: 'https://appreviewer.app'
+      icon: fa-mobile
+      target: _blank
+    - text: IdeaReviewer
+      url: 'https://ideareviewer.app'
+      icon: fa-lightbulb
       target: _blank
     - text: Github
       url: https://github.com/tunjos
       icon: fa-github
       target: _blank
     - text: Resume
-      url: '/assets/tunji_olu-taiwo_resume.pdf'
-      icon: fa-file-pdf-o
-    - text: CV
       url: '/assets/tunji_olu-taiwo_resume.pdf'
       icon: fa-file-pdf-o
     - text: XML Feed
@@ -92,4 +101,11 @@ twitter:
   card: summary
 lang: en_GB
 
-include: [".well-known"]
+include: [".well-known", "_tags"]
+
+sass:
+  style: compressed
+
+# Icon system: self-hosted SVG sprite (Font Awesome 6 subset, no CDN)
+# Set to true to inline icon-sprite.html at top of <body> via default.html
+icon_sprite: true

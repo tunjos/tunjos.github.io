@@ -1,247 +1,76 @@
 <!DOCTYPE html>
-<html>
-    <head>
-      {% seo %}
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="{{ site.lang | default: 'en' }}" data-theme="light">
+<head>
+  {% include head.html %}
+</head>
+<body class="page page--{{ page.layout }}">
 
-        <link rel="shortcut icon" href="/static/img/favicon.ico" />
-        <title>{% if page.title %}{{ page.title }} - {{ site.title }}{% else %}{{ site.author_name }}{% endif %}</title>
-        <meta name="author" content="{{ site.author_name }}" />
-        <meta name="description" content="{% if page.title %}{{ page.title }}{% else %}{{ site.description }}{% endif %}" />
-        <meta name="keywords" content="{{ site.author_name }}, {{ site.author }}, {{ site.plain_url }}, {{ site.plain_url2 }}, {% if page.title %}{{ page.title }}, {{ site.title }}, {% for categ in page.categories %}{{ categ }}{% if forloop.last == false %}, {% endif %}{% endfor %}{% else %}{{ site.title }}, {% for category in site.categories %}{% capture categories_slug %}{{ category | first }}{% endcapture %}{% for categ in categories_slug %}{{ categ }}{% endfor %}{% if forloop.last == false %}, {% endif %}{% endfor %}{% endif %}" />
+  <!-- Inline SVG sprite: first element in <body> so <use href="#icon-…"> references
+       resolve correctly on all browsers (Req 1.3, 1.7, 7.1) -->
+  {% if site.icon_sprite %}{% include icon-sprite.html %}{% endif %}
 
-        <meta content="{{ site.share.fb_appid }}" property="fb:app_id">
-        <!-- <meta content="{{ site.title }}" property="og:site_name"> -->
-        {% if page.title %}
-          <meta content="{{ page.title }}" property="og:title">
-        {% else %}
-          <meta content="{{ site.title }}" property="og:title">
-        {% endif %}
-        {% if page.title %}
-          <meta content="article" property="og:type">
-        {% else %}
-          <meta content="website" property="og:type">
-        {% endif %}
-        <!-- {% if page.description %}
-          <meta content="{{ page.description }}" property="og:description">
-        {% else %}
-          <meta content="{{ site.description }}" property="og:description">
-        {% endif %} -->
-        <!-- {% if page.url %}
-          <meta content="{{ site.url }}{{ page.url }}" property="og:url">
-        {% endif %} -->
-        {% if page.date %}
-          <meta content="{{ page.date | date_to_xmlschema }}" property="article:published_time">
-          <meta content="{{ site.url }}/about/" property="article:author">
-        {% endif %}
-        {% if page.image %}
-          <meta content="{{ site.url }}/assets/{{ page.image }}" property="og:image">
-        {% else %}
-          <meta content="{{ site.url }}/static/img/headshot1.jpg" property="og:image">
-        {% endif %}
-        {% if page.categories %}
-          {% for category in page.categories limit:1 %}
-          <meta content="{{ category }}" property="article:section">
-          {% endfor %}
-        {% endif %}
-        {% if page.tags %}
-          {% for tag in page.tags %}
-          <meta content="{{ tag }}" property="article:tag">
-          {% endfor %}
-        {% endif %}
-        <!-- <meta name="twitter:card" content="summary">
-        <meta name="twitter:site" content="@{{ site.share.twitter_username }}">
-        <meta name="twitter:creator" content="@{{ site.share.twitter_username }}"> -->
-        {% if page.title %}
-          <meta name="twitter:title" content="{{ page.title }}">
-        {% else %}
-          <meta name="twitter:title" content="{{ site.title }}">
-        {% endif %}
-        {% if page.url %}
-          <meta name="twitter:url" content="{{ site.url }}{{ page.url }}">
-        {% endif %}
-        {% if page.description %}
-          <meta name="twitter:description" content="{{ page.description }}">
-        {% else %}
-          <meta name="twitter:description" content="{{ site.description }}">
-        {% endif %}
-        {% if page.header-img %}
-          <meta name="twitter:image:src" content="{{ site.url }}/{{ page.header-img }}">
-        {% endif %}
+  <!-- Skip navigation link: first focusable element on every page (Req 7.3) -->
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
-        <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
-        <!-- Custom Fonts -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+  <!-- Theme toggle: persists chosen theme in localStorage (Req 4.1–4.8) -->
+  <button class="theme-toggle"
+          type="button"
+          aria-label="Toggle dark mode"
+          aria-pressed="false">
+    <!-- Sun icon (shown in dark mode to switch to light) -->
+    <svg class="theme-toggle__icon theme-toggle__icon--sun"
+         aria-hidden="true" focusable="false"
+         width="20" height="20" viewBox="0 0 24 24"
+         fill="none" stroke="currentColor"
+         stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1"  x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22"  x2="5.64"  y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1"  y1="12" x2="3"  y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22"  y1="19.78" x2="5.64"  y2="18.36"></line>
+      <line x1="18.36" y1="5.64"  x2="19.78" y2="4.22"></line>
+    </svg>
+    <!-- Moon icon (shown in light mode to switch to dark) -->
+    <svg class="theme-toggle__icon theme-toggle__icon--moon"
+         aria-hidden="true" focusable="false"
+         width="20" height="20" viewBox="0 0 24 24"
+         fill="none" stroke="currentColor"
+         stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+    </svg>
+  </button>
 
-        <!-- FontAwesome icons -->
-        <link rel="stylesheet" href="https://use.fontawesome.com/74dfc6cf47.css">
+  <!-- Site layout grid: header (sidebar) + main content + footer (Req 2.1, 3.1) -->
+  <div class="site-layout">
 
-        <!-- Core BootStrap CSS -->
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-        <!-- Material Design CSS -->
-        <link rel="stylesheet" href="{{ site.url }}/static/css/bootstrap-material-design.min.css">
+    <!-- Site header / sidebar: contains nav (Req 2.5, 8.8) -->
+    <header class="site-header" role="banner">
+      {% include nav.html %}
+    </header>
 
-        <!-- syntax highlighting CSS -->
-        <link rel="stylesheet" href="{{ site.url }}/static/css/syntax.css">
+    <!-- Main content area (Req 7.7) -->
+    <main id="main-content" class="site-main" role="main" tabindex="-1">
+      {{ content }}
+    </main>
 
-        <!-- Custom CSS -->
-        <link rel="stylesheet" href="{{ site.url }}/static/css/main.css">
-        <link rel="stylesheet" href="{{ site.url }}/static/css/projects.css">
-
-        <!-- fancyBox -->
-        <!-- Add fancyBox CSS files -->
-        <link rel="stylesheet" type="text/css" href="{{ site.url }}/static/css/fancyBox/source/jquery.fancybox.css?v=2.1.5" media="screen" />
-        <!-- Add Button helper (this is optional) -->
-      	<link rel="stylesheet" type="text/css" href="{{ site.url }}/static/css/fancyBox/source/helpers/jquery.fancybox-buttons.css?v=1.0.5" />
-        <!-- Add Thumbnail helper (this is optional) -->
-      	<link rel="stylesheet" type="text/css" href="{{ site.url }}/static/css/fancyBox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" />
-        {% include analytics.html %}
-    </head>
-
-    <body class="home overflow-hidden">
-    <!--[if lt IE 7]>
-    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
-        your browser</a> to improve your experience.</p>
-    <![endif]-->
-    <div class="header-panel shadow-z-2">
-    <div class="container">
-    <div class="row">
-            <div class="col-md-3 col-sm-4 col-xs-12">
-      <div class="row-picture">
-        <img id="about" class="logo-img" src="{{ site.logo }}" height="75px" width="75px">
-      </div>
-      <div class="row-details">
-      <h4 class="list-group-item-heading">{{ site.author_name }}</h4>
-      <p class="list-group-item-text">{{ site.about }}</p>
-      {% include social_links.html %}
-      </div>
-        <div class="navbar-header pull-right">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-              <span class="sr-only">Toggle navigation</span>
-              <i class="fa fa-2x fa-bars"></i>
-            </button>
-        </div>
-      </div>
-      <div class="col-md-9 col-sm-8 col-xs-12">
-      <h2 class="blog-title-pro">{{ page.title }}</h2>
-      <p class="info">
-      {% if page.date %}
-      <span class="time">{{ page.date | date_to_string | slice: 0,2 }}</span>
-      {% endif %}
-      {% if page.categories.size > 0 %}
-    <span class="categories">
-        &raquo; {% for category in page.categories %}<a href="{{ site.url }}/category/{{ category }}">{{ category }}</a>{% if forloop.last == false %}, {% endif %}{% endfor %}
-    </span>
-    {% endif %}
-{% if page.title == "Home" %}
-	{% for category in site.categories %}
-<span class="categories">
-<a href="{{ site.url }}/category/{{ category | first }}">{{ category | first }}</a>{% unless forloop.last %},{% endunless %}
-        {% endfor %}
-</span>
-{% endif %}
+    <!-- Site footer: dynamic copyright year, no third-party ad scripts (Req 10.5, 10.6) -->
+    <footer class="site-footer" role="contentinfo">
+      <p class="site-footer__copyright">
+        &copy; {{ site.author_name }}, {{ site.time | date: '%Y' }}.
+        Powered by <a href="https://jekyllrb.com" rel="noopener noreferrer">Jekyll</a>.
       </p>
-      </div>
-      </div>
-      </div>
-    </div>
-    <div class="container main outer">
-        <div class="row">
-            <div class="col-md-3 col-xs-12">
-                {% include sidemenu.html %}
-            </div> <!-- end /.col-md-3 -->
+    </footer>
 
-            <div class="col-md-9 col-xs-12 full">
-                {{ content }}
+  </div><!-- /.site-layout -->
 
-                <div class="row">
-                  <div class="col-md-12 col-xs-12 footer">
-                <footer>
-                    © Tunji Olu-Taiwo, <b>This Year</b>.
+  <!-- Back-to-top button: shown via JS when scrollY > 200px (Req 8.6) -->
+  {% include back-to-top.html %}
 
-                    - Powered by Jekyll. - Theme by <a href="https://github.com/ashutosh2k12/hcz-jekyll-blog">Ashutosh</a>
+  <!-- Deferred JavaScript bundle (Req 6.4) -->
+  {% include scripts.html %}
 
-                </footer>
-                <div align="center">
-                  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                  <!-- hcz-jekyll -->
-                  <ins class="adsbygoogle"
-                       style="display:block"
-                       data-ad-client="ca-pub-0776433630785969"
-                       data-ad-slot="9690958902"
-                       data-ad-format="auto"></ins>
-                  <script>
-                  (adsbygoogle = window.adsbygoogle || []).push({});
-                  </script>
-                </div>
-            </div>
-                </div>
-            </div> <!-- end /.col-md-9 -->
-        </div> <!-- end /.row -->
-
-    </div> <!-- end /.container -->
-
-        <!-- Bootstrap core JavaScript
-        ================================================== -->
-        <!-- Placed at the end of the document so the pages load faster -->
-
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
-        <script src="{{ site.url }}/static/js/material.min.js"></script>
-        <script src="{{ site.url }}/static/js/main.js"></script>
-        <script src="{{ site.url }}/static/js/projects.js"></script>
-
-        <!-- fancyBox -->
-        <!-- Add jQuery library -->
-      	<!-- <script type="text/javascript" src="{{ site.url }}/static/js/fancyBox/lib/jquery-1.10.2.min.js"></script> -->
-        <!-- Add mousewheel plugin (this is optional) -->
-      	<script type="text/javascript" src="{{ site.url }}/static/js/fancyBox/lib/jquery.mousewheel.pack.js?v=3.1.3"></script>
-        <!-- Add fancyBox main JS -->
-      	<script type="text/javascript" src="{{ site.url }}/static/js/fancyBox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-        <!-- Add Button helper (this is optional) -->
-      	<script type="text/javascript" src="{{ site.url }}/static/js/fancyBox/source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
-        <!-- Add Thumbnail helper (this is optional) -->
-      	<script type="text/javascript" src="{{ site.url }}/static/js/fancyBox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
-      	<!-- Add Media helper (this is optional) -->
-      	<script type="text/javascript" src="{{ site.url }}/static/js/fancyBox/source/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
-        <script type="text/javascript">
-        $(document).ready(function() {
-            {% for i in site.data.projects %}
-            $(".{{ i.fancybox_class }}").fancybox({
-                prevEffect	: 'none',
-                nextEffect	: 'none',
-                loop  : false,
-		            helpers	: {
-			               title	: {
-				                   type: 'float'
-			                  },
-			               thumbs	: {
-				                   width	: 50,
-				                   height	: 50
-			                  }
-		            }
-	          });
-            $("#btn-{{ i.fancybox_class }}").click(function(){
-                $(".{{ i.fancybox_class }}").first().trigger('click');
-                return false;
-            })
-            {% endfor %}
-            $(".resume").fancybox({
-                  maxWidth	  : 800,
-		              maxHeight	  : 600,
-		              fitToView	  : false,
-		              width		    : '95%',
-		              height		  : '95%',
-		              autoSize	  : false,
-		              closeClick	: false,
-		              openEffect	: 'none',
-		              closeEffect	: 'none'
-	          });
-        });
-        </script>
-    </body>
+</body>
 </html>

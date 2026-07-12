@@ -1,52 +1,162 @@
 ---
 layout: default
 ---
-<article class="post">
+<section class="page-content" aria-label="Projects">
 
-  <div class="post-content">
+  <div class="projects-page">
+    <h1 class="u-sr-only">{{ page.title }}</h1>
     {{ content }}
 
-    <div class="projects row">
-    {% include project_tags.html %}
-    {% for i in site.data.projects %}
-    <div class="project-item col-md-4 col-sm-6 col-xs-12" data-tags='{{ i.tags | jsonify | downcase }}'>
-    	<div class="well project-outer">
-    		<div class="project-inner">
-          <a class="{{ i.fancybox_class }}" rel="{{ i.fancybox_class }}" href="/static/projects/{{ i.cover_image }}" title="{{ i.cover_title }}">
-            <div class="project-img bordered" style="background-image: url('/static/projects/{{ i.cover_thumbnail }}');"></div>
-          </a>
-          <div class="project-images">
-            {% for image in i.images %}
-            <a class="{{ i.fancybox_class }}" rel="{{ i.fancybox_class }}" href="/static/projects/{{ image.thumbnail }}" title="{{ image.title }}">
-              <div class="project-img bordered" style="background-image: url('/static/projects/{{ image.image }}');"></div>
-            </a>
-            {% endfor %}
-          </div>
-                {% if i.url %} <a href="{{ i.url }}" target="_blank"> {% endif %}
-    			<h3 class="project-headlines">{{ i.name }}</h3>
-    			{% if i.url %} </a> {% endif %}
-    			<div class="project-content">
-    				<div class="tag-holder">
-    				{% if i.tags %}
-    					{% for j in i.tags %}
-    					<span class="label tags tag-filter" data-tag="{{ j | downcase }}">{{ j }}</span>
-    					{% endfor %}
-    				{% endif %}
-    				</div>
-
-    			</div>
-    			<div class="project-footer">
-    				<a href="#" id="btn-{{ i.fancybox_class }}" class="btn btn-info btn-raised btn-sm project-link">View</a>
-            {% if i.source_url %}
-    				<a href="{{ i.source_url }}" class="btn btn-info btn-raised btn-sm project-link" style="margin-left: 6px;">Source</a>
-    				{% endif %}
-    				<span class="project-timeline">{{ i.date }}</span>
-    			</div>
-    		</div>
-    	</div>
-        </div>
-    {% endfor %}
+    {%- comment -%}
+      Resume link — opens in the gallery iframe viewer (95vw × 95vh).
+      data-gallery-type="iframe" is detected by GalleryManager to render an
+      <iframe> instead of an <img>, sized to 95vw × 95vh (Req 1.5, 1.6).
+    {%- endcomment -%}
+    <div class="projects-page__resume">
+      <a
+        class="project-card__btn"
+        href="/assets/tunji_olu-taiwo_resume.pdf"
+        data-gallery="resume"
+        data-gallery-src="/assets/tunji_olu-taiwo_resume.pdf"
+        data-gallery-type="iframe"
+        data-gallery-title="Résumé — Tunji Olu-Taiwo"
+        aria-label="View résumé as PDF">
+        <svg class="site-nav__icon" aria-hidden="true" focusable="false">
+          <use href="#icon-file-pdf"></use>
+        </svg>
+        View Résumé
+      </a>
     </div>
-  </div>
 
-</article>
+    {%- comment -%}
+      Tag filter — rendered from _includes/project_tags.html.
+      Filter buttons carry data-tag="<tag>" and aria-pressed state.
+      The JS in main.js wires up click handlers that show/hide cards by
+      matching the card's data-tags attribute.
+    {%- endcomment -%}
+    {% include project_tags.html %}
+
+    <div
+      class="project-grid"
+      id="project-grid"
+      role="list"
+      aria-label="Projects">
+
+      {%- for i in site.data.projects -%}
+      <article
+        class="project-card"
+        data-tags="{{ i.tags | join: ',' | downcase }}"
+        aria-label="{{ i.name }}">
+
+        {%- comment -%}
+          Cover image gallery trigger.
+          data-gallery groups all anchors with the same value into one gallery.
+          data-gallery-src is the full-size image shown in the modal.
+          data-gallery-thumb is the thumbnail shown in the strip.
+          data-gallery-title is the accessible caption.
+        {%- endcomment -%}
+        <a
+          class="project-card__thumb-link"
+          href="/static/projects/{{ i.cover_image }}"
+          data-gallery="{{ i.fancybox_class }}"
+          data-gallery-src="/static/projects/{{ i.cover_image }}"
+          data-gallery-thumb="/static/projects/{{ i.cover_thumbnail }}"
+          data-gallery-title="{{ i.cover_title }}"
+          aria-label="Open {{ i.name }} gallery">
+          <img
+            class="project-card__thumb"
+            src="/static/projects/{{ i.cover_thumbnail }}"
+            alt="{{ i.cover_title }}"
+            width="400"
+            height="225"
+            loading="lazy"
+            decoding="async">
+        </a>
+
+        {%- comment -%}
+          Hidden gallery items for all additional images in this project.
+          GalleryManager.init() collects every [data-gallery] anchor on the page
+          and groups them by their data-gallery value. These anchors are visually
+          hidden but remain in the DOM so the gallery module can build the full
+          thumbnail strip and navigation. Using u-sr-only keeps them accessible
+          to the module while removing them from the visual flow.
+        {%- endcomment -%}
+        {%- for image in i.images -%}
+        <a
+          class="u-sr-only"
+          href="/static/projects/{{ image.image }}"
+          data-gallery="{{ i.fancybox_class }}"
+          data-gallery-src="/static/projects/{{ image.image }}"
+          data-gallery-thumb="/static/projects/{{ image.thumbnail }}"
+          data-gallery-title="{{ image.title }}"
+          tabindex="-1"
+          aria-hidden="true">
+          {{ image.title }}
+        </a>
+        {%- endfor -%}
+
+        <div class="project-card__body">
+
+          <h2 class="project-card__title">
+            {%- if i.url and i.url != "#" -%}
+            <a
+              href="{{ i.url }}"
+              target="_blank"
+              rel="noopener noreferrer">
+              {{- i.name -}}
+            </a>
+            {%- else -%}
+            {{- i.name -}}
+            {%- endif -%}
+          </h2>
+
+          {%- if i.tags -%}
+          <ul class="project-card__tags" role="list" aria-label="Tags">
+            {%- for j in i.tags -%}
+            <li>
+              <span class="tag" data-tag="{{ j | downcase }}">{{ j }}</span>
+            </li>
+            {%- endfor -%}
+          </ul>
+          {%- endif -%}
+
+          <div class="project-card__actions">
+            {%- comment -%}
+              "View" opens the gallery for this project. It is a proper
+              gallery trigger (data-gallery) pointing to the cover image,
+              so GalleryManager.init() attaches a click handler that opens
+              the modal at index 0 for this group.
+            {%- endcomment -%}
+            <a
+              class="project-card__btn"
+              href="/static/projects/{{ i.cover_image }}"
+              data-gallery="{{ i.fancybox_class }}"
+              data-gallery-src="/static/projects/{{ i.cover_image }}"
+              data-gallery-thumb="/static/projects/{{ i.cover_thumbnail }}"
+              data-gallery-title="{{ i.cover_title }}"
+              aria-label="View {{ i.name }} gallery">
+              View
+            </a>
+
+            {%- if i.source_url -%}
+            <a
+              class="project-card__btn project-card__btn--secondary"
+              href="{{ i.source_url }}"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="View {{ i.name }} source code">
+              Source
+            </a>
+            {%- endif -%}
+
+            <span class="project-card__date">{{ i.date }}</span>
+          </div>
+
+        </div>
+      </article>
+      {%- endfor -%}
+
+    </div>{%- comment -%} /.project-grid {%- endcomment -%}
+  </div>{%- comment -%} /.projects-page {%- endcomment -%}
+
+</section>
