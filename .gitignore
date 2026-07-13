@@ -6,9 +6,12 @@ _config_template.yml
 # Sass compiler cache
 .sass-cache/
 
-# Node dependencies and build artifacts
+# Node dependencies
 node_modules/
-assets/js/main.js
+
+# Compiled JS bundle is committed so GitHub Pages can serve it without a build step.
+# Run `make build` locally and commit the updated assets/js/main.js before pushing.
+# assets/js/main.js
 
 # Local editor settings
 .vscode/
