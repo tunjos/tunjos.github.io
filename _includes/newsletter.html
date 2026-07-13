@@ -95,7 +95,7 @@
       .then(function (res) { return res.json(); })
       .then(function (data) {
         if (data.success) {
-          setStatus('You\'re subscribed! Thanks for signing up.', false);
+          setStatus('Thank you! Please check your inbox for a confirmation email!.', false);
           form.reset();
         } else {
           setStatus(data.message || 'Something went wrong. Please try again.', true);

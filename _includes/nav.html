@@ -1,6 +1,35 @@
 <nav class="site-nav" aria-label="Main navigation">
 
-  <!-- Author panel (sidebar top on desktop) -->
+  <!-- Desktop theme toggle: top of sidebar, right-aligned. Hidden on mobile. -->
+  <button class="theme-toggle theme-toggle--desktop"
+          type="button"
+          aria-label="Toggle dark mode"
+          aria-pressed="false">
+    <svg class="theme-toggle__icon theme-toggle__icon--sun"
+         aria-hidden="true" focusable="false"
+         width="20" height="20" viewBox="0 0 24 24"
+         fill="none" stroke="currentColor"
+         stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1"  x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22"  x2="5.64"  y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1"  y1="12" x2="3"  y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22"  y1="19.78" x2="5.64"  y2="18.36"></line>
+      <line x1="18.36" y1="5.64"  x2="19.78" y2="4.22"></line>
+    </svg>
+    <svg class="theme-toggle__icon theme-toggle__icon--moon"
+         aria-hidden="true" focusable="false"
+         width="20" height="20" viewBox="0 0 24 24"
+         fill="none" stroke="currentColor"
+         stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+    </svg>
+  </button>
+
+  <!-- Author panel: always visible on mobile and desktop -->
   <div class="site-nav__author">
     <img class="site-nav__avatar"
          src="{{ site.logo }}"
@@ -14,25 +43,52 @@
     {% include social-links.html %}
   </div>
 
-  <!-- Hamburger toggle button (hidden on desktop via CSS) -->
-  <button class="site-nav__toggle"
-          type="button"
-          aria-controls="primary-nav-list"
-          aria-expanded="false"
-          aria-label="Open navigation menu">
-    <span class="site-nav__toggle-bar" aria-hidden="true"></span>
-    <span class="site-nav__toggle-bar" aria-hidden="true"></span>
-    <span class="site-nav__toggle-bar" aria-hidden="true"></span>
-  </button>
+  <!-- Mobile top bar: site name left, theme toggle + hamburger right -->
+  <div class="site-nav__topbar">
+    <span class="site-nav__site-name">Menu</span>
+    <div class="site-nav__topbar-actions">
+      <!-- Theme toggle: inline on mobile, fixed top-right on desktop -->
+      <button class="theme-toggle"
+              type="button"
+              aria-label="Toggle dark mode"
+              aria-pressed="false">
+        <svg class="theme-toggle__icon theme-toggle__icon--sun"
+             aria-hidden="true" focusable="false"
+             width="20" height="20" viewBox="0 0 24 24"
+             fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1"  x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22"  x2="5.64"  y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1"  y1="12" x2="3"  y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22"  y1="19.78" x2="5.64"  y2="18.36"></line>
+          <line x1="18.36" y1="5.64"  x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg class="theme-toggle__icon theme-toggle__icon--moon"
+             aria-hidden="true" focusable="false"
+             width="20" height="20" viewBox="0 0 24 24"
+             fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+      <button class="site-nav__toggle"
+              type="button"
+              aria-controls="primary-nav-list"
+              aria-expanded="false"
+              aria-label="Open navigation menu">
+        <span class="site-nav__toggle-bar" aria-hidden="true"></span>
+        <span class="site-nav__toggle-bar" aria-hidden="true"></span>
+        <span class="site-nav__toggle-bar" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
 
-  <!-- Navigation list -->
-  <ul class="site-nav__list" id="primary-nav-list" role="list">
-    {% for i in site.urls %}
-      {%- comment -%}
-        Determine active state:
-        1. Exact URL match between page.url and item.url
-        2. Home item (layout: post) is active when viewing a post page
-      {%- endcomment -%}
+  <!-- Collapsible navigation links -->
+  <ul class="site-nav__list" id="primary-nav-list" role="list">    {% for i in site.urls %}
       {%- assign is_active = false -%}
       {%- if page.url == i.url -%}
         {%- assign is_active = true -%}
@@ -40,52 +96,33 @@
         {%- assign is_active = true -%}
       {%- endif -%}
 
-      {%- comment -%}Resolve link URL: external links used as-is, internal links prepend baseurl{%- endcomment -%}
       {%- if i.url contains '://' -%}
         {%- assign linkurl = i.url -%}
       {%- else -%}
         {%- assign linkurl = i.url | prepend: site.baseurl -%}
       {%- endif -%}
 
-      {%- comment -%}Map FA4 icon slug to FA6 SVG sprite ID{%- endcomment -%}
       {%- assign icon_id = 'icon-circle-question' -%}
       {%- case i.icon -%}
-        {%- when 'fa-home' -%}
-          {%- assign icon_id = 'icon-house' -%}
-        {%- when 'fa-info' -%}
-          {%- assign icon_id = 'icon-circle-info' -%}
-        {%- when 'fa-book' -%}
-          {%- assign icon_id = 'icon-book' -%}
-        {%- when 'fa-desktop' -%}
-          {%- assign icon_id = 'icon-desktop' -%}
-        {%- when 'fa-briefcase' -%}
-          {%- assign icon_id = 'icon-briefcase' -%}
-        {%- when 'fa-chair' -%}
-          {%- assign icon_id = 'icon-chair' -%}
-        {%- when 'fa-mobile' -%}
-          {%- assign icon_id = 'icon-mobile' -%}
-        {%- when 'fa-lightbulb' -%}
-          {%- assign icon_id = 'icon-lightbulb' -%}
-        {%- when 'fa-building-o' -%}
-          {%- assign icon_id = 'icon-building' -%}
-        {%- when 'fa-smile-o' -%}
-          {%- assign icon_id = 'icon-face-smile' -%}
-        {%- when 'fa-github' -%}
-          {%- assign icon_id = 'icon-github' -%}
-        {%- when 'fa-file-pdf-o' -%}
-          {%- assign icon_id = 'icon-file-pdf' -%}
-        {%- when 'fa-feed' -%}
-          {%- assign icon_id = 'icon-rss' -%}
-        {%- when 'fa-twitter' -%}
-          {%- assign icon_id = 'icon-twitter' -%}
-        {%- when 'fa-linkedin' -%}
-          {%- assign icon_id = 'icon-linkedin' -%}
-        {%- when 'fa-instagram' -%}
-          {%- assign icon_id = 'icon-instagram' -%}
-        {%- when 'fa-envelope' -%}
-          {%- assign icon_id = 'icon-envelope' -%}
-        {%- when 'fa-bars' -%}
-          {%- assign icon_id = 'icon-bars' -%}
+        {%- when 'fa-home' -%}        {%- assign icon_id = 'icon-house' -%}
+        {%- when 'fa-info' -%}        {%- assign icon_id = 'icon-circle-info' -%}
+        {%- when 'fa-book' -%}        {%- assign icon_id = 'icon-book' -%}
+        {%- when 'fa-desktop' -%}     {%- assign icon_id = 'icon-desktop' -%}
+        {%- when 'fa-briefcase' -%}   {%- assign icon_id = 'icon-briefcase' -%}
+        {%- when 'fa-chair' -%}       {%- assign icon_id = 'icon-chair' -%}
+        {%- when 'fa-mobile' -%}      {%- assign icon_id = 'icon-mobile' -%}
+        {%- when 'fa-lightbulb' -%}   {%- assign icon_id = 'icon-lightbulb' -%}
+        {%- when 'fa-building-o' -%}  {%- assign icon_id = 'icon-building' -%}
+        {%- when 'fa-smile-o' -%}     {%- assign icon_id = 'icon-face-smile' -%}
+        {%- when 'fa-github' -%}      {%- assign icon_id = 'icon-github' -%}
+        {%- when 'fa-file-pdf-o' -%}  {%- assign icon_id = 'icon-file-pdf' -%}
+        {%- when 'fa-feed' -%}        {%- assign icon_id = 'icon-rss' -%}
+        {%- when 'fa-twitter' -%}     {%- assign icon_id = 'icon-twitter' -%}
+        {%- when 'fa-linkedin' -%}    {%- assign icon_id = 'icon-linkedin' -%}
+        {%- when 'fa-instagram' -%}   {%- assign icon_id = 'icon-instagram' -%}
+        {%- when 'fa-envelope' -%}    {%- assign icon_id = 'icon-envelope' -%}
+        {%- when 'fa-bars' -%}        {%- assign icon_id = 'icon-bars' -%}
+        {%- when 'fa-computer-o' -%}  {%- assign icon_id = 'icon-desktop' -%}
       {%- endcase -%}
 
       <li class="site-nav__item">

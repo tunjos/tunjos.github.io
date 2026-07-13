@@ -47,14 +47,13 @@
   height: 44px;
 
   // -------------------------------------------------------------------------
-  // Positioning — fixed in the top-right corner of the viewport so it is
-  // always reachable regardless of scroll position.
-  // z-index sits above content but below the nav drawer overlay (z-index: 200).
+  // Positioning — sits inline in its container on both mobile and desktop.
   // -------------------------------------------------------------------------
-  position: fixed;
-  top: var(--space-4);          /* 16px from top */
-  right: var(--space-4);        /* 16px from right */
-  z-index: 150;
+  position: relative;
+  top: auto;
+  right: auto;
+  z-index: auto;
+  flex-shrink: 0;
 
   // -------------------------------------------------------------------------
   // Visual appearance — token-based so it adapts to both themes
@@ -179,15 +178,19 @@
 
 
   // ===========================================================================
-  // Responsive adjustments
-  // On desktop (≥ 1024px) the toggle moves further from the edge so it does
-  // not overlap the sidebar / sticky header.
+  // Modifier: --desktop
+  // Hidden on mobile (the mobile version lives in nav.html's topbar).
+  // Visible on desktop inside the sidebar — not fixed, flows in the sidebar.
   // ===========================================================================
-  @include mq('lg') {
-    // On desktop shift to the main content area side — stays top-right but
-    // provides more clearance from the 260px sidebar.
-    top: var(--space-6);
-    right: var(--space-8);
+  &--desktop {
+    display: none;
+
+    @include mq('lg') {
+      display: inline-flex;
+      position: static;
+      align-self: flex-end;   // right-align in the flex sidebar column
+      margin-bottom: var(--space-4);
+    }
   }
 }
 

@@ -68,14 +68,14 @@ const ThemeManager = (() => {
   function apply(theme) {
     ROOT.setAttribute('data-theme', theme);
 
-    const btn = document.querySelector('.theme-toggle');
-    if (btn) {
+    // Wire both the mobile (in nav topbar) and desktop (fixed) toggle buttons
+    document.querySelectorAll('.theme-toggle').forEach(function(btn) {
       btn.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
       btn.setAttribute(
         'aria-label',
         theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'
       );
-    }
+    });
   }
 
   /**
@@ -117,11 +117,10 @@ const ThemeManager = (() => {
     }
     apply(stored);
 
-    // Wire up the toggle button
-    const btn = document.querySelector('.theme-toggle');
-    if (btn) {
+    // Wire up all toggle buttons (mobile topbar + desktop fixed)
+    document.querySelectorAll('.theme-toggle').forEach(function(btn) {
       btn.addEventListener('click', toggle);
-    }
+    });
 
     // React to OS preference changes ONLY when the user has not chosen manually
     // (Req 4.8: "update the active theme ONLY IF no `theme` key exists in localStorage")

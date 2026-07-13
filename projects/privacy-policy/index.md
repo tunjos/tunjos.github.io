@@ -36,4 +36,4 @@ Search Bubble is not intended for use by anyone under the age of 18. We do not k
 
 We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page. You are advised to review this Privacy Policy.
 
-<form style="border:1px solid #ccc;padding:3px;text-align:center;" action="https://tinyletter.com/tunjos" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/tunjos', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true"><p><label for="tlemail">Enjoy reading this? Join my Smartletter</label>&nbsp;<input type="text" style="width:140px" name="email" placeholder="Your email address" id="tlemail" />&nbsp;<input type="hidden" value="1" name="embed"/><input type="submit" value="Subscribe" /><p><a href="https://tinyletter.com" target="_blank">powered by TinyLetter</a></p>
+{% include newsletter.html %}

@@ -43,10 +43,7 @@
 
   // ===========================================================================
   // Element: __author
-  // Author panel shown at the top of the sidebar on desktop.
-  // On mobile it is rendered above the toggle button inside the collapsible
-  // region — the layout collapses naturally because it is inside __list's
-  // parent container (see nav.html).
+  // Author panel — always visible on both mobile and desktop.
   // ===========================================================================
   &__author {
     padding-bottom: var(--space-6);
@@ -57,10 +54,64 @@
     align-items: flex-start;
   }
 
+  // (no mobile/desktop visibility toggle needed — always shown)
+  &--open &__author {
+    display: flex; // keep open-state rule harmless
+  }
+
+
+  // ===========================================================================
+  // Element: __topbar
+  // Mobile-only top bar containing the site name and hamburger button.
+  // Hidden on desktop where the full sidebar is always visible.
+  // ===========================================================================
+  &__topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2);
+
+    @include mq('lg') {
+      display: none;
+    }
+  }
+
+  // ===========================================================================
+  // Element: __topbar-actions
+  // Groups the theme toggle and hamburger button on the right side of topbar.
+  // ===========================================================================
+  &__topbar-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    flex-shrink: 0;
+  }
+
+  // ===========================================================================
+  // Element: __site-name
+  // Site/author name link shown in the mobile top bar.
+  // ===========================================================================
+  &__site-name {
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-heading);
+    color: var(--color-text);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--color-accent);
+    }
+  }
+
+  // ===========================================================================
+  // Element: __item
+  // A single nav link list item.
+  // ===========================================================================
+  &__item {
+    // gap handled by __list flex gap
+  }
 
   // ===========================================================================
   // Element: __avatar
-  // Circular author avatar image in the author panel.
   // ===========================================================================
   &__avatar {
     width: 75px;
@@ -104,19 +155,18 @@
   // ===========================================================================
   &__toggle {
     @include touch-target;
+    display: flex;          // override inline-flex so it fills the topbar slot
     background: none;
     border: 1px solid transparent;
     cursor: pointer;
     padding: var(--space-2);
     border-radius: var(--border-radius-sm);
     color: var(--color-text);
-
-    // Override display: inline-flex from mixin with flex so bars stack
-    // vertically inside the button.
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     gap: 5px;
 
-    // Hover: subtle background tint (Req 8.7 — ≤ 150ms state change)
     transition:
       background-color var(--transition-fast),
       border-color var(--transition-fast);
@@ -125,14 +175,12 @@
       background-color: var(--color-bg-elevated);
     }
 
-    // Keyboard focus ring (Req 7.2)
     &:focus-visible {
       outline: none;
       box-shadow: var(--shadow-focus);
       border-color: var(--color-accent);
     }
 
-    // On desktop the toggle is unnecessary — the sidebar nav is always visible.
     @include mq('lg') {
       display: none;
     }
