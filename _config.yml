@@ -19,6 +19,7 @@ urls:
       icon: fa-info
     - text: Learn
       url: 'https://learn.tunjos.co'
+      target: _blank
       icon: fa-book
     - text: Projects
       url: /projects/

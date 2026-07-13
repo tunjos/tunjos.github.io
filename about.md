@@ -38,6 +38,6 @@ I believe there is only one thing that is impossible. It's called "Nothing".
 
 **Phone:** [+EXEC-0-I-MET-903](#)
 
-**Location:** [Toronto, Canada](#), [Turin, Italy](#)
+**Location:** [Toronto, Canada](#); [Turin, Italy](#)
 
 {% include newsletter-page.html %}
