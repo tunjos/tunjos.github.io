@@ -110,6 +110,13 @@
     // gap handled by __list flex gap
   }
 
+  // Indicates sidebar links that open outside the current tab.
+  &__external {
+    margin-left: var(--space-1);
+    font-size: 0.85em;
+    line-height: 1;
+  }
+
   // ===========================================================================
   // Element: __avatar
   // ===========================================================================

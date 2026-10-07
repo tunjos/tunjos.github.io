@@ -19,11 +19,13 @@ urls:
       icon: fa-info
     - text: Learn
       url: 'https://learn.tunjos.co'
-      target: _blank
       icon: fa-book
     - text: Projects
       url: /projects/
       icon: fa-briefcase
+    - text: Tunjos Software
+      url: 'https://software.tunjos.co'
+      icon: fa-computer-o
     - text: Tinypoke
       url: 'https://tinypoke.com'
       icon: fa-desktop

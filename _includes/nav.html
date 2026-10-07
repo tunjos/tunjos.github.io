@@ -134,6 +134,10 @@
             <use href="#{{ icon_id }}"></use>
           </svg>
           {{ i.text }}
+          {%- if i.target == '_blank' -%}
+            <span class="site-nav__external" aria-hidden="true">↗</span>
+            <span class="u-sr-only"> (opens in a new tab)</span>
+          {%- endif -%}
         </a>
       </li>
     {% endfor %}
