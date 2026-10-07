@@ -1,0 +1,13 @@
+# Contact details shown on the About page.
+heading: Get in touch with me 🙂.
+email:
+  label: Email
+  # Obfuscated so it is readable to humans and less useful to scrapers.
+  display: tunjos [at] tunjos.co
+locations:
+  label: Location
+  places:
+    - name: Toronto, Canada
+      url: https://www.openstreetmap.org/search?query=Toronto%2C%20Canada
+    - name: Turin, Italy
+      url: https://www.openstreetmap.org/search?query=Turin%2C%20Italy

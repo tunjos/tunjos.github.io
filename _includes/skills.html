@@ -1,0 +1,21 @@
+{%- comment -%}
+  skills.html — Grouped skill chips for the About page.
+  Source of truth: _data/skills.yml
+  Each skill is a label (span.tag), not a link.
+{%- endcomment -%}
+<section class="skill-groups" aria-labelledby="skills-heading">
+  <h2 class="skill-groups__heading" id="skills-heading">Skills &amp; Interests</h2>
+
+  {%- for group in site.data.skills -%}
+    <div class="skill-groups__group">
+      <h3 class="skill-groups__title">{{ group.group }}</h3>
+      <ul class="skill-groups__list">
+        {%- for skill in group.skills -%}
+          <li class="skill-groups__item">
+            <span class="tag">{{ skill }}</span>
+          </li>
+        {%- endfor -%}
+      </ul>
+    </div>
+  {%- endfor -%}
+</section>

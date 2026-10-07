@@ -4,40 +4,27 @@ title: About tunjos
 permalink: /about/
 ---
 
-I am a Happiness Engineer🕊️ who is passionate about all good things possible. I love meeting people and finding creative ways to bring out the best in other people. I have a Software Engineering and Computer Science background.    
+I am a Software Engineer by training, but a Happiness Engineer by heart 🕊️. I love meeting people and finding creative ways to bring out the best in them 🙂. I am a polymath and very skilled in ideation (Human LLM).
 
-I always strive for excellence and I believe there no limit to what can be achieved in life.
-I am an Entrepreneur, a Writer, a Speaker, a Reader, a Thinker, a Software Engineer, and an Innovator. I love a great UI(User Interface) with a superb UX(User Experience).  
-
-I love to make things happen. I like to get the right things done. I put Happiness first!
-I spend a great deal of time being happy and a greater deal of time spreading Happiness to others.
-My hobbies include Walking, Running, Creative Thinking and Happiness.
-Imotivate: You are a wonderful person.  
+I have a base in Canada and Italy.  
+I can hear all languages!
 
 I believe there is only one thing that is impossible. It's called "Nothing".
-- Checkout [tinypoke.co](https://tinypoke.co) for my consulting site.
-- Checkout [happydrip.com](https://happydrip.com) for my happiness blog.  
-- Checkout [learn.tunjos.co](https://learn.tunjos.co) for my learning site.  
+
+- Visit **Tinypoke** for Exceptional Software. -  [tinypoke.com](https://tinypoke.com)
+- Visit **Tinypoke Consulting** for Technology Consulting at it's finest. - [tinypoke.co](https://tinypoke.co)
+
+- Visit **Happydrip** to live a Happier Life. - [happydrip.com](https://happydrip.com)
+- Visit the **Happydrip Store** to shop inspiring products. - [store.happydrip.com](https://store.happydrip.com)
 
 
-**Skills/Interests:** <br />
-[Happiness](#), [Happiness Engineering](#), [Leadership](#), [Teamwork](#), [Public Speaking](#), [Motivational Speaking](#), [Philosophy](#)<br />
-[Entrepreneurship](#), [Start-ups](#), [Software as a Service (SaaS)](#), [Amazon Web Services (AWS)](#)<br />
-[Android](#), [Kotlin](#), [Java](#), [Javascript](#), [Python](#), [PHP](#)<br />
-[Node.js](#), [Express.js](#), [Vue.js](#), [Nuxt.js](#), [MongoDB](#), [MySQL](#)<br />
-[Cybersecurity](#), [Information Security](#), [Cryptography](#), [OSINT](#), [Intelligence Analysis](#)<br />
-[User Experience (UX)](#), [User Interface Design](#). [Critical Thinking](#), [Strategic Thinking](#), [Ideas Development](#)<br />
-[Software Engineering](#), [Networking](#), [Electronics Engineering](#), [Machine Learning](#), [Artificial Intelligence](#)  
+Tinypoke Consulting also offer two specialised services.  
+• **AppReviewer** - [ideareviewer.app](https://appreviewer.app) (To get your App (Mobile apps for now) reviewed and take it to the Next Level✔️)  
+• **IdeaReviewer** - [appreviewer.app](https://ideareviewer.app) (To get your Idea reviewed and take it to the Next Level✔️)
 
-<br />
-## Please get in touch with me 🙂. I love connecting with people!
-- Experienced at being Kind!
-- Puts Happiness First!  
 
-**Email:** <tunjos@tunjos.co>
+{% include skills.html %}
 
-**Phone:** [+EXEC-0-I-MET-903](#)
-
-**Location:** [Toronto, Canada](#); [Turin, Italy](#)
+{% include contact.html %}
 
 {% include newsletter-page.html %}

@@ -1,0 +1,77 @@
+# Skills and Interests shown on the About page.
+# group: heading for a cluster of related labels
+# skills: short labels rendered as non-link tag chips
+- group: People & Communication
+  skills:
+    - Happiness
+    - Happiness Engineering
+    - Leadership
+    - Technical Leadership
+    - Teamwork
+    - Public Speaking
+    - Motivational Speaking
+    - Writing
+    - Poetry
+    - Philosophy
+
+- group: Product & Business
+  skills:
+    - Entrepreneurship
+    - Start-ups
+    - E-Commerce
+    - Sales
+    - Software Consulting
+    - AI Strategy
+    - Software as a Service (SaaS)
+    - Amazon Web Services (AWS)
+
+- group: Languages & Frameworks
+  skills:
+    - Android
+    - iOS
+    - Swift
+    - Kotlin
+    - Java
+    - JavaScript
+    - React.js
+    - Python
+    - PHP
+    - Node.js
+    - Express.js
+    - Vue.js
+    - Nuxt.js
+    - MongoDB
+    - MySQL
+    - SQL
+    - Linux
+
+- group: AI & Data
+  skills:
+    - Artificial Intelligence
+    - Machine Learning
+    - Large Language Models (LLM)
+
+- group: Security & Intelligence
+  skills:
+    - Cybersecurity
+    - Information Security
+    - Cryptography
+    - OSINT
+    - Intelligence Analysis
+
+- group: Design & Thinking
+  skills:
+    - User Experience (UX)
+    - UX Research
+    - User Interface Design
+    - Critical Thinking
+    - Strategic Thinking
+    - Ideas Development
+
+- group: Engineering
+  skills:
+    - Software Engineering
+    - Software Architecture
+    - Mobile Applications
+    - Networking
+    - Electronics Engineering

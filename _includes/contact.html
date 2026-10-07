@@ -1,0 +1,36 @@
+{%- comment -%}
+  contact.html — Email and locations for the About page.
+  Source of truth: _data/contact.yml
+  Email stays as plain text. Cities link to OpenStreetMap when a url is set.
+{%- endcomment -%}
+{%- assign contact = site.data.contact -%}
+<section class="contact" aria-labelledby="contact-heading">
+  <h2 class="contact__heading" id="contact-heading">{{ contact.heading }}</h2>
+
+  <dl class="contact__list">
+    <div class="contact__row">
+      <dt class="contact__label">{{ contact.email.label }}</dt>
+      <dd class="contact__value">{{ contact.email.display }}</dd>
+    </div>
+
+    <div class="contact__row">
+      <dt class="contact__label">{{ contact.locations.label }}</dt>
+      <dd class="contact__value">
+        <ul class="contact__places">
+          {%- for place in contact.locations.places -%}
+            <li class="contact__place">
+              {%- if place.url -%}
+                <a class="contact__place-link"
+                   href="{{ place.url }}"
+                   target="_blank"
+                   rel="noopener noreferrer">{{ place.name }}</a>
+              {%- else -%}
+                {{ place.name }}
+              {%- endif -%}
+            </li>
+          {%- endfor -%}
+        </ul>
+      </dd>
+    </div>
+  </dl>
+</section>

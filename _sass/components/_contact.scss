@@ -1,0 +1,55 @@
+// =============================================================================
+// _sass/components/_contact.scss
+// Contact details on the About page
+// BEM naming: .contact, .contact__heading, .contact__list, .contact__row,
+//             .contact__label, .contact__value, .contact__places,
+//             .contact__place, .contact__place-link
+// =============================================================================
+
+.contact {
+  margin-top: var(--space-8);
+}
+
+.contact__heading {
+  margin-bottom: var(--space-6);
+}
+
+.contact__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.contact__row {
+  display: grid;
+  gap: var(--space-1);
+
+  @include mq('sm') {
+    grid-template-columns: 8rem 1fr;
+    gap: var(--space-4);
+    align-items: start;
+  }
+}
+
+.contact__label {
+  font-weight: var(--font-weight-heading);
+  color: var(--color-text-muted);
+}
+
+.contact__value {
+  color: var(--color-text);
+}
+
+.contact__places {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contact__place-link {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}

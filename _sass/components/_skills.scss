@@ -1,0 +1,41 @@
+// =============================================================================
+// _sass/components/_skills.scss
+// Grouped skill chips on the About page
+// BEM naming: .skill-groups, .skill-groups__heading, .skill-groups__group,
+//             .skill-groups__title, .skill-groups__list, .skill-groups__item
+// Chips reuse .tag from _tags.scss
+// =============================================================================
+
+.skill-groups {
+  margin-top: var(--space-8);
+}
+
+.skill-groups__heading {
+  margin-bottom: var(--space-6);
+}
+
+.skill-groups__group {
+  & + & {
+    margin-top: var(--space-6);
+  }
+}
+
+.skill-groups__title {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-heading);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-3);
+}
+
+.skill-groups__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.skill-groups__item {
+  margin: 0;
+}
