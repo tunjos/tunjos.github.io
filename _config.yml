@@ -95,7 +95,10 @@ plugins:
   - jekyll-gist
   - jekyll-seo-tag
   - jekyll-redirect-from
-exclude: [_drafts/help]
+exclude:
+  - _drafts/help
+  # Deployed independently by Cloudflare Workers Builds.
+  - workers
 
 #jekyll-seo-tag
 twitter:

@@ -1,0 +1,12 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "tunjos-smartletter",
+  "main": "src/index.js",
+  "compatibility_date": "2026-10-15",
+  "vars": {
+    "ALLOWED_ORIGINS": "https://tunjos.co,https://www.tunjos.co"
+  },
+  "observability": {
+    "enabled": true
+  }
+}
