@@ -1,11 +1,6 @@
 <!-- =============================================================================
   _includes/newsletter.html
-  Loops.so custom form endpoint signup.
-
-  To activate:
-    1. Go to https://app.loops.so/forms → Settings tab
-    2. Copy your Form Endpoint URL
-    3. Replace YOUR_LOOPS_FORM_ID below with the ID at the end of that URL
+  Tunjos Smartletter signup through a Cloudflare Worker and Resend.
   ============================================================================= -->
 <aside class="newsletter" aria-label="Newsletter signup">
   <h3 class="newsletter__title">Enjoyed this post?</h3>
@@ -39,6 +34,16 @@
           Subscribe
         </button>
       </div>
+
+      <div class="newsletter__honeypot" aria-hidden="true">
+        <label for="newsletter-website">Leave this field blank</label>
+        <input
+          id="newsletter-website"
+          type="text"
+          name="website"
+          tabindex="-1"
+          autocomplete="off">
+      </div>
     </div>
 
     <p
@@ -55,9 +60,7 @@
 (function () {
   'use strict';
 
-  // ── Replace with your own Form ID from https://app.loops.so/forms → Settings
-  var LOOPS_FORM_ID = 'cmq4zewfx554q0j1f0kibgwtc';
-  var ENDPOINT = 'https://app.loops.so/api/newsletter-form/' + LOOPS_FORM_ID;
+  var ENDPOINT = 'https://tunjos-smartletter.tunjos.workers.dev/subscribe';
 
   var form   = document.getElementById('newsletter-form');
   var status = document.getElementById('newsletter-status');
@@ -73,7 +76,8 @@
   form.addEventListener('submit', function (e) {
     e.preventDefault();
 
-    var email = form.querySelector('#newsletter-email').value.trim();
+    var email   = form.querySelector('#newsletter-email').value.trim();
+    var website = form.querySelector('#newsletter-website').value;
 
     if (!email) {
       setStatus('Please enter your email address.', true);
@@ -85,20 +89,22 @@
     submitBtn.textContent = 'Subscribing…';
     status.hidden = true;
 
-    var body = 'email=' + encodeURIComponent(email);
-
     fetch(ENDPOINT, {
       method: 'POST',
-      body: body,
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+      body: JSON.stringify({ email: email, website: website }),
+      headers: { 'Content-Type': 'application/json' }
     })
-      .then(function (res) { return res.json(); })
-      .then(function (data) {
-        if (data.success) {
-          setStatus('Thanks for subscribing!', false);
+      .then(function (res) {
+        return res.json()
+          .catch(function () { return {}; })
+          .then(function (data) { return { ok: res.ok, data: data }; });
+      })
+      .then(function (result) {
+        if (result.ok && result.data.success) {
+          setStatus(result.data.message || 'Thanks for subscribing!', false);
           form.reset();
         } else {
-          setStatus(data.message || 'Something went wrong. Please try again.', true);
+          setStatus(result.data.message || 'Something went wrong. Please try again.', true);
         }
       })
       .catch(function () {

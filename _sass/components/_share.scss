@@ -45,7 +45,7 @@
   fill: currentColor;
 }
 
-// --- Newsletter aside (Loops.so custom form) ---
+// --- Newsletter aside (Tunjos Smartletter form) ---
 .newsletter {
   background-color: var(--color-bg-subtle);
   border: 1px solid var(--color-border);
@@ -70,6 +70,18 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
+}
+.newsletter__honeypot {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
 }
 .newsletter__label {
   font-size: var(--font-size-sm);
